@@ -7,7 +7,7 @@ let mainWindow;
 
 function createWindow() {
 
-  mainWindow = new BrowserWindow({ show: false, webPreferences: { webviewTag: true } });
+  mainWindow = new BrowserWindow({ show: false, frame: false, webPreferences: { webviewTag: true } });
   mainWindow.loadURL('http://localhost:3000');
   mainWindow.maximize();
   mainWindow.removeMenu();
