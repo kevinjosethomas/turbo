@@ -1,13 +1,21 @@
+import { useEffect } from "react";
+
 import './styles/tailwind.css'
-import { Layout } from "./layouts/core";
+import { CoreLayout } from "./layouts/core";
 import { View } from './components/core/View';
 
 const App = () => {
 
+  let remote, mainWindow;
+  useEffect(() => {
+    remote = window.electron.remote;
+    mainWindow = remote.getCurrentWindow();
+  }, [])
+
   return (
-    <Layout>
+    <CoreLayout window={mainWindow}>
       <View id="1" />
-    </Layout>
+    </CoreLayout>
   )
 
 }
