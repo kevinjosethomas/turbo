@@ -1,16 +1,13 @@
 import './styles/tailwind.css'
+import { Layout } from "./layouts/core";
 import { View } from './components/core/View';
-import { Search } from './components/core/search/Search';
 
 const App = () => {
 
   return (
-    <div className="flex flex-col min-h-screen w-full min-h-screen h-full bg-white">
-      <Search />
-      <View
-        id="1"
-      />
-    </div>
+    <Layout>
+      <View id="1" />
+    </Layout>
   )
 
 }
