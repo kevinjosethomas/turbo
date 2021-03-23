@@ -17,7 +17,8 @@
     "@testing-library/user-event": "^12.1.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3"
+    "react-scripts": "^4.0.3",
+    "electron": "^12.0.1"
   },
   "eslintConfig": {
     "extends": [
@@ -40,7 +41,6 @@
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.4",
     "autoprefixer": "^9.8.6",
-    "electron": "^12.0.1",
     "postcss": "^7.0.35",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4"
   }
