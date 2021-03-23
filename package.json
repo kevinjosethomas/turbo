@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "main": "src/main.js",
+  "scripts": {
+    "start": "craco start",
+    "electron": "electron .",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "@testing-library/jest-dom": "^5.11.4",
@@ -10,16 +17,7 @@
     "@testing-library/user-event": "^12.1.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-hot-keys": "^2.6.2",
-    "react-scripts": "^4.0.3",
-    "web-vitals": "^1.0.1"
-  },
-  "scripts": {
-    "electron": "electron .",
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
+    "react-scripts": "^4.0.3"
   },
   "eslintConfig": {
     "extends": [
