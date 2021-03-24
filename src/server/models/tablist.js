@@ -4,6 +4,7 @@ class Tablist {
   constructor(win) {
     this.win = win;
     this.tablist = [];
+    this.friendlyTablist = [];
   }
 
   push({ url, view, id }) {
@@ -13,14 +14,21 @@ class Tablist {
       view: view,
       active: false
     });
+    this.friendlyTablist.push({
+      id: id,
+      url: url,
+      active: false
+    })
   }
 
   setActiveTab(id) {
     this.tablist.forEach((item, index) => {
       if (item.id === id) {
         this.tablist[index].active = true;
+        this.friendlyTablist[index].active = true;
       } else if (item.active && item.id !== id) {
         this.tablist[index].active = false;
+        this.friendlyTablist[index].active = false;
       }
     });
   }
