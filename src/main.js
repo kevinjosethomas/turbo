@@ -31,7 +31,7 @@ function createWindow() {
 
   mainWindow.webContents.openDevTools();
 
-  globalShortcut.register("CommandOrControl+R", () => {
+  globalShortcut.register('CommandOrControl+R', () => {
     mainWindow.reload();
   });
 
@@ -49,19 +49,19 @@ app.on('activate', function () {
   }
 });
 
-ipcMain.on("window-change", (event, type) => {
+ipcMain.on('window-change', (event, type) => {
 
   switch (type) {
-    case "minimize":
+    case 'minimize':
       mainWindow.minimize();
       break;
-    case "maximize":
+    case 'maximize':
       mainWindow.maximize();
       break;
-    case "restore":
+    case 'restore':
       mainWindow.setSize(1000, 500);
       break;
-    case "close":
+    case 'close':
       mainWindow.close();
   }
 
