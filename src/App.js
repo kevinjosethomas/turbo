@@ -7,13 +7,11 @@ import { CoreLayout } from './layouts/core';
 const App = () => {
 
   const [isMaximized, setMaximized] = useState(true);
-  window.ipcRenderer.send('request-window-maximized');
   window.ipcRenderer.on('receive-window-maximized', (_, data) => {
     setMaximized(data);
   });
 
   const [tablist, setTablist] = useState([]);
-  window.ipcRenderer.send('request-tabs');
   window.ipcRenderer.on('receive-tabs', (_, data) => {
     setTablist(data);
   });
