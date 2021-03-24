@@ -8,8 +8,8 @@ const path = require('path');
 const Store = require('electron-store');
 
 const { settings } = require('./server/data/settings');
-const { ipcEventHandler } = require('./server/events/ipc');
-const { windowEventHandler } = require('./server/events/window');
+const { ipcEventHandler } = require('./server/handlers/ipc');
+const { windowEventHandler } = require('./server/handlers/window');
 
 // Creates global window and store objects
 let win;
