@@ -61,7 +61,7 @@ const createWindow = () => {
     width: windowSize[0],
     height: windowSize[1] - headerHeight
   });
-  view.webContents.loadURL('https://github.com/trustedmercury');
+  view.webContents.loadURL('https://discordlist.gg');
 
   ipcEventHandler(ipcMain, win);
   windowEventHandler(win);
