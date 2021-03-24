@@ -7,8 +7,8 @@ export const Header = props => {
 
   return (
     <Fragment>
-      <Titlebar window={props.window} />
-      <Toolbar />
+      <TitleBar window={props.window} />
+      <ToolBar />
     </Fragment>
   );
 
