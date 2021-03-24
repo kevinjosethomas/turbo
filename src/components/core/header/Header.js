@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 
-import { Titlebar } from './components/titlebar/Titlebar';
-import { Toolbar } from './components/toolbar/Toolbar';
+import { TitleBar } from './components/titlebar/TitleBar';
+import { ToolBar } from './components/toolbar/ToolBar';
 
 export const Header = props => {
 
