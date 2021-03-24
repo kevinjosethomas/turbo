@@ -29,7 +29,7 @@ const store = new Store({
 
 const createWindow = () => {
 
-  const headerHeight = 112;
+  const headerHeight = 128;
 
   // Create BrowserWindow instance
   win = new BrowserWindow({
