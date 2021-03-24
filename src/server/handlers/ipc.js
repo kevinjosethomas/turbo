@@ -51,6 +51,12 @@ exports.ipcEventHandler = (win, util) => {
     event.reply('receive-tabs', tablist.friendlyTablist);
   });
 
+  ipcMain.on('set-active-tab', (event, id) => {
+    console.log('hi')
+    tablist.setActiveTab(id);
+    event.reply('receive-tabs', tablist.friendlyTablist);
+  })
+
   ipcMain.on('close-tab', (event, id) => {
     tablist.closeTab(id);
     event.reply('receive-tabs', tablist.friendlyTablist);
