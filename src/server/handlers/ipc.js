@@ -6,6 +6,7 @@ exports.ipcEventHandler = (win, util) => {
 
   const {
     ipcMain,
+    tablist,
     store
   } = util;
 
@@ -32,15 +33,21 @@ exports.ipcEventHandler = (win, util) => {
 
   ipcMain.on('create-tab', () => {
 
+    const url = 'https://google.com/'
     const view = new BrowserView();
+    const id =view.webContents.id;
+    view.webContents.loadURL(url)
     win.addBrowserView(view);
 
-    win.tabList.push({
-      url: 'https://google.com',
+    tablist.push({
+      id: id,
+      url: url,
       view: view
-    })
+    });
 
-    console.log(win.tabList)
+    tablist.setActiveTab(id);
+    
+    ipcMain.reply('update-tabs', tablist.tablist);
 
   })
 
