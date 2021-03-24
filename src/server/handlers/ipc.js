@@ -31,9 +31,7 @@ exports.ipcEventHandler = (win, util) => {
     }
   });
 
-  ipcMain.on('request-tabs', event => {
-    event.reply('receive-tabs', tablist.tablist)
-  });
+  ipcMain.on('request-tabs', event => event.reply('receive-tabs', tablist.friendlyTablist));
 
   ipcMain.on('create-tab', event => {
     const url = 'https://google.com/'
@@ -49,8 +47,9 @@ exports.ipcEventHandler = (win, util) => {
     });
 
     tablist.setActiveTab(id);
+    console.log(tablist)
 
-    event.reply('receive-tabs', tablist.tablist);
+    event.reply('receive-tabs', tablist.friendlyTablist);
   });
 
 }
