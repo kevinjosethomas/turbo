@@ -14,12 +14,6 @@ const { windowEventHandler } = require('./server/handlers/window');
 // Creates global window and store objects
 let win;
 const store = new Store({
-  openTabs: {
-    type: "array",
-    items: {
-      type: "object"
-    }
-  },
   tabHistory: {
     type: "array",
     items: {
@@ -46,6 +40,13 @@ const createWindow = () => {
   win.loadURL(settings.reactURL);
   win.maximize();
   win.show();
+
+  const tabHistory = store.get('tabHistory');
+  if (!Array.isArray(tabHistory)) {
+    store.set('tabHistory', []);
+  }
+
+  let tabList = []
 
   win.webContents.openDevTools();
 
