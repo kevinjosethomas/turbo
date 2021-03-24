@@ -3,7 +3,6 @@ import { useState } from "react";
 import './assets/styles/tailwind.css';
 import './assets/styles/fontawesome.css';
 import { CoreLayout } from './layouts/core';
-import { View } from './components/core/View';
 
 const App = () => {
 
