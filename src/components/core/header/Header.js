@@ -4,7 +4,7 @@ import { ToolBar } from './components/toolbar/ToolBar';
 export const Header = props => {
 
   return (
-    <div className="flex flex-col items-start justify-start w-full h-28">
+    <div className="flex flex-col items-start justify-start w-full h-32">
       <TitleBar isMaximized={props.isMaximized} />
       <ToolBar />
     </div>
