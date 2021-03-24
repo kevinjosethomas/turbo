@@ -1,6 +1,6 @@
 import { ActionBar } from "./components/ActionBar";
 
-export const Titlebar = props => {
+export const TitleBar = props => {
 
   return (
     <div className="flex flex-row items-center justify-between bg-night-900">
