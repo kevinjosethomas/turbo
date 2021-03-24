@@ -11,3 +11,7 @@
 .ActionBar {
   -webkit-app-region: no-drag;
 }
+
+.ToolbarTooltip {
+  padding: 0.25rem 0.75rem !important;
+}
