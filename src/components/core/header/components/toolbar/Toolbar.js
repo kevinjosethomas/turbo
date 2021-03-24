@@ -1,4 +1,4 @@
-import { Search } from "./components/Search";
+import { Search } from './components/Search';
 
 export const Toolbar = props => {
 
