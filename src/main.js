@@ -50,19 +50,6 @@ const createWindow = () => {
 
   win.webContents.openDevTools();
 
-  // Create BrowserView instance
-  const view = new BrowserView();
-  const windowSize = win.getSize();
-  
-  win.setBrowserView(view);
-  view.setBounds({
-    x: 0,
-    y: headerHeight, 
-    width: windowSize[0],
-    height: windowSize[1] - headerHeight
-  });
-  view.webContents.loadURL('https://discordlist.gg');
-
   ipcEventHandler(ipcMain, win);
   windowEventHandler(win);
 
