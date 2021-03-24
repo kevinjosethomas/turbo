@@ -1,12 +1,13 @@
 const path = require('path');
-const electron = require('electron');
+const {
+  app,
+  BrowserWindow,
+  BrowserView,
+  globalShortcut,
+  ipcMain
+} = require('electron');;
 
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-const globalShortcut = electron.globalShortcut;
-const ipcMain = electron.ipcMain;
 let mainWindow;
-
 function createWindow() {
 
   mainWindow = new BrowserWindow({
@@ -23,6 +24,11 @@ function createWindow() {
   mainWindow.removeMenu();
   mainWindow.show();
 
+  // const view = new BrowserView()
+  // mainWindow.setBrowserView(view)
+  // mainWindow.setBounds({ x: 0, y: 0 })
+  // mainWindow.webContents.loadURL('https://electronjs.org')
+
   mainWindow.webContents.openDevTools();
 
   globalShortcut.register("CommandOrControl+R", () => {
@@ -32,10 +38,6 @@ function createWindow() {
   mainWindow.on('closed', function () {
     mainWindow = null
   });
-
-}
-
-function eventHandler() {
 
 }
 
