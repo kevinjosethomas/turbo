@@ -1,10 +1,6 @@
 
 exports.windowEventHandler = (win) => {
 
-  win.webContents.on('did-finish-load', () => {
-    console.log('loaded')
-  })
-
   win.webContents.on('minimize', () => {
     console.log('minimize')
   })
