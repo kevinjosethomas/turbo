@@ -31,11 +31,11 @@ exports.ipcEventHandler = (win, util) => {
     }
   });
 
-  ipcMain.on('create-tab', () => {
+  ipcMain.on('create-tab', event => {
 
     const url = 'https://google.com/'
     const view = new BrowserView();
-    const id =view.webContents.id;
+    const id = view.webContents.id;
     view.webContents.loadURL(url)
     win.addBrowserView(view);
 
@@ -46,8 +46,8 @@ exports.ipcEventHandler = (win, util) => {
     });
 
     tablist.setActiveTab(id);
-    
-    ipcMain.reply('update-tabs', tablist.tablist);
+
+    event.reply('update-tabs', tablist.tablist);
 
   })
 
