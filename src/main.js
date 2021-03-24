@@ -8,6 +8,7 @@ const path = require('path');
 const Store = require('electron-store');
 
 const { settings } = require('./server/data/settings');
+const { Tablist } = require('./server/models/tablist');
 const { ipcEventHandler } = require('./server/handlers/ipc');
 const { windowEventHandler } = require('./server/handlers/window');
 
@@ -46,11 +47,11 @@ const createWindow = () => {
     store.set('tabHistory', []);
   }
 
-  let tabList = []
+  let tablist = new Tablist(win);
 
   win.webContents.openDevTools();
 
-  ipcEventHandler(win, { ipcMain: ipcMain, store: store });
+  ipcEventHandler(win, { ipcMain: ipcMain, tablist: tablist, store: store });
   windowEventHandler(win);
 
   // Null window on close
