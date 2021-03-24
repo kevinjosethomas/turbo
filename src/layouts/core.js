@@ -4,7 +4,7 @@ export const CoreLayout = props => {
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-night-600">
-      <Header isMaximized={props.isMaximized} />
+      <Header tablist={props.tablist} isMaximized={props.isMaximized} />
     </div>
   )
 

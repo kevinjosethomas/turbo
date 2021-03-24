@@ -5,7 +5,7 @@ export const Header = props => {
 
   return (
     <div className="flex flex-col items-start justify-start w-full h-32">
-      <TitleBar isMaximized={props.isMaximized} />
+      <TitleBar tablist={props.tablist} isMaximized={props.isMaximized} />
       <ToolBar />
     </div>
   );
