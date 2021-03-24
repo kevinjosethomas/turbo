@@ -33,7 +33,7 @@ export const ControlButton = props => {
 
   return (
     <div
-      className="w-10 h-10 p-2 text-center cursor-pointer text-night-sky-dusk hover:text-night-sky-noon hover:bg-night-tab-active rounded transition duration-300"
+      className="flex flex-col items-center justify-center w-10 h-10 p-2 cursor-pointer text-night-sky-dusk hover:text-night-sky-noon hover:bg-night-tab-active rounded transition duration-300"
       onClick={() => props.onClick()}
       data-tip={props.tooltip}
     >
