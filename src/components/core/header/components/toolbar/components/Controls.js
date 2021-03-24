@@ -22,7 +22,7 @@ export const Controls = props => {
       <ReactTooltip
         className="ToolbarTooltip"
         effect="solid"
-        delayShow="1000"
+        delayShow={1000}
       />
     </div>
   );
