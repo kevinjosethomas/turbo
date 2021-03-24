@@ -2,6 +2,10 @@ module.exports = {
   purge: ["./src/**/*.js"],
   theme: {
     extend: {
+      height: {
+        "header-titlebar": "3.625rem",
+        "header-toolbar": "4.375rem"
+      },
       colors: {
         night: {
           mare: "#141414",
