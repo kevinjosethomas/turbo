@@ -4,11 +4,7 @@ import { ActionBar } from './components/ActionBar';
 
 export const TitleBar = props => {
 
-  const createTab = () => {
-
-    window.ipcRenderer.send('create-tab');
-
-  }
+  const createTab = () => window.ipcRenderer.send('create-tab');
 
   return (
     <div className="TitleBar flex flex-row items-center justify-between w-full pl-4 h-header-titlebar bg-night-mare">
