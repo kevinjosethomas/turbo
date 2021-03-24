@@ -12,7 +12,20 @@ const { windowEventHandler } = require('./server/events/window');
 
 // Creates global window and store objects
 let win;
-const store = new Store();
+const store = new Store({
+  openTabs: {
+    type: "array",
+    items: {
+      type: "object"
+    }
+  },
+  tabHistory: {
+    type: "array",
+    items: {
+      type: "object"
+    }
+  }
+});
 
 const createWindow = () => {
 
