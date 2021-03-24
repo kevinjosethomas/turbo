@@ -63,6 +63,10 @@ ipcMain.on("window-change", (event, type) => {
       mainWindow.close();
   }
 
+});
+
+ipcMain.on('request-window-maximized', (event, _) => {
+  event.reply('receive-window-maximized', mainWindow.isMaximized());
 })
 
 app.on('window-all-closed', function () {
