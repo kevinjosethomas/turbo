@@ -1,5 +1,11 @@
+const BrowserView = require('electron');
 
-exports.ipcEventHandler = (ipcMain, win) => {
+exports.ipcEventHandler = (win, util) => {
+
+  const {
+    ipcMain,
+    store
+  } = util;
 
   ipcMain.on('request-window-maximized', (event) => {
     event.reply('receive-window-maximized', win.isMaximized());
@@ -21,5 +27,17 @@ exports.ipcEventHandler = (ipcMain, win) => {
         win.close();
     }
   });
+
+  ipcMain.on('create-tab', () => {
+
+    const view = new BrowserView();
+
+    console.log('new tab');
+    store.set('openTabs', store.get('openTabs').push({
+      url: 'https://google.com',
+      view: 
+    }))
+
+  })
 
 }
