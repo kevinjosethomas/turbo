@@ -11,7 +11,6 @@ exports.ipcEventHandler = (ipcMain, win) => {
         win.minimize();
         break;
       case 'maximize':
-        console.log('maximize')
         win.maximize();
         break;
       case 'restore':
