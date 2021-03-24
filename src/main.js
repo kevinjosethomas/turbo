@@ -1,18 +1,22 @@
-const path = require('path');
 const {
   app,
-  BrowserWindow,
+  ipcMain,
   BrowserView,
-  globalShortcut,
-  ipcMain
+  BrowserWindow,
+  globalShortcut
 } = require('electron');
+const path = require('path');
+const Store = require('electron-store');
 
-let mainWindow;
+// Creates global window and store objects
+let win;
+const store = new Store();
+
 function createWindow() {
 
   const headerHeight = 112;
 
-  mainWindow = new BrowserWindow({
+  win = new BrowserWindow({
     show: false,
     frame: false,
     minWidth: 300,
@@ -23,29 +27,29 @@ function createWindow() {
     }
   });
 
-  mainWindow.loadURL('http://localhost:3000');
-  mainWindow.maximize();
-  mainWindow.show();
+  win.loadURL('http://localhost:3000');
+  win.maximize();
+  win.show();
 
   const view = new BrowserView();
-  const windowSize = mainWindow.getSize();
+  const windowSize = win.getSize();
   
-  mainWindow.setBrowserView(view);
+  win.setBrowserView(view);
   view.setBounds({ x: 0, y: headerHeight, width: windowSize[0], height: windowSize[1] - headerHeight });
   view.webContents.loadURL('https://electronjs.org');
 
-  mainWindow.webContents.openDevTools();
+  win.webContents.openDevTools();
 
   globalShortcut.register('CommandOrControl+R', () => {
-    mainWindow.reload();
+    win.reload();
   });
 
   // mainWindow.on('resized', (event, _) => {
   //   ipcMain.send('receive-window-maximized', mainWindow.isMaximized());
   // })
 
-  mainWindow.on('closed', function () {
-    mainWindow = null
+  win.on('closed', function () {
+    win = null
   });
 
 }
@@ -53,7 +57,7 @@ function createWindow() {
 app.on('ready', createWindow);
 
 app.on('activate', function () {
-  if (mainWindow === null) {
+  if (win === null) {
     createWindow();
   }
 });
@@ -68,24 +72,23 @@ ipcMain.on('window-change', (event, type) => {
 
   switch (type) {
     case 'minimize':
-      mainWindow.minimize();
+      win.minimize();
       break;
     case 'maximize':
       console.log('maximize')
-      mainWindow.maximize();
+      win.maximize();
       break;
     case 'restore':
       console.log('restore')
-      mainWindow.setMinimumSize(800, 600);
-      mainWindow.setBounds(800, 600);
+      win.setSize(800, 600);
       break;
     case 'close':
-      mainWindow.close();
+      win.close();
   }
 
 });
 
 ipcMain.on('request-window-maximized', (event, _) => {
-  event.reply('receive-window-maximized', mainWindow.isMaximized());
+  event.reply('receive-window-maximized', win.isMaximized());
 })
 
