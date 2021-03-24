@@ -11,11 +11,16 @@ const App = () => {
   window.ipcRenderer.send('request-window-maximized');
   window.ipcRenderer.on('receive-window-maximized', (event, data) => {
     setMaximized(data);
-  })
+  });
+
+  const [tabList, setTabList] = useState(true);
+  window.ipcRenderer.send('request-tabs');
+  window.ipcRenderer.on('receive-tabs', (event, data) => {
+    setTabList(data);
+  });
 
   return (
     <CoreLayout isMaximized={isMaximized}>
-      <View id="1" />
     </CoreLayout>
   )
 
