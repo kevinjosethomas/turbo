@@ -24,10 +24,13 @@ function createWindow() {
   mainWindow.removeMenu();
   mainWindow.show();
 
-  // const view = new BrowserView()
-  // mainWindow.setBrowserView(view)
-  // mainWindow.setBounds({ x: 0, y: 0 })
-  // mainWindow.webContents.loadURL('https://electronjs.org')
+  const headerHeight = 112;
+  const view = new BrowserView();
+  const windowSize = mainWindow.getSize();
+  
+  mainWindow.setBrowserView(view);
+  view.setBounds({ x: 0, y: headerHeight, width: windowSize[0], height: windowSize[1] - headerHeight });
+  view.webContents.loadURL('https://electronjs.org');
 
   mainWindow.webContents.openDevTools();
 
