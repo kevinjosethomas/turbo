@@ -2,20 +2,23 @@ const {
   app,
   ipcMain,
   BrowserView,
-  BrowserWindow,
-  globalShortcut
+  BrowserWindow
 } = require('electron');
 const path = require('path');
 const Store = require('electron-store');
+
+const { ipcEventHandler } = require('./server/events/ipc');
+const { windowEventHandler } = require('./server/events/window');
 
 // Creates global window and store objects
 let win;
 const store = new Store();
 
-function createWindow() {
+const createWindow = () => {
 
   const headerHeight = 112;
 
+  // Create BrowserWindow instance
   win = new BrowserWindow({
     show: false,
     frame: false,
@@ -27,68 +30,42 @@ function createWindow() {
     }
   });
 
+  // Load React application
   win.loadURL('http://localhost:3000');
   win.maximize();
   win.show();
 
+  win.webContents.openDevTools();
+
+  // Create BrowserView instance
   const view = new BrowserView();
   const windowSize = win.getSize();
   
   win.setBrowserView(view);
-  view.setBounds({ x: 0, y: headerHeight, width: windowSize[0], height: windowSize[1] - headerHeight });
+  view.setBounds({
+    x: 0,
+    y: headerHeight, 
+    width: windowSize[0],
+    height: windowSize[1] - headerHeight
+  });
   view.webContents.loadURL('https://electronjs.org');
 
-  win.webContents.openDevTools();
+  ipcEventHandler(ipcMain, win);
+  windowEventHandler(win);
 
-  globalShortcut.register('CommandOrControl+R', () => {
-    win.reload();
-  });
-
-  // mainWindow.on('resized', (event, _) => {
-  //   ipcMain.send('receive-window-maximized', mainWindow.isMaximized());
-  // })
-
-  win.on('closed', function () {
-    win = null
+  // Null window on close
+  win.on('closed', () => {
+    win = null;
   });
 
 }
 
 app.on('ready', createWindow);
 
-app.on('activate', function () {
-  if (win === null) {
-    createWindow();
-  }
-});
+app.on('activate', () => win === null ? createWindow : void(0));
 
-app.on('window-all-closed', function () {
+app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
-
-ipcMain.on('window-change', (event, type) => {
-
-  switch (type) {
-    case 'minimize':
-      win.minimize();
-      break;
-    case 'maximize':
-      console.log('maximize')
-      win.maximize();
-      break;
-    case 'restore':
-      console.log('restore')
-      win.setSize(800, 600);
-      break;
-    case 'close':
-      win.close();
-  }
-
-});
-
-ipcMain.on('request-window-maximized', (event, _) => {
-  event.reply('receive-window-maximized', win.isMaximized());
-})
-
