@@ -1,16 +1,30 @@
 
 class Tablist {
 
-  contructor(win) {
+  constructor(win) {
     this.win = win;
-    this.tabList = [];
+    this.tablist = [];
   }
 
-  push({ url, view }) {
-    this.tabList.push({
+  push({ url, view, id }) {
+    this.tablist.push({
+      id: id,
       url: url,
-      view: view
+      view: view,
+      active: false
+    });
+  }
+
+  setActiveTab(id) {
+    this.tablist.forEach((item, index) => {
+      if (item.id === id) {
+        this.tablist[index].active = true;
+      } else if (item.active && item.id !== id) {
+        this.tablist[index].active = false;
+      }
     });
   }
 
 }
+
+exports.Tablist = Tablist;
