@@ -61,7 +61,7 @@ const createWindow = () => {
     width: windowSize[0],
     height: windowSize[1] - headerHeight
   });
-  view.webContents.loadURL('https://electronjs.org');
+  view.webContents.loadURL('https://github.com/trustedmercury');
 
   ipcEventHandler(ipcMain, win);
   windowEventHandler(win);
