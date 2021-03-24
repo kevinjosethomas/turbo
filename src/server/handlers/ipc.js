@@ -1,4 +1,4 @@
-const BrowserView = require('electron');
+const { BrowserView } = require('electron');
 
 const { settings } = require('../data/settings');
 
@@ -24,7 +24,7 @@ exports.ipcEventHandler = (win, util) => {
       case 'restore':
         win.unmaximize();
         win.setSize(800, 600);
-        break;
+        break; 
       case 'close':
         win.close();
     }
@@ -35,12 +35,12 @@ exports.ipcEventHandler = (win, util) => {
     const view = new BrowserView();
     win.addBrowserView(view);
 
-    store.set('openTabs', store.get('openTabs').push({
+    win.tabList.push({
       url: 'https://google.com',
       view: view
-    }));
+    })
 
-    console.log(store.get('openTabs'))
+    console.log(win.tabList)
 
   })
 
