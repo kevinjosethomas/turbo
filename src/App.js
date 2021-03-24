@@ -13,14 +13,14 @@ const App = () => {
     setMaximized(data);
   });
 
-  const [tabList, setTabList] = useState(true);
+  const [tablist, setTablist] = useState(true);
   window.ipcRenderer.send('request-tabs');
   window.ipcRenderer.on('receive-tabs', (event, data) => {
-    setTabList(data);
+    setTablist(data);
   });
 
   return (
-    <CoreLayout isMaximized={isMaximized}>
+    <CoreLayout tablist={tablist} isMaximized={isMaximized}>
     </CoreLayout>
   )
 
