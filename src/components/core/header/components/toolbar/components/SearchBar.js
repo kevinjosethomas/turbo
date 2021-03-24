@@ -1,5 +1,5 @@
 
-export const Search = props => {
+export const SearchBar = props => {
 
   return (
     <div className="flex flex-row items-center justify-start w-10/12 px-4 bg-night-800 rounded-lg">
