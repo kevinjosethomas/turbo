@@ -2,7 +2,7 @@
 export const ActionBar = props => {
 
   return (
-    <div className="flex flex-row items-center justify-end">
+    <div className="ActionBar flex flex-row items-center justify-end">
       <Action type="minimize" />
       { props.isMaximized
         ? <Action type="restore" />
