@@ -8,6 +8,7 @@
   -webkit-app-region: drag;
 }
 
+.TabBar,
 .ActionBar {
   -webkit-app-region: no-drag;
 }
