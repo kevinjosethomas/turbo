@@ -5,7 +5,7 @@ const {
   BrowserView,
   globalShortcut,
   ipcMain
-} = require('electron');;
+} = require('electron');
 
 let mainWindow;
 function createWindow() {
