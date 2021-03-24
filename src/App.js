@@ -1,13 +1,15 @@
+import { useState } from "react";
+
 import './styles/tailwind.css'
 import { CoreLayout } from './layouts/core';
 import { View } from './components/core/View';
 
 const App = () => {
 
-  let isMaximized;
+  const [isMaximized, setMaximized] = useState(true);
   window.ipcRenderer.send('request-window-maximized');
   window.ipcRenderer.on('receive-window-maximized', (event, data) => {
-    isMaximized = data;
+    setMaximized(data);
   })
 
   return (
