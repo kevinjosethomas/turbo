@@ -4,6 +4,7 @@ const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const globalShortcut = electron.globalShortcut;
+const ipcMain = electron.ipcMain;
 let mainWindow;
 
 function createWindow() {
@@ -12,10 +13,8 @@ function createWindow() {
     show: false,
     frame: false,
     webPreferences: {
-      webviewTag: true,
-      nodeIntegration: true,
-      preload: path.join(__dirname, 'preload.js'),
-      enableRemoteModule: true
+      contextIsolation: false,
+      preload: path.join(__dirname, 'preload.js')
     }
   });
 
@@ -36,16 +35,38 @@ function createWindow() {
 
 }
 
-app.on('ready', createWindow);
+function eventHandler() {
 
-app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
+}
+
+app.on('ready', createWindow);
 
 app.on('activate', function () {
   if (mainWindow === null) {
     createWindow();
+  }
+});
+
+ipcMain.on("window-change", (event, type) => {
+
+  switch (type) {
+    case "minimize":
+      mainWindow.minimize();
+      break;
+    case "maximize":
+      mainWindow.maximize();
+      break;
+    case "restore":
+      mainWindow.setSize(1000, 500);
+      break;
+    case "close":
+      mainWindow.close();
+  }
+
+})
+
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') {
+    app.quit();
   }
 });
