@@ -47,9 +47,13 @@ exports.ipcEventHandler = (win, util) => {
     });
 
     tablist.setActiveTab(id);
-    console.log(tablist)
 
     event.reply('receive-tabs', tablist.friendlyTablist);
   });
+
+  ipcMain.on('close-tab', (event, id) => {
+    tablist.closeTab(id);
+    event.reply('receive-tabs', tablist.friendlyTablist);
+  })
 
 }

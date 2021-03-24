@@ -33,6 +33,11 @@ class Tablist {
     });
   }
 
+  closeTab(id) {
+    this.tablist = this.tablist.filter(el => el.id !== id);
+    this.friendlyTablist = this.friendlyTablist.filter(el => el.id !== id);
+  }
+
 }
 
 exports.Tablist = Tablist;
