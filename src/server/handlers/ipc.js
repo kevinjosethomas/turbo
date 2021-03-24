@@ -1,5 +1,7 @@
 const BrowserView = require('electron');
 
+const { settings } = require('../data/settings');
+
 exports.ipcEventHandler = (win, util) => {
 
   const {
@@ -31,12 +33,14 @@ exports.ipcEventHandler = (win, util) => {
   ipcMain.on('create-tab', () => {
 
     const view = new BrowserView();
+    win.addBrowserView(view);
 
-    console.log('new tab');
     store.set('openTabs', store.get('openTabs').push({
       url: 'https://google.com',
-      view: 
-    }))
+      view: view
+    }));
+
+    console.log(store.get('openTabs'))
 
   })
 
