@@ -72,7 +72,7 @@ export const Tab = props => {
           className="w-5"
           src={props.favicon}
         />
-        <span className={`w-full relative text-xs overflow-hidden whitespace-nowrap ${props.active
+        <span className={`w-full relative text-xs overflow-hidden whitespace-nowrap max-w-tab-title ${props.active
           ? 'ActiveTabTitle text-night-sky-noon'
           : 'TabTitle text-night-sky-dusk'}`}>{ props.title }</span>
       </div>
