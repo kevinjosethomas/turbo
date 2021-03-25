@@ -31,7 +31,9 @@ exports.ipcEventHandler = (win, util) => {
     }
   });
 
-  ipcMain.on('request-tabs', event => event.reply('receive-tabs', tablist.friendlyTablist));
+  ipcMain.on('request-tabs', event => {
+    event.reply('receive-tabs', tablist.friendlyTablist))
+  };
 
   ipcMain.on('create-tab', event => {
     let favicon = title = null;
@@ -82,6 +84,10 @@ exports.ipcEventHandler = (win, util) => {
   ipcMain.on('set-active-tab', (event, id) => {
     tablist.setActiveTab(id);
     event.reply('receive-tabs', tablist.friendlyTablist);
+  })
+
+  ipcMain.on('set-active-tab-url', (event, url) => {
+    
   })
 
   ipcMain.on('close-tab', (event, id) => {
