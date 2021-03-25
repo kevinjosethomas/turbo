@@ -31,6 +31,16 @@
   background-color: #1c1c1c;
 }
 
+.TitleControlBar:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background-color: #1c1c1c;
+}
+
 .TabTitle:after {
   content: "";
   position: absolute;
