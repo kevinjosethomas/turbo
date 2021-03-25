@@ -21,6 +21,14 @@
   border-right: 2px solid #282828;
 }
 
+.Tab:hover:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  height: 30%;
+  border-right: 2px solid #1c1c1c;
+}
+
 .ActiveTab:after {
   content: "";
   position: absolute;
