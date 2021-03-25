@@ -43,6 +43,13 @@ class Tablist {
     this.friendlyTablist[index].url = url;
   }
 
+  setActiveTabURL(id, url) {
+    const index = this.tablist.findIndex(el => el.id === id);
+    this.tablist[index].url = url;
+    this.tablist[index].view.webContents.loadURL(url);
+    this.friendlyTablist[index].url = url;
+  }
+
   setActiveTab(id) {
     this.tablist.forEach((item, index) => {
       if (item.id === id) {
