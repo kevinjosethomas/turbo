@@ -1,3 +1,4 @@
+const { tldExists } = require('tldjs');
 const { BrowserView } = require('electron');
 
 const { settings } = require('../data/settings');
@@ -32,8 +33,8 @@ exports.ipcEventHandler = (win, util) => {
   });
 
   ipcMain.on('request-tabs', event => {
-    event.reply('receive-tabs', tablist.friendlyTablist))
-  };
+    event.reply('receive-tabs', tablist.friendlyTablist);
+  });
 
   ipcMain.on('create-tab', event => {
     let favicon = title = null;
@@ -86,8 +87,19 @@ exports.ipcEventHandler = (win, util) => {
     event.reply('receive-tabs', tablist.friendlyTablist);
   })
 
-  ipcMain.on('set-active-tab-url', (event, url) => {
-    
+  ipcMain.on('set-active-tab-url', (event, { id, url }) => {
+    let formattedUrl;
+    if(tldExists(url)) {
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        formattedUrl = `https://${url}`
+      } else {
+        formattedUrl = url;
+      }
+    } else {
+      formattedUrl = `https://google.com/search?q=${url.replace(' ', '+')}`
+    }
+    tablist.setActiveTabURL(id, formattedUrl)
+    event.reply('receive-tabs', tablist.friendlyTablist);
   })
 
   ipcMain.on('close-tab', (event, id) => {
