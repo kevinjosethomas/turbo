@@ -16,13 +16,14 @@ export const TabBar = props => {
   return (
     <div className="TabBar flex flex-row items-center justify-start h-full space-x-6">
       <div className="flex flex-row items-center justify-start h-full space-x-4">
-        { props.tablist.map(tab => (
+        { props.tablist.map((tab, index) => (
           <Tab
             id={tab.id}
             key={tab.id}
             favicon={tab.favicon}
             title={tab.title}
             active={tab.active}
+            suffix={index+1 !== props.tablist.length ? !props.tablist[index+1].active : true}
             setActiveTab={setActiveTab}
             closeTab={closeTab}
           />
@@ -41,12 +42,14 @@ export const TabBar = props => {
 
 export const Tab = props => {
 
+  console.log(props.suffix)
+
   return (
     <div
-      className={`flex flex-row items-center justify-between px-4 w-48 ${props.active
-        ? 'ActiveTab relative h-full bg-night-tab border-l-2 border-t-2 rounded-t'
-        : 'h-6'
-      } space-x-2 cursor-default select-none border-r-2 border-night-tab-active`}
+      className={`relative flex flex-row items-center justify-between h-full px-4 w-48 ${props.active
+        ? 'ActiveTab bg-night-tab border-l-2 border-t-2 border-r-2 rounded-t border-night-tab-active'
+        : (props.suffix ? 'Tab' : '')
+      } space-x-2 cursor-default select-none`}
       onClick={() => {props.setActiveTab(props.id)}}
       key={props.id}
     >
