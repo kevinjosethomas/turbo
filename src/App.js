@@ -6,6 +6,9 @@ import { CoreLayout } from './layouts/core';
 
 const App = () => {
 
+  window.ipcRenderer.removeAllListeners('receive-tabs');
+  window.ipcRenderer.removeAllListeners('receive-window-maximized');
+
   const [isMaximized, setMaximized] = useState(true);
   window.ipcRenderer.on('receive-window-maximized', (_, data) => {
     setMaximized(data);
