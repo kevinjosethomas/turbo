@@ -1,3 +1,4 @@
+import loadingGIF from "../../../../../../assets/images/loading.gif";
 
 export const TabBar = props => {
 
@@ -75,11 +76,12 @@ export const Tab = props => {
       <div className="flex flex-row items-center justify-start w-full space-x-3">
         <img
           className="w-5"
-          src={props.favicon}
+          src={props.favicon ? props.favicon : loadingGIF}
         />
         <span className={`w-full relative text-xs overflow-hidden whitespace-nowrap max-w-tab-title ${props.active
           ? 'ActiveTabTitle text-night-sky-noon'
-          : 'TabTitle text-night-sky-dusk'}`}>{ props.title }</span>
+          : 'TabTitle text-night-sky-dusk transition duration-300'}
+        `}>{ props.title }</span>
       </div>
       <div
         className="flex flex-col items-center justify-center w-5 h-5 cursor-pointer hover:bg-night-tab-active rounded transition duration-300"
