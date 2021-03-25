@@ -1,4 +1,5 @@
-import loadingGIF from "../../../../../../assets/images/loading.gif";
+import loadingFavicon from "../../../../../../assets/images/loading-favicon.gif";
+import missingFavicon from "../../../../../../assets/images/missing-favicon.svg";
 
 export const TabBar = props => {
 
@@ -76,7 +77,8 @@ export const Tab = props => {
       <div className="flex flex-row items-center justify-start w-full space-x-3">
         <img
           className="w-5"
-          src={props.favicon ? props.favicon : loadingGIF}
+          src={props.favicon ? props.favicon : loadingFavicon}
+          onError={event => event.target.src = missingFavicon}
         />
         <span className={`w-full relative text-xs overflow-hidden whitespace-nowrap max-w-tab-title ${props.active
           ? 'ActiveTabTitle text-night-sky-noon'
