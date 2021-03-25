@@ -2,14 +2,26 @@ import { useState } from 'react';
 
 export const SearchBar = props => {
 
+  console.log('re')
+
   const activeTab = props.tablist[props.tablist.findIndex(el => el.active === true)];
+  const [activeURL, setActiveURL] = useState(activeTab ? activeTab.url : '');
   const [searchURL, setSearchURL] = useState(activeTab ? activeTab.url : '');
+
+  if (activeTab && activeTab.url !== activeURL) {
+    setActiveURL(activeTab.url);
+    setSearchURL(activeTab.url);
+  }
+
   const handleChange = (event) => {
     setSearchURL(event.target.value);
   }
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      window.ipcRenderer.send('')
+      window.ipcRenderer.send('set-active-tab-url', {
+        id: activeTab.id,
+        url: searchURL
+      });
     }
   }
 
