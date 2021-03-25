@@ -7,12 +7,12 @@ export const Controls = props => {
       <ControlButton
         icon="far fa-arrow-left"
         onClick={() => props.onBackward()}
-        tooltip="Back"
+        tooltip="Go Back"
       />
       <ControlButton
         icon="far fa-arrow-right"
         onClick={() => props.onForward()}
-        tooltip="Forward"
+        tooltip="Go Forward"
       />
       <ControlButton
         icon="far fa-redo"
