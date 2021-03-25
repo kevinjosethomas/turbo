@@ -6,6 +6,9 @@ module.exports = {
         "header-titlebar": "3.625rem",
         "header-toolbar": "4.375rem"
       },
+      maxWidth: {
+        'tab-title': "6rem"
+      },
       colors: {
         night: {
           mare: "#141414",
