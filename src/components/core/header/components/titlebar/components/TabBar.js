@@ -43,22 +43,27 @@ export const Tab = props => {
 
   return (
     <div
-      className={`Tab flex flex-row items-center justify-between px-4 w-48 h-6 space-x-6 cursor-default select-none rounded border-r-2 border-night-tab-active`}
+      className={`flex flex-row items-center justify-between px-4 w-48 ${props.active
+        ? 'ActiveTab relative h-full bg-night-tab border-l-2 border-t-2 rounded-t'
+        : 'h-6'
+      } space-x-2 cursor-default select-none border-r-2 border-night-tab-active`}
       onClick={() => {props.setActiveTab(props.id)}}
       key={props.id}
     >
-      <div className="flex flex-row items-center justify-center space-x-3">
+      <div className="flex flex-row items-center justify-start w-full space-x-3">
         <img
           className="w-5"
           src={props.favicon}
         />
-        <span className={`text-sm ${props.active ? 'text-night-sky-noon' : 'text-night-sky-dusk'}`}>{ props.title }</span>
+        <span className={`w-full relative text-xs overflow-hidden whitespace-nowrap ${props.active
+          ? 'ActiveTabTitle text-night-sky-noon'
+          : 'TabTitle text-night-sky-dusk'}`}>{ props.title }</span>
       </div>
       <div
-          className="flex flex-col items-center justify-center w-5 h-5 cursor-pointer hover:bg-night-tab-active rounded transition duration-300"
-          onClick={() => props.closeTab(props.id)}
-        >
-        <i className="far fa-times text-night-sky-dusk" />
+        className="flex flex-col items-center justify-center w-5 h-5 cursor-pointer hover:bg-night-tab-active rounded transition duration-300"
+        onClick={() => props.closeTab(props.id)}
+      >
+      <i className="far fa-times text-night-sky-dusk" />
       </div>
     </div>
   )
