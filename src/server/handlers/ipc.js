@@ -34,7 +34,8 @@ exports.ipcEventHandler = (win, util) => {
   ipcMain.on('request-tabs', event => event.reply('receive-tabs', tablist.friendlyTablist));
 
   ipcMain.on('create-tab', event => {
-    const url = 'https://google.com/'
+    let favicon = title = null;
+    const url = 'https://google.com/';
     const view = new BrowserView();
     const id = view.webContents.id;
     view.webContents.loadURL(url)
@@ -43,16 +44,32 @@ exports.ipcEventHandler = (win, util) => {
     tablist.push({
       id: id,
       url: url,
-      view: view
+      view: view,
+      favicon: favicon,
+      title: title
     });
 
     tablist.setActiveTab(id);
+
+    view.webContents.on('page-title-updated', (_, title) => {
+      if (title) {
+        tablist.setTabTitle(id, title);
+        event.reply('receive-tabs', tablist.friendlyTablist);
+      } 
+    })
+
+    view.webContents.on('page-favicon-updated', (_, favicons) => {
+      if (favicons.length) {
+        favicon = favicons[0];
+        tablist.setTabFavicon(id, favicon);
+        event.reply('receive-tabs', tablist.friendlyTablist);
+      }
+    });
 
     event.reply('receive-tabs', tablist.friendlyTablist);
   });
 
   ipcMain.on('set-active-tab', (event, id) => {
-    console.log('hi')
     tablist.setActiveTab(id);
     event.reply('receive-tabs', tablist.friendlyTablist);
   })
