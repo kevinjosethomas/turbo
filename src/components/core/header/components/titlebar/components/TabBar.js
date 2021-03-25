@@ -69,7 +69,7 @@ export const Tab = props => {
         ? 'ActiveTab bg-night-tab border-l-2 border-t-2 border-r-2 rounded-t border-night-tab-active'
         : `${(props.suffix ? 'Tab' : '')} hover:bg-night-tab transition duration-300`
       } space-x-2 cursor-default select-none`}
-      onClick={() => {props.setActiveTab(props.id)}}
+      onClick={event => props.setActiveTab(props.id)}
       key={props.id}
     >
       <div className="flex flex-row items-center justify-start w-full space-x-3">
@@ -83,7 +83,10 @@ export const Tab = props => {
       </div>
       <div
         className="flex flex-col items-center justify-center w-5 h-5 cursor-pointer hover:bg-night-tab-active rounded transition duration-300"
-        onClick={() => props.closeTab(props.id)}
+        onClick={(e) => {
+          e.stopPropagation();
+          props.closeTab(props.id)
+        }}
       >
       <i className="far fa-times text-night-sky-dusk" />
       </div>

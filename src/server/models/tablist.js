@@ -5,8 +5,8 @@ class Tablist {
   constructor(win) {
     this.win = win;
     this.tablist = [];
-    this.activeView = null;
     this.friendlyTablist = [];
+    this.tabHistory = [];
   }
 
   push({ url, view, id, favicon }) {
@@ -55,6 +55,7 @@ class Tablist {
       if (item.id === id) {
         this.tablist[index].active = true;
         this.friendlyTablist[index].active = true;
+        this.tabHistory.push(item.id);
 
         const windowSize = this.win.getSize();
         this.tablist[index].view.setBounds({
@@ -63,11 +64,9 @@ class Tablist {
           width: windowSize[0],
           height: windowSize[1] - settings.minHeight
         });
-        this.activeView = this.tablist[index].view;
       } else if (item.active && item.id !== id) {
         this.tablist[index].active = false;
         this.friendlyTablist[index].active = false;
-        this.activeView = null;
         this.tablist[index].view.setBounds({
           x: 0,
           y: 0,
@@ -84,8 +83,9 @@ class Tablist {
       this.win.removeBrowserView(this.tablist[index].view);
       this.tablist.splice(index, 1);
       this.friendlyTablist.splice(index, 1);
-      if (this.tablist.length) {
-        this.setActiveTab(this.tablist[index > 0 ? index - 1 : 0].id)
+      this.tabHistory = this.tabHistory.filter(el => el !== id);
+      if (this.tablist.length && this.tabHistory.length) {
+        this.setActiveTab(this.tabHistory[this.tabHistory.length - 1]);
       }
     }
   }

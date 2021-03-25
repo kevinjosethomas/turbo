@@ -2,8 +2,6 @@ import { useState } from 'react';
 
 export const SearchBar = props => {
 
-  console.log('re')
-
   const activeTab = props.tablist[props.tablist.findIndex(el => el.active === true)];
   const [activeURL, setActiveURL] = useState(activeTab ? activeTab.url : '');
   const [searchURL, setSearchURL] = useState(activeTab ? activeTab.url : '');
