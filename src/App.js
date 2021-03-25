@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import './assets/styles/tailwind.css';
 import './assets/styles/fontawesome.css';
@@ -26,7 +26,7 @@ const App = () => {
       window.ipcRenderer.removeListener('receive-tabs', tabListener);
     }
 
-  })
+  }, [])
 
   return (
     <CoreLayout tablist={tablist} isMaximized={isMaximized}>
