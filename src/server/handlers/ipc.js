@@ -1,4 +1,4 @@
-const { tldExists } = require('tldjs');
+const { isValid } = require('tldjs');
 const { BrowserView } = require('electron');
 
 const { settings } = require('../data/settings');
@@ -36,9 +36,9 @@ exports.ipcEventHandler = (win, util) => {
     event.reply('receive-tabs', tablist.friendlyTablist);
   });
 
-  ipcMain.on('create-tab', event => {
+  ipcMain.on('create-tab', (event, openURL) => {
     let favicon = title = null;
-    const url = 'https://google.com/';
+    const url = openURL ? openURL : 'https://google.com/';
     const view = new BrowserView();
     const id = view.webContents.id;
     view.webContents.loadURL(url)
@@ -89,7 +89,7 @@ exports.ipcEventHandler = (win, util) => {
 
   ipcMain.on('set-active-tab-url', (event, { id, url }) => {
     let formattedUrl;
-    if (tldExists(url)) {
+    if (isValid(url)) {
       if (!url.startsWith('http://') && !url.startsWith('https://')) {
         formattedUrl = `https://${url}`
       } else {

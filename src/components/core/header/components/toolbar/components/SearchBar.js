@@ -18,11 +18,17 @@ export const SearchBar = props => {
     setSearchURL(event.target.value);
   }
   const handleKeyPress = (event) => {
-    if (event.key === 'Enter'  && searchURL) {
-      window.ipcRenderer.send('set-active-tab-url', {
-        id: activeTab.id,
-        url: searchURL
-      });
+    if (event.key === 'Enter' && searchURL) {
+      if (activeTab) {
+        window.ipcRenderer.send('set-active-tab-url', {
+          id: activeTab.id,
+          url: searchURL
+        });
+      } else {
+        if (!activeTab) {
+          window.ipcRenderer.send('create-tab', searchURL);
+        }
+      }
     }
   }
 
