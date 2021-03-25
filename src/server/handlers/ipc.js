@@ -89,7 +89,7 @@ exports.ipcEventHandler = (win, util) => {
 
   ipcMain.on('set-active-tab-url', (event, { id, url }) => {
     let formattedUrl;
-    if(tldExists(url)) {
+    if (tldExists(url)) {
       if (!url.startsWith('http://') && !url.startsWith('https://')) {
         formattedUrl = `https://${url}`
       } else {
