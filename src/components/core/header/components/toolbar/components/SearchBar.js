@@ -8,7 +8,7 @@ export const SearchBar = props => {
       <input
         className="w-full py-4 bg-transparent focus:outline-none text-gray-400 placeholder-gray-500"
         placeholder="Search or enter a URL"
-        value={activeTab.url}
+        value={activeTab ? activeTab.url : ''}
       />
     </div>
   )
