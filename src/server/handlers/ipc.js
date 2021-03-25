@@ -66,6 +66,16 @@ exports.ipcEventHandler = (win, util) => {
       }
     });
 
+    view.webContents.on('did-navigate', (_, url) => {
+      tablist.setTabURL(id, url);
+      event.reply('receive-tabs', tablist.friendlyTablist);
+    });
+
+    view.webContents.on('did-navigate-in-page', (_, url) => {
+      tablist.setTabURL(id, url);
+      event.reply('receive-tabs', tablist.friendlyTablist);
+    })
+
     event.reply('receive-tabs', tablist.friendlyTablist);
   });
 
