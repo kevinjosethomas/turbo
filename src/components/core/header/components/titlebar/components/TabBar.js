@@ -13,9 +13,14 @@ export const TabBar = props => {
     window.ipcRenderer.send('close-tab', id);
   }
 
+  const onHome = () => void(0);
+
   return (
     <div className="TabBar flex flex-row items-center justify-start h-full space-x-6">
-      <ControlBar  />
+      <ControlBar
+        onHome={onHome}
+        tablist={props.tablist}
+      />
       <div className="flex flex-row items-center justify-start h-full">
         { props.tablist.map((tab, index) => (
           <Tab
@@ -49,7 +54,7 @@ export const ControlBar = props => {
       <div
         className="flex flex-col items-center justify-center w-10 h-10 p-2 cursor-pointer text-night-sky-dusk hover:text-night-sky-noon hover:bg-night-tab-active rounded border-2 border-night-tab-active transition duration-300"
       >
-        <span>12</span>
+        <span>{props.tablist.length}</span>
       </div>
     </div>
   );
