@@ -10,7 +10,7 @@ export const ToolBar = props => {
         onForward={() => void(0)}
         onReload={() => void(0)}
       />
-      <SearchBar />
+      <SearchBar tablist={props.tablist} />
     </div>
   )
 
