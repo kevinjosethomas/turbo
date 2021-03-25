@@ -37,6 +37,12 @@ class Tablist {
     this.friendlyTablist[index].favicon = favicon;
   }
 
+  setTabURL(id, url) {
+    const index = this.tablist.findIndex(el => el.id === id);
+    this.tablist[index].url = url;
+    this.friendlyTablist[index].url = url;
+  }
+
   setActiveTab(id) {
     this.tablist.forEach((item, index) => {
       if (item.id === id) {
