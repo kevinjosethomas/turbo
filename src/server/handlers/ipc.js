@@ -1,7 +1,7 @@
 const tlds = require('tlds');
 const { BrowserView } = require('electron');
 
-const { settings } = require('../data/settings');
+const { data } = require('../utility/data');
 
 exports.ipcEventHandler = (win, util) => {
 

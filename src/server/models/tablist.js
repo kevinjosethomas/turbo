@@ -1,4 +1,4 @@
-const { settings } = require('../data/settings');
+const { data } = require('../utility/data');
 
 class Tablist {
 
@@ -60,9 +60,9 @@ class Tablist {
         const windowSize = this.win.getSize();
         this.tablist[index].view.setBounds({
           x: 0,
-          y: settings.minHeight,
+          y: data.minHeight,
           width: windowSize[0],
-          height: windowSize[1] - settings.minHeight
+          height: windowSize[1] - data.minHeight
         });
       } else if (item.active && item.id !== id) {
         this.tablist[index].active = false;

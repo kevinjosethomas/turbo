@@ -7,7 +7,7 @@ const {
 const path = require('path');
 const Store = require('electron-store');
 
-const { settings } = require('./server/data/settings');
+const { data } = require('./server/utility/data');
 const { Tablist } = require('./server/models/tablist');
 const { ipcEventHandler } = require('./server/handlers/ipc');
 const { windowEventHandler } = require('./server/handlers/window');
@@ -29,8 +29,8 @@ const createWindow = () => {
   win = new BrowserWindow({
     show: false,
     frame: false,
-    minWidth: settings.minWidth,
-    minHeight: settings.minHeight,
+    minWidth: data.minWidth,
+    minHeight: data.minHeight,
     webPreferences: {
       contextIsolation: false,
       preload: path.join(__dirname, 'preload.js')
@@ -38,7 +38,7 @@ const createWindow = () => {
   });
 
   // Load React application
-  win.loadURL(settings.reactURL);
+  win.loadURL(data.reactURL);
   win.maximize();
   win.show();
 
