@@ -1,4 +1,3 @@
-import { HotKeys } from "react-hotkeys";
 import { useEffect, useState } from "react";
 
 import './assets/styles/tailwind.css';
@@ -30,10 +29,10 @@ const App = () => {
   }, [])
 
   return (
-    <HotKeys>
-      <CoreLayout tablist={tablist} isMaximized={isMaximized}>
-      </CoreLayout>
-    </HotKeys>
+    <CoreLayout
+      tablist={tablist}
+      isMaximized={isMaximized}
+    />
   )
 
 }
