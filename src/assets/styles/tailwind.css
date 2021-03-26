@@ -4,6 +4,10 @@
 
 /* Custom CSS */
 
+div[tabindex="-1"]:focus {
+  outline: 0;
+}
+
 .TitleBar {
   -webkit-app-region: drag;
 }
