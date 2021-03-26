@@ -77,6 +77,11 @@ class Tablist {
     });
   }
 
+  reloadTab(id) {
+    const index = this.tablist.findIndex(el => el.id === id);
+    this.tablist[index].view.webContents.reload();
+  }
+
   closeTab(id) {
     const index = this.tablist.findIndex(el => el.id === id);
     if (index >= 0) {
