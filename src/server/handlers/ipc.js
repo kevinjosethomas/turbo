@@ -115,7 +115,7 @@ exports.ipcEventHandler = (win, util) => {
   ipcMain.on('set-active-tab', (event, id) => {
     tablist.setActiveTab(id);
     event.reply('receive-tabs', tablist.friendlyTablist);
-  })
+  });
 
   ipcMain.on('set-active-tab-url', (event, { id, url }) => {
     let formattedUrl;
@@ -131,11 +131,15 @@ exports.ipcEventHandler = (win, util) => {
     }
     tablist.setActiveTabURL(id, formattedUrl)
     event.reply('receive-tabs', tablist.friendlyTablist);
+  });
+
+  ipcMain.on('reload-tab', (event, id) => {
+    tablist.reloadTab(id);
   })
 
   ipcMain.on('close-tab', (event, id) => {
     tablist.closeTab(id);
     event.reply('receive-tabs', tablist.friendlyTablist);
-  })
+  });
 
 }
