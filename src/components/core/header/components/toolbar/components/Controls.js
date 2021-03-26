@@ -6,17 +6,17 @@ export const Controls = props => {
     <div className="flex flex-row items-center justify-center h-full mr-4 space-x-4">
       <ControlButton
         icon="far fa-arrow-left"
-        onClick={() => props.onBackward()}
+        onClick={props.onBackward()}
         tooltip="Go Back"
       />
       <ControlButton
         icon="far fa-arrow-right"
-        onClick={() => props.onForward()}
+        onClick={props.onForward()}
         tooltip="Go Forward"
       />
       <ControlButton
         icon="far fa-redo"
-        onClick={() => props.onReload()}
+        onClick={props.onReload()}
         tooltip="Reload"
       />
       <ReactTooltip
@@ -34,7 +34,7 @@ export const ControlButton = props => {
   return (
     <div
       className="flex flex-col items-center justify-center w-10 h-10 p-2 cursor-pointer text-night-sky-dusk hover:text-night-sky-noon hover:bg-night-tab-active rounded transition duration-300"
-      onClick={() => props.onClick()}
+      onClick={props.onClick}
       data-tip={props.tooltip}
     >
       <i className={`${props.icon} text-lg`} />

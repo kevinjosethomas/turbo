@@ -44,7 +44,6 @@ exports.ipcEventHandler = (win, util) => {
 
     if (openURL) {
       if (checkURL(openURL)) {
-        console.log('ye lmao')
         if (!openURL.startsWith('http://') && !openURL.startsWith('https://')) {
           url = `https://${openURL}`
         } else {
@@ -133,8 +132,8 @@ exports.ipcEventHandler = (win, util) => {
     event.reply('receive-tabs', tablist.friendlyTablist);
   });
 
-  ipcMain.on('reload-tab', (event, id) => {
-    tablist.reloadTab(id);
+  ipcMain.on('reload-tab', () => {
+    tablist.reloadTab();
   })
 
   ipcMain.on('close-tab', (event, id) => {
