@@ -1,5 +1,6 @@
 const tlds = require('tlds');
 const { BrowserView } = require('electron');
+const buildChromeContextMenu = require('electron-chrome-context-menu').default;
 
 const { checkURL } = require('../utility/methods');
 
@@ -70,6 +71,17 @@ exports.ipcEventHandler = (win, util) => {
     });
 
     tablist.setActiveTab(id);
+
+    view.webContents.on('context-menu', (e, params) => {
+      const menu = buildChromeContextMenu({
+        params: params,
+        webContents: view.webContents,
+        openLink: (url, disposition) => {
+          view.webContents.loadURL(url);
+        }
+      })
+      menu.popup();
+    })
 
     view.webContents.on('page-title-updated', (_, title) => {
       if (title) {
