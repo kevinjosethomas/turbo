@@ -1,7 +1,7 @@
 const tlds = require('tlds');
 const { BrowserView } = require('electron');
 
-const { data } = require('../utility/data');
+const { checkURL } = require('../utility/methods');
 
 exports.ipcEventHandler = (win, util) => {
 
@@ -42,7 +42,7 @@ exports.ipcEventHandler = (win, util) => {
     let favicon = title = null;
 
     if (openURL) {
-      if (isValid(openURL)) {
+      if (checkURL(openURL)) {
         console.log('ye lmao')
         if (!openURL.startsWith('http://') && !openURL.startsWith('https://')) {
           url = `https://${openURL}`
@@ -107,7 +107,8 @@ exports.ipcEventHandler = (win, util) => {
 
   ipcMain.on('set-active-tab-url', (event, { id, url }) => {
     let formattedUrl;
-    if (isValid(url)) {
+    checkURL(url)
+    if (checkURL(url)) {
       if (!url.startsWith('http://') && !url.startsWith('https://')) {
         formattedUrl = `https://${url}`
       } else {
