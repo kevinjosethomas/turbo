@@ -1,4 +1,4 @@
-const { isValid } = require('tldjs');
+const tlds = require('tlds');
 const { BrowserView } = require('electron');
 
 const { settings } = require('../data/settings');
@@ -37,8 +37,25 @@ exports.ipcEventHandler = (win, util) => {
   });
 
   ipcMain.on('create-tab', (event, openURL) => {
+    
+    let url;
     let favicon = title = null;
-    const url = openURL ? openURL : 'https://google.com/';
+
+    if (openURL) {
+      if (isValid(openURL)) {
+        console.log('ye lmao')
+        if (!openURL.startsWith('http://') && !openURL.startsWith('https://')) {
+          url = `https://${openURL}`
+        } else {
+          url = openURL;
+        }
+      } else {
+        url = `https://google.com/search?q=${openURL.replace(' ', '+')}`
+      }
+    } else {
+      url = 'https://google.com/'
+    }
+    
     const view = new BrowserView();
     const id = view.webContents.id;
     view.webContents.loadURL(url)
@@ -80,6 +97,7 @@ exports.ipcEventHandler = (win, util) => {
     })
 
     event.reply('receive-tabs', tablist.friendlyTablist);
+
   });
 
   ipcMain.on('set-active-tab', (event, id) => {
