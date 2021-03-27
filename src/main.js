@@ -7,11 +7,13 @@ const {
 const url = require('url');
 const path = require('path');
 const Store = require('electron-store');
+const electronLocalshortcut = require('electron-localshortcut');
 
 const { data } = require('./server/utility/data');
 const { Tablist } = require('./server/models/tablist');
 const { ipcEventHandler } = require('./server/handlers/ipc');
 const { windowEventHandler } = require('./server/handlers/window');
+const { keyboardEventHandler } = require('./server/handlers/keyboard');
 
 // Creates global window and store objects
 let win;
@@ -59,6 +61,7 @@ const createWindow = () => {
 
   ipcEventHandler(win, { ipcMain: ipcMain, tablist: tablist, store: store });
   windowEventHandler(win);
+  keyboardEventHandler(win, { tablist: tablist });
 
   // Null window on close
   win.on('closed', () => {
