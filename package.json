@@ -5,6 +5,7 @@
   "private": true,
   "main": "src/main.js",
   "homepage": "./",
+  "author": "teamcodebyte",
   "scripts": {
     "start": "craco start",
     "electron": "electron .",
