@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "main": "src/main.js",
+  "homepage": "./",
   "scripts": {
     "start": "craco start",
     "electron": "electron .",
+    "dev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
