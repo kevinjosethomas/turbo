@@ -69,7 +69,7 @@ export const Tab = props => {
     <div
       className={`relative flex flex-row items-center justify-between h-full px-4 w-48 ${props.active
         ? 'ActiveTab bg-night-tab border-l-2 border-t-2 border-r-2 rounded-t border-night-tab-active'
-        : `${(props.suffix ? 'Tab' : '')} hover:bg-night-tab transition duration-300`
+        : `${(props.suffix ? 'TabSuffix' : '')} Tab hover:bg-night-tab transition duration-300`
       } space-x-2 cursor-default select-none`}
       onClick={event => props.setActiveTab(props.id)}
       key={props.id}

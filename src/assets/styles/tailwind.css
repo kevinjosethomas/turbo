@@ -17,7 +17,7 @@ div[tabindex="-1"]:focus {
   -webkit-app-region: no-drag;
 }
 
-.Tab:after {
+.TabSuffix:after {
   content: "";
   position: absolute;
   right: 0;
@@ -28,9 +28,16 @@ div[tabindex="-1"]:focus {
 .Tab:hover:after {
   content: "";
   position: absolute;
+  z-index: 100;
+  top: 0;
   right: 0;
-  height: 30%;
-  border-right: 2px solid #1c1c1c;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(28, 28, 28, 1) 80%
+  );
 }
 
 .ActiveTab:after {
