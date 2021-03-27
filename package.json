@@ -1,6 +1,7 @@
 {
   "name": "turbo",
   "version": "0.1.0",
+  "description": "⚡ Turbo - the browser for developers",
   "private": true,
   "main": "src/main.js",
   "homepage": "./",
