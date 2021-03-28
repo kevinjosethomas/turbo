@@ -38,7 +38,7 @@ export const SearchBar = props => {
 
   return (
     <div className="flex flex-row items-center justify-start w-10/12 h-1/2 px-4 space-x-4 bg-night-tab-active rounded">
-      <div classsName="flex flex-row items-center justify-start space-x-2 w-full">
+      <div className="flex flex-row items-center justify-start space-x-2">
         <img src={Google} />
         { searchEngineDropdown && (
           <div className="flex flex-row items-center justify-center px-4 py-1 space-x-2 bg-night-tab rounded-full w-full">
