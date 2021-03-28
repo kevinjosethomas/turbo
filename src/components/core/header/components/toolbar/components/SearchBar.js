@@ -1,13 +1,11 @@
 import { useState, useRef } from 'react';
 
-import Bing from '../../../../../../assets/images/engines/bing.svg';
-import DuckDuckGo from '../../../../../../assets/images/engines/duckduckgo.svg';
+import { engines } from '../../../../../../server/data/engines';
 import Google from '../../../../../../assets/images/engines/google.svg';
-import Yahoo from '../../../../../../assets/images/engines/yahoo.svg';
 
 export const SearchBar = props => {
 
-  const [searchEngineDropdown, setSearchEngineDropdown] = useState(false);
+  const [searchEngineDropdown, setSearchEngineDropdown] = useState(true);
   const activeTab = props.tablist[props.tablist.findIndex(el => el.active === true)];
   const [activeURL, setActiveURL] = useState(activeTab ? activeTab.url : '');
   const [searchURL, setSearchURL] = useState(activeTab ? activeTab.url : '');
@@ -40,10 +38,16 @@ export const SearchBar = props => {
 
   return (
     <div className="flex flex-row items-center justify-start w-10/12 h-1/2 px-4 space-x-4 bg-night-tab-active rounded">
-      <img src={Google} />
-      { searchEngineDropdown && (
-        <div className="flex flex-col items-center justify-center"></div>
-      )}
+      <div classsName="flex flex-row items-center justify-start space-x-2 w-full">
+        <img src={Google} />
+        { searchEngineDropdown && (
+          <div className="flex flex-row items-center justify-center px-4 py-1 space-x-2 bg-night-tab rounded-full w-full">
+            { engines.map(engine => (
+              <img key={engine.id} src={engine.icon} />
+            ))}
+          </div>
+        )}
+      </div>      
       <input
         className="w-full py-4 bg-transparent focus:outline-none text-gray-400 placeholder-gray-500"
         ref={searchRef}

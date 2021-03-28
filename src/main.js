@@ -9,7 +9,7 @@ const path = require('path');
 const Store = require('electron-store');
 const electronLocalshortcut = require('electron-localshortcut');
 
-const { data } = require('./server/utility/data');
+const { settings } = require('./server/data/settings');
 const { Tablist } = require('./server/models/tablist');
 const { ipcEventHandler } = require('./server/handlers/ipc');
 const { windowEventHandler } = require('./server/handlers/window');
@@ -32,8 +32,8 @@ const createWindow = () => {
   win = new BrowserWindow({
     show: false,
     frame: false,
-    minWidth: data.minWidth,
-    minHeight: data.minHeight,
+    minWidth: settings.minWidth,
+    minHeight: settings.minHeight,
     webPreferences: {
       contextIsolation: false,
       preload: path.join(__dirname, 'preload.js')
