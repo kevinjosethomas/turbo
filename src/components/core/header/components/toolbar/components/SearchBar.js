@@ -1,8 +1,10 @@
-import { useState, useRef } from 'react';
 import ReactTooltip from 'react-tooltip';
+import { Fragment, useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { engines } from '../../../../../../server/data/engines';
 import Google from '../../../../../../assets/images/engines/google.svg';
+import { searchEngineSlide } from '../../../../../../server/utility/animations';
 
 export const SearchBar = props => {
 
@@ -18,6 +20,8 @@ export const SearchBar = props => {
     setSearchURL(activeTab.url);
     searchRef.current.blur();
   }
+
+  console.log(searchEngineDropdown)
 
   const handleChange = (event) => {
     setSearchURL(event.target.value);
@@ -44,23 +48,31 @@ export const SearchBar = props => {
           src={Google}
           onClick={() => setSearchEngineDropdown(!searchEngineDropdown)}
         />
-        { searchEngineDropdown && (
-          <>
-            <div className="flex flex-row items-center justify-center px-4 py-1 space-x-2 bg-night-tab rounded-full w-full">
-              { engines.map(engine => (
-                <img
-                  key={engine.id}
-                  src={engine.icon}
-                  data-tip={engine.label}
-                />
-              ))}
-            </div>
-            <ReactTooltip
-              effect="solid"
-              delayShow={100}
-            />
-          </>
-        )}
+        <AnimatePresence>
+          { searchEngineDropdown && (
+            <Fragment>
+              <motion.div
+                className="flex flex-row items-center justify-center px-4 py-1 space-x-2 bg-night-tab rounded-full w-full"
+                animate="animate"
+                initial="initial"
+                exit="exit"
+                variants={searchEngineSlide}
+              >
+                { engines.map(engine => (
+                  <img
+                    key={engine.id}
+                    src={engine.icon}
+                    data-tip={engine.label}
+                  />
+                ))}
+              </motion.div>
+              <ReactTooltip
+                effect="solid"
+                delayShow={100}
+              />
+            </Fragment>
+          )}
+        </AnimatePresence>
       </div>      
       <input
         className="w-full py-4 bg-transparent focus:outline-none text-gray-400 placeholder-gray-500"
