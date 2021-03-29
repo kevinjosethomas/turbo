@@ -51,21 +51,7 @@ export const SearchBar = props => {
         <AnimatePresence>
           { searchEngineDropdown && (
             <Fragment>
-              <motion.div
-                className="flex flex-row items-center justify-center px-4 py-1 space-x-2 bg-night-tab rounded-full w-full"
-                animate="animate"
-                initial="initial"
-                exit="exit"
-                variants={searchEngineSlide}
-              >
-                { engines.map(engine => (
-                  <img
-                    key={engine.id}
-                    src={engine.icon}
-                    data-tip={engine.label}
-                  />
-                ))}
-              </motion.div>
+              <SearchEngineBar />
               <ReactTooltip
                 effect="solid"
                 delayShow={100}
@@ -84,6 +70,29 @@ export const SearchBar = props => {
         onClick={event => event.target.select()}
       />
     </div>
-  )
+  );
+
+}
+
+const SearchEngineBar = (props) => {
+
+  return (
+    <motion.div
+      className="flex flex-row items-center justify-start px-1 w-24 h-7 space-x-2 bg-night-tab rounded-full overflow-hidden"
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={searchEngineSlide}
+    >
+      { engines.map(engine => (
+        <img
+          className="min-w-min"
+          key={engine.id}
+          src={engine.icon}
+          data-tip={engine.label}
+        />
+      ))}
+    </motion.div>
+  );
 
 }

@@ -1,14 +1,14 @@
 
 export const searchEngineSlide = {
-  animate: {
-    width: 0,
-    transition: { duration: 1 }
-  },
   initial: {
-    width: "auto"
+    width: 0,
+  },
+  animate: {
+    width: "8rem",
+    transition: { duration: 0.3 }
   },
   exit: {
     width: 0,
-    transition: { duration: 1 }
+    transition: { duration: 0.3 }
   }
 }
