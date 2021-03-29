@@ -7,25 +7,29 @@ export const engines = [
   {
     id: 1,
     name: 'bing',
-    url: 'https://google.com',
+    label: 'Bing',
+    url: 'https://bing.com',
     icon: Bing
   },
   {
     id: 2,
     name: 'duckduckgo',
-    url: 'https://google.com',
+    label: 'DuckDuckGo',
+    url: 'https://duckduckgo.com',
     icon: DuckDuckGo
   },
   {
     id: 3,
     name: 'google',
+    label: 'Google',
     url: 'https://google.com',
     icon: Google
   },
   {
     id: 4,
     name: 'yahoo',
-    url: 'https://google.com',
+    label: 'Yahoo',
+    url: 'https://yahoo.com',
     icon: Yahoo
   }
 ]

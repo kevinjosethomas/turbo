@@ -1,11 +1,12 @@
 import { useState, useRef } from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import { engines } from '../../../../../../server/data/engines';
 import Google from '../../../../../../assets/images/engines/google.svg';
 
 export const SearchBar = props => {
 
-  const [searchEngineDropdown, setSearchEngineDropdown] = useState(true);
+  const [searchEngineDropdown, setSearchEngineDropdown] = useState(false);
   const activeTab = props.tablist[props.tablist.findIndex(el => el.active === true)];
   const [activeURL, setActiveURL] = useState(activeTab ? activeTab.url : '');
   const [searchURL, setSearchURL] = useState(activeTab ? activeTab.url : '');
@@ -39,13 +40,26 @@ export const SearchBar = props => {
   return (
     <div className="flex flex-row items-center justify-start w-10/12 h-1/2 px-4 space-x-4 bg-night-tab-active rounded">
       <div className="flex flex-row items-center justify-start space-x-2">
-        <img src={Google} />
+        <img
+          src={Google}
+          onClick={() => setSearchEngineDropdown(!searchEngineDropdown)}
+        />
         { searchEngineDropdown && (
-          <div className="flex flex-row items-center justify-center px-4 py-1 space-x-2 bg-night-tab rounded-full w-full">
-            { engines.map(engine => (
-              <img key={engine.id} src={engine.icon} />
-            ))}
-          </div>
+          <>
+            <div className="flex flex-row items-center justify-center px-4 py-1 space-x-2 bg-night-tab rounded-full w-full">
+              { engines.map(engine => (
+                <img
+                  key={engine.id}
+                  src={engine.icon}
+                  data-tip={engine.label}
+                />
+              ))}
+            </div>
+            <ReactTooltip
+              effect="solid"
+              delayShow={100}
+            />
+          </>
         )}
       </div>      
       <input
