@@ -3,7 +3,7 @@ import { Fragment, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { engines } from '../../../../../../server/data/engines';
-import Google from '../../../../../../assets/images/engines/google.svg';
+import { engineIcons } from '../../../../../../server/data/engineIcons';
 import { searchEngineSlide } from '../../../../../../server/utility/animations';
 
 export const SearchBar = props => {
@@ -30,7 +30,8 @@ export const SearchBar = props => {
       if (activeTab) {
         window.ipcRenderer.send('set-active-tab-url', {
           id: activeTab.id,
-          url: searchURL
+          url: searchURL,
+          engine: activeTab.engine
         });
       } else {
         if (!activeTab) {
@@ -49,7 +50,7 @@ export const SearchBar = props => {
     <div className="flex flex-row items-center justify-start w-10/12 h-1/2 px-4 space-x-4 bg-night-tab-active rounded">
       <div className="flex flex-row items-center justify-start space-x-2">
         <img
-          src={activeTab && engines.find(el => el.name === activeTab.engine).icon}
+          src={activeTab && engineIcons[activeTab.engine]}
           onClick={() => setSearchEngineDropdown(!searchEngineDropdown)}
         />
         <AnimatePresence>
@@ -94,7 +95,7 @@ const SearchEngineBar = (props) => {
         <img
           className="min-w-min"
           key={engine.id}
-          src={engine.icon}
+          src={engineIcons[engine.name]}
           data-tip={engine.label}
           onClick={() => props.setSearchEngine(engine.name)}
         />

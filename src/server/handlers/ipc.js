@@ -1,7 +1,7 @@
-const tlds = require('tlds');
 const { BrowserView } = require('electron');
 const buildChromeContextMenu = require('electron-chrome-context-menu').default;
 
+const { engines } = require('../data/engines');
 const { checkURL } = require('../utility/methods');
 
 exports.ipcEventHandler = (win, util) => {
@@ -117,7 +117,7 @@ exports.ipcEventHandler = (win, util) => {
     event.reply('receive-tabs', tablist.friendlyTablist);
   });
 
-  ipcMain.on('set-active-tab-url', (event, { id, url }) => {
+  ipcMain.on('set-active-tab-url', (event, { id, url, engine }) => {
     let formattedUrl;
     checkURL(url)
     if (checkURL(url)) {
@@ -127,7 +127,7 @@ exports.ipcEventHandler = (win, util) => {
         formattedUrl = url;
       }
     } else {
-      formattedUrl = `https://google.com/search?q=${url.replace(' ', '+')}`
+      formattedUrl = engines.find(el => el.name === engine).searchURL + url.replace(' ', '+')
     }
     tablist.setActiveTabURL(id, formattedUrl)
     event.reply('receive-tabs', tablist.friendlyTablist);

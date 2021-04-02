@@ -19,7 +19,7 @@ exports.engines = [
     name: 'google',
     label: 'Google',
     url: 'https://google.com',
-    searchURL: 'https://google.com/?q='
+    searchURL: 'https://google.com/search?q='
   },
   {
     id: 4,
