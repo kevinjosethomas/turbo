@@ -9,7 +9,7 @@ class Tablist {
     this.tabHistory = [];
   }
 
-  push({ url, view, id, favicon }) {
+  push({ url, view, id, favicon, engine }) {
     this.tablist.push({
       id: id,
       url: url,
@@ -22,6 +22,7 @@ class Tablist {
       url: url,
       active: false,
       favicon: favicon,
+      engine: engine
     })
   }
 
@@ -48,6 +49,12 @@ class Tablist {
     this.tablist[index].url = url;
     this.tablist[index].view.webContents.loadURL(url);
     this.friendlyTablist[index].url = url;
+  }
+
+  setActiveTabEngine(engine) {
+    const index = this.tablist.findIndex(el => el.active === true);
+    this.tablist[index].engine = engine;
+    this.friendlyTablist[index].engine = engine;
   }
 
   setActiveTab(id) {

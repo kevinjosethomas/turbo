@@ -6,11 +6,7 @@ exports.keyboardEventHandler = (win, util) => {
 
   electronLocalshortcut.unregisterAll(win);
 
-  console.log('hi')
-
   electronLocalshortcut.register(win, 'Ctrl+O', () => {
-    console.log('reloading')
-
     tablist.reloadTab();
   })
 

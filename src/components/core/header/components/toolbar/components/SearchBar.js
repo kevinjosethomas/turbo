@@ -21,11 +21,10 @@ export const SearchBar = props => {
     searchRef.current.blur();
   }
 
-  console.log(searchEngineDropdown)
-
   const handleChange = (event) => {
     setSearchURL(event.target.value);
   }
+
   const handleKeyPress = (event) => {
     if (event.key === 'Enter' && searchURL) {
       if (activeTab) {
@@ -41,17 +40,24 @@ export const SearchBar = props => {
     }
   }
 
+  const setSearchEngine = (engine) => {
+    window.ipcRenderer.send('set-active-tab-engine', engine);
+    setSearchEngineDropdown(false);
+  }
+
   return (
     <div className="flex flex-row items-center justify-start w-10/12 h-1/2 px-4 space-x-4 bg-night-tab-active rounded">
       <div className="flex flex-row items-center justify-start space-x-2">
         <img
-          src={Google}
+          src={activeTab && engines.find(el => el.name === activeTab.engine).icon}
           onClick={() => setSearchEngineDropdown(!searchEngineDropdown)}
         />
         <AnimatePresence>
           { searchEngineDropdown && (
             <Fragment>
-              <SearchEngineBar />
+              <SearchEngineBar
+                setSearchEngine={setSearchEngine}
+              />
               <ReactTooltip
                 effect="solid"
                 delayShow={100}
@@ -80,7 +86,7 @@ const SearchEngineBar = (props) => {
     <motion.div
       className="flex flex-row items-center justify-start px-1 w-24 h-7 space-x-2 bg-night-tab rounded-full overflow-hidden"
       initial="initial"
-      animate="animate"
+      animate="animate" 
       exit="exit"
       variants={searchEngineSlide}
     >
@@ -90,6 +96,7 @@ const SearchEngineBar = (props) => {
           key={engine.id}
           src={engine.icon}
           data-tip={engine.label}
+          onClick={() => props.setSearchEngine(engine.name)}
         />
       ))}
     </motion.div>

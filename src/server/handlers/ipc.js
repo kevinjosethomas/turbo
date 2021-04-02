@@ -66,6 +66,7 @@ exports.ipcEventHandler = (win, util) => {
       url: url,
       view: view,
       favicon: favicon,
+      engine: 'google',
       title: title
     });
 
@@ -131,6 +132,11 @@ exports.ipcEventHandler = (win, util) => {
     tablist.setActiveTabURL(id, formattedUrl)
     event.reply('receive-tabs', tablist.friendlyTablist);
   });
+
+  ipcMain.on('set-active-tab-engine', (event, engine) => {
+    tablist.setActiveTabEngine(engine);
+    event.reply('receive-tabs', tablist.friendlyTablist);
+  })
 
   ipcMain.on('reload-tab', () => {
     tablist.reloadTab();
