@@ -9,6 +9,7 @@ export const engines = [
     name: 'bing',
     label: 'Bing',
     url: 'https://bing.com',
+    searchURL: 'https://bing.com/search?q=',
     icon: Bing
   },
   {
@@ -16,6 +17,7 @@ export const engines = [
     name: 'duckduckgo',
     label: 'DuckDuckGo',
     url: 'https://duckduckgo.com',
+    searchURL: 'https://duckduckgo.com/?q',
     icon: DuckDuckGo
   },
   {
@@ -23,6 +25,7 @@ export const engines = [
     name: 'google',
     label: 'Google',
     url: 'https://google.com',
+    searchURL: 'https://google.com/?q',
     icon: Google
   },
   {
@@ -30,6 +33,7 @@ export const engines = [
     name: 'yahoo',
     label: 'Yahoo',
     url: 'https://yahoo.com',
+    searchURL: 'https://search.yahoo.com/?q',
     icon: Yahoo
   }
 ]
