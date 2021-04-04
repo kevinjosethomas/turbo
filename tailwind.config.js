@@ -11,15 +11,15 @@ module.exports = {
       },
       colors: {
         night: {
-          mare: "#141414",
+          mare: "var(--color-nightmare)",
           sky: {
-            dawn: "#E0E0E0",
-            noon: "#BDBDBD",
-            dusk: "#828282"
+            dawn: "var(--color-night-sky-dawn)",
+            noon: "var(--color-night-sky-noon)",
+            dusk: "var(--color-night-sky-dusk)"
           },
           tab: {
-            DEFAULT: "#1C1C1C",
-            active: "#282828"
+            DEFAULT: "var(--color-night-tab)",
+            active: "var(--color-night-tab-active)"
           }
         },
       }
