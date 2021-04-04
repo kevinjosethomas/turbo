@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import './assets/styles/tailwind.css';
 import './assets/styles/fontawesome.css';
-import { CoreLayout } from './layouts/core';
+import { Browser } from './layouts/browser';
 
 const App = () => {
 
@@ -29,7 +29,7 @@ const App = () => {
   }, [])
 
   return (
-    <CoreLayout
+    <Browser
       tablist={tablist}
       isMaximized={isMaximized}
     />
