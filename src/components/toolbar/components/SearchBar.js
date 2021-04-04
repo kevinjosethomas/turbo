@@ -2,9 +2,9 @@ import ReactTooltip from 'react-tooltip';
 import { Fragment, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { engines } from '../../../../../../server/data/engines';
-import { engineIcons } from '../../../../../../server/data/engineIcons';
-import { searchEngineSlide } from '../../../../../../server/utility/animations';
+import { engines } from '../../../server/data/engines';
+import { engineIcons } from '../../../server/data/engineIcons';
+import { searchEngineSlide } from '../../../server/utility/animations';
 
 export const SearchBar = props => {
 

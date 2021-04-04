@@ -1,5 +1,5 @@
-import loadingFavicon from "../../../../../../assets/images/loading-favicon.gif";
-import missingFavicon from "../../../../../../assets/images/missing-favicon.svg";
+import loadingFavicon from '../../../assets/images/loading-favicon.gif';
+import missingFavicon from '../../../assets/images/missing-favicon.svg';
 
 export const TabBar = props => {
 
