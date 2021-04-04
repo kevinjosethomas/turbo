@@ -40,6 +40,8 @@ exports.ipcEventHandler = (win, util) => {
   ipcMain.on('create-tab', (event, openURL) => {
     
     let url;
+    let history = store.get('history');
+    history = history ? history : [];
     let favicon = title = null;
 
     if (openURL) {
@@ -70,7 +72,15 @@ exports.ipcEventHandler = (win, util) => {
       title: title
     });
 
+    history.push({
+      url: url,
+      time: new Date()
+    });
+    store.set('history', history);
+
     tablist.setActiveTab(id);
+
+    console.log(history)
 
     view.webContents.on('context-menu', (e, params) => {
       const menu = buildChromeContextMenu({
