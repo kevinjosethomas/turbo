@@ -45,7 +45,7 @@ div[tabindex="-1"]:focus {
   bottom: -2px;
   height: 2px;
   width: 100%;
-  background-color: #1c1c1c;
+  background-color: var(--color-night-tab);
 }
 
 .TitleControlBar:after {
@@ -55,7 +55,7 @@ div[tabindex="-1"]:focus {
   bottom: -2px;
   height: 2px;
   width: 100%;
-  background-color: #1c1c1c;
+  background-color: var(--color-night-tab);
 }
 
 .TabTitle {
