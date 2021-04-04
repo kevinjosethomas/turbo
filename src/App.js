@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import './assets/styles/tailwind.css';
 import './assets/styles/fontawesome.css';
 import { Browser } from './layouts/browser';
+import { Settings } from './layouts/settings';
 
 const App = () => {
 
+  const [activeWindow, setActiveWindow] = useState('browser');
   const [isMaximized, setMaximized] = useState(true);
   const [tablist, setTablist] = useState([]);
 
@@ -29,10 +31,18 @@ const App = () => {
   }, [])
 
   return (
-    <Browser
-      tablist={tablist}
-      isMaximized={isMaximized}
-    />
+    <Fragment>
+      { activeWindow === 'browser'
+        ? (
+          <Browser
+            tablist={tablist}
+            isMaximized={isMaximized}
+          />
+        ) : (
+          <Settings />
+        )
+      }
+    </Fragment>
   )
 
 }
