@@ -1,4 +1,3 @@
-// import { Header } from '../components/core/header/Header';
 import { ToolBar } from '../components/toolbar/ToolBar';
 import { TitleBar } from '../components/titlebar/TitleBar';
 
@@ -10,7 +9,6 @@ export const Browser = props => {
         <TitleBar tablist={props.tablist} isMaximized={props.isMaximized} />
         <ToolBar tablist={props.tablist} />
       </div>
-      {/* <Header tablist={props.tablist} isMaximized={props.isMaximized} /> */}
     </div>
   )
 
