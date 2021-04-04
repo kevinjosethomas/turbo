@@ -12,6 +12,17 @@ exports.ipcEventHandler = (win, util) => {
     store
   } = util;
 
+  const pushHistory = (url) => {
+    let history = store.get('history');
+    history = history ? history : [];
+
+    history.push({
+      url: url,
+      time: new Date()
+    });
+    store.set('history', history);
+  }
+
   ipcMain.on('request-window-maximized', (event) => {
     event.reply('receive-window-maximized', win.isMaximized());
   })
@@ -40,8 +51,6 @@ exports.ipcEventHandler = (win, util) => {
   ipcMain.on('create-tab', (event, openURL) => {
     
     let url;
-    let history = store.get('history');
-    history = history ? history : [];
     let favicon = title = null;
 
     if (openURL) {
@@ -72,15 +81,8 @@ exports.ipcEventHandler = (win, util) => {
       title: title
     });
 
-    history.push({
-      url: url,
-      time: new Date()
-    });
-    store.set('history', history);
-
     tablist.setActiveTab(id);
-
-    console.log(history)
+    pushHistory(url);
 
     view.webContents.on('context-menu', (e, params) => {
       const menu = buildChromeContextMenu({
@@ -128,7 +130,9 @@ exports.ipcEventHandler = (win, util) => {
   });
 
   ipcMain.on('set-active-tab-url', (event, { id, url, engine }) => {
+
     let formattedUrl;
+
     checkURL(url)
     if (checkURL(url)) {
       if (!url.startsWith('http://') && !url.startsWith('https://')) {
@@ -139,8 +143,12 @@ exports.ipcEventHandler = (win, util) => {
     } else {
       formattedUrl = engines.find(el => el.name === engine).searchURL + url.replace(' ', '+')
     }
+
+    pushHistory(formattedUrl);
+
     tablist.setActiveTabURL(id, formattedUrl)
     event.reply('receive-tabs', tablist.friendlyTablist);
+
   });
 
   ipcMain.on('set-active-tab-engine', (event, engine) => {
