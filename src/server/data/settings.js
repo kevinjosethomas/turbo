@@ -5,10 +5,10 @@ exports.settings = {
   },
   colors: {
     "--color-nightmare": "#141414",
-    "--color-night-tab": "#1c1c1c",
+    "--color-night-tab": "#1C1C1C",
     "--color-night-tab-active": "#282828",
-    "--color-night-sky-dawn": "#e0e0e0",
-    "--color-night-sky-noon": "#bdbdbd",
+    "--color-night-sky-dawn": "#E0E0E0",
+    "--color-night-sky-noon": "#BDBDBD",
     "--color-night-sky-dusk": "#828282"
   },
   size: {
