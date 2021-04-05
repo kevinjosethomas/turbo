@@ -1,4 +1,4 @@
-import { Tabs } from './components/Tabs';
+import { Tabs } from './components/tabs/Tabs';
 import { Actions } from './components/Actions';
 
 export const Titlebar = props => {
