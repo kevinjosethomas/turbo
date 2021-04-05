@@ -1,4 +1,4 @@
-import { Sidebar } from '../components/settings/sidebar/Sidebar';
+import { Sidebar } from '../components/settings/Sidebar';
 
 export const Settings = props => {
 
