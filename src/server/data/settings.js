@@ -27,6 +27,11 @@ exports.settings = {
         width: 0.7,
         height: 0.7
       }
+    },
+    header: {
+      default: {
+        height: 128
+      }
     }
   }
 }

@@ -67,9 +67,9 @@ class Tablist {
         const windowSize = this.win.getSize();
         this.tablist[index].view.setBounds({
           x: 0,
-          y: settings.size.window.min.height,
+          y: settings.size.header.default.height,
           width: windowSize[0],
-          height: windowSize[1] - settings.size.window.min.height
+          height: windowSize[1] - settings.size.header.default.height
         });
       } else if (item.active && item.id !== id) {
         this.tablist[index].active = false;
