@@ -10,6 +10,4 @@ exports.keyboardEventHandler = (win, util) => {
     tablist.reloadTab();
   })
 
-  console.log(electronLocalshortcut.isRegistered(win, 'Ctrl+O'))
-
 }

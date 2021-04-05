@@ -52,7 +52,7 @@ const createWindow = () => {
     }
   });
   modal.loadURL(process.env.ELECTRON_START_URL + settings.settingsPath);
-  // modal.show();
+  modal.show();
   modal.webContents.openDevTools();
 
   const tablist = new Tablist(win);
