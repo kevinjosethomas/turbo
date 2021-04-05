@@ -1,5 +1,6 @@
 import { Controls } from './components/Controls';
 import { SearchBar } from './components/SearchBar';
+import { Utility } from './components/Utility';
 
 export const Toolbar = props => {
 
@@ -11,6 +12,7 @@ export const Toolbar = props => {
         onReload={() => window.ipcRenderer.send('reload-tab')}
       />
       <SearchBar tablist={props.tablist} />
+      <Utility />
     </div>
   )
 
