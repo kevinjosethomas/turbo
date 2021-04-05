@@ -12,6 +12,7 @@ import { Settings } from './layouts/settings';
 
 const App = () => {
 
+  const [loaded, setLoaded] = useState(false);
   const [isMaximized, setMaximized] = useState(true);
   const [tablist, setTablist] = useState([]);
 
@@ -31,6 +32,7 @@ const App = () => {
       Object.keys(colors).map(color => {
         document.documentElement.style.setProperty(color, colors[color])
       })
+      setLoaded(true);
     }
     window.ipcRenderer.on('receive-colors', colorListener);
 
@@ -47,7 +49,8 @@ const App = () => {
 
   return (
     <Router>
-      <Switch>
+      { loaded ? (
+        <Switch>
         <Route path="/" exact>
           <Browser
             tablist={tablist}
@@ -58,6 +61,7 @@ const App = () => {
           <Settings />
         </Route>
       </Switch>
+      ) : (<></>)}
     </Router>
   )
 
