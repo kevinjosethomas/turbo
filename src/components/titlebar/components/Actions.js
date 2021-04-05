@@ -1,5 +1,5 @@
 
-export const ActionBar = props => {
+export const Actions = props => {
 
   return (
     <div className="ActionBar flex flex-row items-center justify-end pr-4 space-x-2">
