@@ -35,7 +35,9 @@ const createWindow = () => {
     protocol: 'file:',
     slashes: true
   });
-  win.loadURL(reactURL).maximize().show();
+  win.loadURL(reactURL)
+  win.maximize()
+  win.show();
   win.webContents.openDevTools();
 
   const modal = new BrowserWindow({
