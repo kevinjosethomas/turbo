@@ -44,9 +44,13 @@ exports.ipcEventHandler = (win, util) => {
     }
   });
 
+  ipcMain.on('request-colors', (event) => {
+    event.reply('receive-colors', store.get('design.colors'));
+  })
+
   ipcMain.on('change-color', (event, { name, hex }) => {
     store.set(`design.colors.${name}`, hex);
-    console.log(store.get('design.colors'))
+    event.reply('receive-colors', store.get('design.colors'));
   })
 
   ipcMain.on('request-tabs', event => {
