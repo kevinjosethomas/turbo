@@ -58,8 +58,8 @@ const createWindow = () => {
     modal: true,
     show: false,
     frame: false,
-    width: 1000,
-    height: 600,
+    width: modalWidth,
+    height: modalHeight,
     webPreferences: {
       contextIsolation: false,
       preload: path.join(__dirname, 'preload.js')
@@ -71,7 +71,7 @@ const createWindow = () => {
 
   const tablist = new Tablist(win);
 
-  ipcEventHandler(win, { ipcMain: ipcMain, tablist: tablist, store: store });
+  ipcEventHandler(win, { ipcMain: ipcMain, tablist: tablist, modal: modal, store: store });
   windowEventHandler(win);
   keyboardEventHandler(win, { tablist: tablist });
 

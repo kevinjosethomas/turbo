@@ -9,6 +9,7 @@ exports.ipcEventHandler = (win, util) => {
   const {
     ipcMain,
     tablist,
+    modal,
     store
   } = util;
 
@@ -43,6 +44,10 @@ exports.ipcEventHandler = (win, util) => {
         win.close();
     }
   });
+
+  ipcMain.on('close-modal', _ => {
+    modal.hide();
+  })
 
   ipcMain.on('request-colors', (event) => {
     event.reply('receive-colors', store.get('design.colors'));
