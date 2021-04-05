@@ -19,7 +19,7 @@ export const Tabs = props => {
 
   return (
     <div className="TabBar flex flex-row items-center justify-start h-full space-x-6">
-      <ControlBar
+      <Controls
         onHome={onHome}
         tablist={props.tablist}
       />
@@ -43,7 +43,7 @@ export const Tabs = props => {
 
 }
 
-export const ControlBar = props => {
+export const Controls = props => {
 
   return (
     <div className="TitleControlBar relative flex flex-row items-center justify-center h-full px-4 space-x-4 bg-night-tab border-t-2 border-r-2 border-night-tab-active rounded-tr">
