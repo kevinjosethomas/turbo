@@ -22,8 +22,8 @@ const createWindow = () => {
     show: false,
     frame: false,
     hasShadow: false,
-    minWidth: settings.minWidth,
-    minHeight: settings.minHeight,
+    minWidth: settings.size.window.min.width,
+    minHeight: settings.size.window.min.height,
     webPreferences: {
       contextIsolation: false,
       preload: path.join(__dirname, 'preload.js')
@@ -40,20 +40,33 @@ const createWindow = () => {
   win.show();
   win.webContents.openDevTools();
 
+  const winSize = win.getSize();
+  const modalWidth =  (winSize[0] * settings.size.modal.default.width) > settings.size.modal.min.width
+    ? winSize[0] * settings.size.modal.default.width
+    : settings.size.modal.min.width
+  const modalHeight =  (winSize[1] * settings.size.modal.default.height) > settings.size.modal.min.height
+    ? winSize[1] * settings.size.modal.default.height
+    : settings.size.modal.min.height
+  console.log(winSize)
+  console.log(modalWidth, modalHeight)
   const modal = new BrowserWindow({
     parent: win,
     modal: true,
     show: false,
     frame: false,
     hasShadow: false,
+    minWidth: modalWidth,
+    minHeight: modalHeight,
     webPreferences: {
       contextIsolation: false,
       preload: path.join(__dirname, 'preload.js')
     }
   });
-  modal.loadURL(process.env.ELECTRON_START_URL + settings.settingsPath);
+  modal.loadURL(process.env.ELECTRON_START_URL + settings.path.settings);
   modal.show();
   modal.webContents.openDevTools();
+
+  console.log(modal.getSize())
 
   const tablist = new Tablist(win);
 
