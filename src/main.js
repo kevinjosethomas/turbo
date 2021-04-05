@@ -60,11 +60,6 @@ const createWindow = () => {
     height: 500
   });
 
-  const tabHistory = store.get('tabHistory');
-  if (!Array.isArray(tabHistory)) {
-    store.set('tabHistory', []);
-  }
-
   let tablist = new Tablist(win);
 
   win.webContents.openDevTools();
