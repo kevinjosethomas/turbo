@@ -1,7 +1,7 @@
 import loadingFavicon from '../../../assets/images/loading-favicon.gif';
 import missingFavicon from '../../../assets/images/missing-favicon.svg';
 
-export const TabBar = props => {
+export const Tabs = props => {
 
   const createTab = () => {
     window.ipcRenderer.send('create-tab');
