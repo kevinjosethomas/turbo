@@ -6,14 +6,14 @@ exports.settings = {
   size: {
     window: {
       min: {
-        width: 300,
-        height: 128
+        width: 1000,
+        height: 600
       }
     },
     modal: {
       min: {
-        width: 500,
-        height: 500
+        width: 1000,
+        height: 600
       },
       default: {
         width: 0.7,

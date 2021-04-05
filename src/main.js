@@ -53,8 +53,8 @@ const createWindow = () => {
     modal: true,
     show: false,
     frame: false,
-    width: 500,
-    height: 500,
+    width: 1000,
+    height: 600,
     webPreferences: {
       contextIsolation: false,
       preload: path.join(__dirname, 'preload.js')
