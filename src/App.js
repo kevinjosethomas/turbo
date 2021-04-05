@@ -34,6 +34,8 @@ const App = () => {
     }
     window.ipcRenderer.on('receive-colors', colorListener);
 
+    window.ipcRenderer.send('request-colors')
+
     return () => {
       window.ipcRenderer.removeListener('receive-window-maximized', maximizedListener);
       window.ipcRenderer.removeListener('receive-tabs', tabListener);
