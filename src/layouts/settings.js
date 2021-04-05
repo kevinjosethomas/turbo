@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { Sidebar } from '../components/settings/Sidebar';
+import { Design } from '../components/settings/screens/design/Design';
 
 export const Settings = props => {
 
@@ -12,10 +13,11 @@ export const Settings = props => {
         activeSettingScreen={activeSettingScreen}
         setActiveSettingScreen={setActiveSettingScreen}
       />
-      <div className="flex flex-col items-center justify-center w-9/12">
+      <div className="flex flex-col items-center justify-center py-10 w-9/12 h-full space-y-6">
         <div className="flex flex-row items-center justify-between px-10 w-full">
-          <span className="pl-4 font-semibold text-4xl text-night-sky-dawn">{ activeSettingScreen }</span>
+          <span className="font-semibold text-4xl text-night-sky-dawn">{ activeSettingScreen }</span>
         </div>
+        <Design />
       </div>
     </div>
   )
