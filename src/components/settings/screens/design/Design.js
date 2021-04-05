@@ -4,43 +4,42 @@ export const Design = props => {
 
   const hexes = [
     {
-      id: 1,
+      name: '--color-nightmare',
       label: 'Really Dark Background'
     },
     {
-      id: 2,
+      name: '--color-night-sky-dusk',
       label: 'Really Dark Text'
     },
     {
-      id: 3,
+      name: '--color-night-tab',
       label: 'Slightly Dark Background'
     },
     {
-      id: 4,
+      name: '--color-night-sky-noon',
       label: 'Pretty Dark Text'
     },
     {
-      id: 5,
+      name: '--color-night-tab-active',
       label: 'Moody Background'
     },
     {
-      id: 6,
+      name: '--color-night-sky-dawn',
       label: 'Not Light Text'
     },
   ]
 
-  const changeHex = (id, hex) => {
-    console.log('changing hex')
-    console.log(hex)
+  const changeHex = (name, hex) => {
+    window.ipcRenderer.send('change-color', { var: name, hex: hex })
   }
 
   return (
     <div className="flex flex-row items-start justify-start px-10 w-full h-full">
       <div className="flex flex-row items-start justify-start flex-wrap max-w-2xl">
-        { hexes.map(hex => (
+        { hexes.map((hex, index) => (
           <Hex
-            key={hex.id}
-            id={hex.id}
+            key={index}
+            name={hex.name}
             label={hex.label}
             changeHex={changeHex}
           />

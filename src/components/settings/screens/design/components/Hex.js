@@ -5,7 +5,7 @@ export const Hex = props => {
     const value = event.target.value.replace('#', '').toUpperCase();
     event.target.value = value.substring(0, 6);
     if (/^#[0-9A-F]{6}$/i.test('#'+value)) {
-      props.changeHex(props.id, value);
+      props.changeHex(props.name, value);
     } else {
       return;
     }
