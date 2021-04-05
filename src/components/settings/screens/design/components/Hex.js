@@ -20,6 +20,7 @@ export const Hex = props => {
         </div>
         <input
           className="px-2 w-full h-full text-xl text-night-sky-noon bg-night-tab focus:outline-none rounded-r"
+          defaultValue={props.value.replace('#', '').toUpperCase()}
           onChange={onChange}
         />
       </div>
