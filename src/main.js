@@ -50,6 +50,16 @@ const createWindow = () => {
   win.maximize();
   win.show();
 
+  const modal = new BrowserView();
+  modal.webContents.loadURL('http://localhost:3000/settings')
+  win.addBrowserView(modal);
+  modal.setBounds({
+    x: 0,
+    y: settings.minHeight,
+    width: 500,
+    height: 500
+  });
+
   const tabHistory = store.get('tabHistory');
   if (!Array.isArray(tabHistory)) {
     store.set('tabHistory', []);
