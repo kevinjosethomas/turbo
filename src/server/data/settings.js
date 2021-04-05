@@ -1,5 +1,6 @@
 
 exports.settings = {
   minWidth: 300,
-  minHeight: 128
+  minHeight: 128,
+  settingsPath: '/settings'
 }

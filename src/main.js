@@ -43,6 +43,7 @@ const createWindow = () => {
   const modal = new BrowserWindow({
     parent: win,
     modal: true,
+    show: false,
     frame: false,
     hasShadow: false,
     webPreferences: {
@@ -50,7 +51,8 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js')
     }
   });
-  modal.loadURL('http://localhost:3000/settings')
+  modal.loadURL(process.env.ELECTRON_START_URL + settings.settingsPath);
+  // modal.show();
   modal.webContents.openDevTools();
 
   const tablist = new Tablist(win);
