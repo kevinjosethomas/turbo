@@ -27,12 +27,21 @@ const App = () => {
     }
     window.ipcRenderer.on('receive-tabs', tabListener);
 
+    const colorListener = (_, colors) => {
+      Object.keys(colors).map(color => {
+        document.documentElement.style.setProperty(color, colors[color])
+      })
+    }
+    window.ipcRenderer.on('receive-colors', colorListener);
+
     return () => {
       window.ipcRenderer.removeListener('receive-window-maximized', maximizedListener);
       window.ipcRenderer.removeListener('receive-tabs', tabListener);
+      window.ipcRenderer.removeListener('receive-colors', colorListener);
     }
 
   }, [])
+  
 
   return (
     <Router>
