@@ -30,7 +30,7 @@ export const Design = props => {
   ]
 
   const changeHex = (name, hex) => {
-    window.ipcRenderer.send('change-color', { name: name, hex: hex })
+    window.ipcRenderer.send('change-color', { name: name, hex: '#'+hex })
   }
 
   return (
