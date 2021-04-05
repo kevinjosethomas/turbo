@@ -26,6 +26,6 @@ exports.engines = [
     name: 'yahoo',
     label: 'Yahoo',
     url: 'https://yahoo.com',
-    searchURL: 'https://search.yahoo.com/?q='
+    searchURL: 'https://search.yahoo.com/search?q='
   }
 ];
