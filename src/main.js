@@ -18,6 +18,8 @@ const store = new Store();
 
 const createWindow = () => {
 
+  store.clear()
+
   setDefaultColors();
   console.log(store.get('design.colors'))
 
