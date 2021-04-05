@@ -18,6 +18,8 @@ const store = new Store();
 
 const createWindow = () => {
 
+  setDefaultColors();
+
   win = new BrowserWindow({
     show: false,
     frame: false,
@@ -64,9 +66,6 @@ const createWindow = () => {
   modal.show();
   modal.webContents.openDevTools();
 
-  // console.log(modal.hasShadow())
-  // console.log(modal.getSize())
-
   const tablist = new Tablist(win);
 
   ipcEventHandler(win, { ipcMain: ipcMain, tablist: tablist, store: store });
@@ -77,6 +76,14 @@ const createWindow = () => {
     win = null;
   });
 
+}
+
+const setDefaultColors = () => {
+  Object.keys(settings.colors).map(color => {
+    if (!store.get(`design.colors.${color}`)) {
+      store.set(`design.colors.${color}`, settings.colors[color])
+    }
+  })
 }
 
 app.on('ready', createWindow);
