@@ -32,6 +32,7 @@ const createWindow = () => {
   win = new BrowserWindow({
     show: false,
     frame: false,
+    hasShadow: false,
     minWidth: settings.minWidth,
     minHeight: settings.minHeight,
     webPreferences: {
@@ -50,15 +51,18 @@ const createWindow = () => {
   win.maximize();
   win.show();
 
-  const modal = new BrowserView();
-  modal.webContents.loadURL('http://localhost:3000/settings')
-  win.addBrowserView(modal);
-  modal.setBounds({
-    x: 0,
-    y: settings.minHeight,
-    width: 500,
-    height: 500
+  const modal = new BrowserWindow({
+    parent: win,
+    modal: true,
+    frame: false,
+    hasShadow: false,
+    webPreferences: {
+      contextIsolation: false,
+      preload: path.join(__dirname, 'preload.js')
+    }
   });
+  modal.loadURL('http://localhost:3000/settings')
+  modal.webContents.openDevTools();
 
   let tablist = new Tablist(win);
 
