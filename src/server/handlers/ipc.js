@@ -45,6 +45,10 @@ exports.ipcEventHandler = (win, util) => {
     }
   });
 
+  ipcMain.on('open-modal', _ => {
+    modal.show();
+  })
+
   ipcMain.on('close-modal', _ => {
     modal.hide();
   })
