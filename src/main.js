@@ -67,7 +67,6 @@ const createWindow = () => {
   });
   modal.loadURL('http://localhost:3000/settings');
   modal.show();
-  modal.webContents.openDevTools();
 
   const tablist = new Tablist(win);
 
