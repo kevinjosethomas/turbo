@@ -1,7 +1,6 @@
-const { settings } = require('../data/settings');
+const { settings } = require("../data/settings");
 
 class Tablist {
-
   constructor(win) {
     this.win = win;
     this.tablist = [];
@@ -15,44 +14,44 @@ class Tablist {
       url: url,
       view: view,
       favicon: favicon,
-      active: false
+      active: false,
     });
     this.friendlyTablist.push({
       id: id,
       url: url,
       active: false,
       favicon: favicon,
-      engine: engine
-    })
+      engine: engine,
+    });
   }
 
   setTabTitle(id, title) {
-    const index = this.tablist.findIndex(el => el.id === id);
+    const index = this.tablist.findIndex((el) => el.id === id);
     this.tablist[index].title = title;
     this.friendlyTablist[index].title = title;
   }
 
   setTabFavicon(id, favicon) {
-    const index = this.tablist.findIndex(el => el.id === id);
+    const index = this.tablist.findIndex((el) => el.id === id);
     this.tablist[index].favicon = favicon;
     this.friendlyTablist[index].favicon = favicon;
   }
 
   setTabURL(id, url) {
-    const index = this.tablist.findIndex(el => el.id === id);
+    const index = this.tablist.findIndex((el) => el.id === id);
     this.tablist[index].url = url;
     this.friendlyTablist[index].url = url;
   }
 
   setActiveTabURL(id, url) {
-    const index = this.tablist.findIndex(el => el.id === id);
+    const index = this.tablist.findIndex((el) => el.id === id);
     this.tablist[index].url = url;
     this.tablist[index].view.webContents.loadURL(url);
     this.friendlyTablist[index].url = url;
   }
 
   setActiveTabEngine(engine) {
-    const index = this.tablist.findIndex(el => el.active === true);
+    const index = this.tablist.findIndex((el) => el.active === true);
     this.tablist[index].engine = engine;
     this.friendlyTablist[index].engine = engine;
   }
@@ -69,7 +68,7 @@ class Tablist {
           x: 0,
           y: settings.size.header.default.height,
           width: windowSize[0],
-          height: windowSize[1] - settings.size.header.default.height
+          height: windowSize[1] - settings.size.header.default.height,
         });
       } else if (item.active && item.id !== id) {
         this.tablist[index].active = false;
@@ -78,30 +77,29 @@ class Tablist {
           x: 0,
           y: 0,
           width: 0,
-          height: 0
+          height: 0,
         });
       }
     });
   }
 
   reloadTab() {
-    const index = this.tablist.findIndex(el => el.active === true);
+    const index = this.tablist.findIndex((el) => el.active === true);
     this.tablist[index].view.webContents.reload();
   }
 
   closeTab(id) {
-    const index = this.tablist.findIndex(el => el.id === id);
+    const index = this.tablist.findIndex((el) => el.id === id);
     if (index >= 0) {
       this.win.removeBrowserView(this.tablist[index].view);
       this.tablist.splice(index, 1);
       this.friendlyTablist.splice(index, 1);
-      this.tabHistory = this.tabHistory.filter(el => el !== id);
+      this.tabHistory = this.tabHistory.filter((el) => el !== id);
       if (this.tablist.length && this.tabHistory.length) {
         this.setActiveTab(this.tabHistory[this.tabHistory.length - 1]);
       }
     }
   }
-
 }
 
 exports.Tablist = Tablist;

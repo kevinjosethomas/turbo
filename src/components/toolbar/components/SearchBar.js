@@ -1,17 +1,17 @@
-import ReactTooltip from 'react-tooltip';
-import { Fragment, useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import ReactTooltip from "react-tooltip";
+import { Fragment, useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-import { engines } from '../../../server/data/engines';
-import { engineIcons } from '../../../server/data/engineIcons';
-import { searchEngineSlide } from '../../../server/utility/animations';
+import { engines } from "../../../server/data/engines";
+import { engineIcons } from "../../../server/data/engineIcons";
+import { searchEngineSlide } from "../../../server/utility/animations";
 
-export const SearchBar = props => {
-
+export const SearchBar = (props) => {
   const [searchEngineDropdown, setSearchEngineDropdown] = useState(false);
-  const activeTab = props.tablist[props.tablist.findIndex(el => el.active === true)];
-  const [activeURL, setActiveURL] = useState(activeTab ? activeTab.url : '');
-  const [searchURL, setSearchURL] = useState(activeTab ? activeTab.url : '');
+  const activeTab =
+    props.tablist[props.tablist.findIndex((el) => el.active === true)];
+  const [activeURL, setActiveURL] = useState(activeTab ? activeTab.url : "");
+  const [searchURL, setSearchURL] = useState(activeTab ? activeTab.url : "");
 
   const searchRef = useRef(null);
 
@@ -23,28 +23,28 @@ export const SearchBar = props => {
 
   const handleChange = (event) => {
     setSearchURL(event.target.value);
-  }
+  };
 
   const handleKeyPress = (event) => {
-    if (event.key === 'Enter' && searchURL) {
+    if (event.key === "Enter" && searchURL) {
       if (activeTab) {
-        window.ipcRenderer.send('set-active-tab-url', {
+        window.ipcRenderer.send("set-active-tab-url", {
           id: activeTab.id,
           url: searchURL,
-          engine: activeTab.engine
+          engine: activeTab.engine,
         });
       } else {
         if (!activeTab) {
-          window.ipcRenderer.send('create-tab', searchURL);
+          window.ipcRenderer.send("create-tab", searchURL);
         }
       }
     }
-  }
+  };
 
   const setSearchEngine = (engine) => {
-    window.ipcRenderer.send('set-active-tab-engine', engine);
+    window.ipcRenderer.send("set-active-tab-engine", engine);
     setSearchEngineDropdown(false);
-  }
+  };
 
   return (
     <div className="flex flex-row items-center justify-start w-10/12 h-1/2 px-4 space-x-4 bg-night-tab-active rounded">
@@ -54,19 +54,14 @@ export const SearchBar = props => {
           onClick={() => setSearchEngineDropdown(!searchEngineDropdown)}
         />
         <AnimatePresence>
-          { searchEngineDropdown && (
+          {searchEngineDropdown && (
             <Fragment>
-              <SearchEngineBar
-                setSearchEngine={setSearchEngine}
-              />
-              <ReactTooltip
-                effect="solid"
-                delayShow={100}
-              />
+              <SearchEngineBar setSearchEngine={setSearchEngine} />
+              <ReactTooltip effect="solid" delayShow={100} />
             </Fragment>
           )}
         </AnimatePresence>
-      </div>      
+      </div>
       <input
         className="w-full py-4 bg-transparent focus:outline-none text-gray-400 placeholder-gray-500"
         ref={searchRef}
@@ -74,24 +69,22 @@ export const SearchBar = props => {
         value={searchURL}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
-        onClick={event => event.target.select()}
+        onClick={(event) => event.target.select()}
       />
     </div>
   );
-
-}
+};
 
 const SearchEngineBar = (props) => {
-
   return (
     <motion.div
       className="flex flex-row items-center justify-start px-1 w-24 h-7 space-x-2 bg-night-tab rounded-full overflow-hidden"
       initial="initial"
-      animate="animate" 
+      animate="animate"
       exit="exit"
       variants={searchEngineSlide}
     >
-      { engines.map(engine => (
+      {engines.map((engine) => (
         <img
           className="min-w-min"
           key={engine.id}
@@ -102,5 +95,4 @@ const SearchEngineBar = (props) => {
       ))}
     </motion.div>
   );
-
-}
+};

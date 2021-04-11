@@ -1,7 +1,6 @@
-import ReactTooltip from 'react-tooltip';
+import ReactTooltip from "react-tooltip";
 
-export const Controls = props => {
-
+export const Controls = (props) => {
   return (
     <div className="flex flex-row items-center justify-center h-fullspace-x-4">
       <ControlButton
@@ -26,11 +25,9 @@ export const Controls = props => {
       />
     </div>
   );
+};
 
-}
-
-export const ControlButton = props => {
-
+export const ControlButton = (props) => {
   return (
     <div
       className="flex flex-col items-center justify-center w-10 h-10 p-2 cursor-pointer text-night-sky-dusk hover:text-night-sky-noon hover:bg-night-tab-active rounded transition duration-300"
@@ -40,5 +37,4 @@ export const ControlButton = props => {
       <i className={`${props.icon} text-lg`} />
     </div>
   );
-
-}
+};
