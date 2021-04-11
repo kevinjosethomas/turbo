@@ -83,7 +83,13 @@ exports.ipcEventHandler = (win, util) => {
     const id = view.webContents.id;
     const parsedUrl = new URL(url);
     const userAgent = parsedUrl.hostname.includes("google.com")
-      ? settings.core.userAgent.windows
+      ? settings.core.userAgent[
+          process.platform === "win32" ||
+          process.platform === "darwin" ||
+          process.platform === "linux"
+            ? process.platform
+            : "win32"
+        ]
       : win.webContents.userAgent;
 
     console.log(win.webContents.userAgent);

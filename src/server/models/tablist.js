@@ -47,7 +47,13 @@ class Tablist {
     const index = this.tablist.findIndex((el) => el.id === id);
     const parsedUrl = new URL(url);
     const userAgent = parsedUrl.hostname.includes("google.com")
-      ? settings.core.userAgent.windows
+      ? settings.core.userAgent[
+          process.platform === "win32" ||
+          process.platform === "darwin" ||
+          process.platform === "linux"
+            ? process.platform
+            : "win32"
+        ]
       : this.win.webContents.userAgent;
 
     this.tablist[index].url = url;
