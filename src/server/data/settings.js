@@ -1,10 +1,9 @@
 exports.settings = {
   core: {
     userAgent: {
-      default: "",
-      windows:
+      win32:
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:87.0) Gecko/20100101 Firefox/87.0",
-      macos:
+      darwin:
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 11.2; rv:87.0) Gecko/20100101 Firefox/87.0",
       linux:
         "Mozilla/5.0 (X11; Linux i686; rv:87.0) Gecko/20100101 Firefox/87.0",
