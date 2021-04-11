@@ -1,7 +1,10 @@
-
 exports.settings = {
+  core: {
+    userAgent:
+      "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/87.0",
+  },
   path: {
-    settings: '/settings'
+    settings: "/settings",
   },
   colors: {
     "--color-nightmare": "#141414",
@@ -9,29 +12,29 @@ exports.settings = {
     "--color-night-tab-active": "#282828",
     "--color-night-sky-dawn": "#E0E0E0",
     "--color-night-sky-noon": "#BDBDBD",
-    "--color-night-sky-dusk": "#828282"
+    "--color-night-sky-dusk": "#828282",
   },
   size: {
     window: {
       min: {
         width: 1000,
-        height: 600
-      }
+        height: 600,
+      },
     },
     modal: {
       min: {
         width: 1000,
-        height: 600
+        height: 600,
       },
       default: {
         width: 0.7,
-        height: 0.7
-      }
+        height: 0.7,
+      },
     },
     header: {
       default: {
-        height: 128
-      }
-    }
-  }
-}
+        height: 128,
+      },
+    },
+  },
+};
