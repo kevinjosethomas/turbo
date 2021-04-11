@@ -45,8 +45,13 @@ class Tablist {
 
   setActiveTabURL(id, url) {
     const index = this.tablist.findIndex((el) => el.id === id);
+    const parsedUrl = new URL(url);
+    const userAgent = parsedUrl.hostname.includes("google.com")
+      ? settings.core.userAgent.windows
+      : this.win.webContents.userAgent;
+
     this.tablist[index].url = url;
-    this.tablist[index].view.webContents.loadURL(url);
+    this.tablist[index].view.webContents.loadURL(url, { userAgent: userAgent });
     this.friendlyTablist[index].url = url;
   }
 

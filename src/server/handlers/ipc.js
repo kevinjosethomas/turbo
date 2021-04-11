@@ -83,9 +83,10 @@ exports.ipcEventHandler = (win, util) => {
     const id = view.webContents.id;
     const parsedUrl = new URL(url);
     const userAgent = parsedUrl.hostname.includes("google.com")
-      ? settings.core.userAgent
-      : view.webContents.getUserAgent();
+      ? settings.core.userAgent.windows
+      : win.webContents.userAgent;
 
+    console.log(win.webContents.userAgent);
     view.webContents.loadURL(url, { userAgent: userAgent });
     console.log(view.webContents.userAgent);
     win.addBrowserView(view);
