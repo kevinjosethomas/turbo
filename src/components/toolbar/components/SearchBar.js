@@ -47,7 +47,8 @@ export const SearchBar = (props) => {
   };
 
   return (
-    <div className="flex flex-row items-center justify-start w-10/12 h-1/2 px-4 space-x-4 bg-night-tab-active rounded">
+    <div className="flex flex-row items-center justify-start w-10/12 h-1/2 px-4 space-x-3 bg-night-tab-active rounded">
+      <Protocol protocol="https" />
       <div className="flex flex-row items-center justify-start space-x-2">
         <img
           src={activeTab && engineIcons[activeTab.engine]}
@@ -66,7 +67,10 @@ export const SearchBar = (props) => {
         className="w-full py-4 bg-transparent focus:outline-none text-gray-400 placeholder-gray-500"
         ref={searchRef}
         placeholder="Search or enter a URL"
-        value={searchURL}
+        value={searchURL
+          .replace("https://", "")
+          .replace("http://", "")
+          .replace("www.", "")}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
         onClick={(event) => event.target.select()}
@@ -94,5 +98,19 @@ const SearchEngineBar = (props) => {
         />
       ))}
     </motion.div>
+  );
+};
+
+const Protocol = (props) => {
+  return (
+    <div className="flex flex-col items-center justify-center w-7 h-7 bg-night-tab rounded">
+      {props.protocol === "https" ? (
+        <i className="fas fa-shield text-sm text-green-500" />
+      ) : props.protocol === "http" ? (
+        <i className="fad fa-shield text-sm text-green-500" />
+      ) : (
+        <i className="fad fa-shield text-sm text-red-500" />
+      )}
+    </div>
   );
 };
