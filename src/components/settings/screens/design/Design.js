@@ -35,8 +35,6 @@ export const Design = (props) => {
     },
   ];
 
-  console.log(hexes);
-
   const changeHex = (name, hex) => {
     window.ipcRenderer.send("change-color", { name: name, hex: "#" + hex });
   };
