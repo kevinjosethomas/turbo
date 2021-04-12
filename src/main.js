@@ -16,7 +16,6 @@ const createWindow = () => {
   store.clear();
 
   setDefaultColors();
-  console.log(store.get("design.colors"));
 
   win = new BrowserWindow({
     show: false,
