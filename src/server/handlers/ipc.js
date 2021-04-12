@@ -92,9 +92,7 @@ exports.ipcEventHandler = (win, util) => {
         ]
       : win.webContents.userAgent;
 
-    console.log(win.webContents.userAgent);
     view.webContents.loadURL(url, { userAgent: userAgent });
-    console.log(view.webContents.userAgent);
     win.addBrowserView(view);
 
     tablist.push({
