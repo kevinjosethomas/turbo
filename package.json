@@ -9,7 +9,7 @@
   "scripts": {
     "start": "craco start",
     "electron": "electron .",
-    "dev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
+    "dev": "set ELECTRON_START_URL=http://localhost:3000&& electron .",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
