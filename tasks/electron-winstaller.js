@@ -4,8 +4,8 @@ const electronInstaller = require("electron-winstaller");
   try {
     console.log("starting build!");
     await electronInstaller.createWindowsInstaller({
-      appDirectory: "../dist/app-win32-x64",
-      outputDirectory: "../installers/",
+      appDirectory: "B:/dist/app-win32-x64/",
+      outputDirectory: "B:/installers/",
       authors: "teamcodebyte",
       exe: "app.exe",
     });
