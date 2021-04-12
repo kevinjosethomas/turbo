@@ -36,6 +36,7 @@ const createWindow = () => {
       protocol: "file:",
       slashes: true,
     });
+  console.log(reactURL);
   win.loadURL(reactURL);
   win.maximize();
   win.show();
@@ -65,7 +66,15 @@ const createWindow = () => {
       preload: path.join(__dirname, "preload.js"),
     },
   });
-  modal.loadURL("http://localhost:3000/settings");
+  const modalURL = process.env.ELECTRON_START_URL
+    ? process.env.ELECTRON_START_URL + "/#/settings"
+    : url.format({
+        pathname: path.join(__dirname, "../build/index.html"),
+        protocol: "file:",
+        slashes: true,
+      }) + "#/settings";
+  console.log(modalURL);
+  modal.loadURL(modalURL);
 
   const tablist = new Tablist(win);
 
