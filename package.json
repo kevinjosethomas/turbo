@@ -12,7 +12,8 @@
     "dev": "set ELECTRON_START_URL=http://localhost:3000&& electron .",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:win32": "electron-packager . app --platform win32 --arch x64 --out dist/ --overwrite"
   },
   "dependencies": {
     "@craco/craco": "^6.1.1",
