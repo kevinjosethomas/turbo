@@ -4,10 +4,10 @@ export const searchEngineSlide = {
   },
   animate: {
     width: "8rem",
-    transition: { duration: 0.3 },
+    transition: { duration: 0.1 },
   },
   exit: {
     width: 0,
-    transition: { duration: 0.3 },
+    transition: { duration: 0.1 },
   },
 };
