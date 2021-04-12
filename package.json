@@ -4,7 +4,7 @@
   "description": "⚡ Turbo - the browser for developers",
   "private": true,
   "main": "src/main.js",
-  "homepage": "./",
+  "homepage": ".",
   "author": "teamcodebyte",
   "scripts": {
     "start": "craco start",
