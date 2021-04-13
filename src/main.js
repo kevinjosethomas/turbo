@@ -30,7 +30,8 @@ const createWindow = () => {
   });
 
   const reactURL =
-    process.env.ELECTRON_START_URL + "/#/endpoint/GET" ||
+    process.env.ELECTRON_START_URL +
+      "/#/endpoint/GET?endpoint=https://reddit.com/r/javascript.json" ||
     url.format({
       pathname: path.join(__dirname, "../build/index.html"),
       protocol: "file:",
@@ -73,7 +74,6 @@ const createWindow = () => {
         protocol: "file:",
         slashes: true,
       }) + "#/settings";
-  console.log(modalURL);
   modal.loadURL(modalURL);
 
   const tablist = new Tablist(win);
