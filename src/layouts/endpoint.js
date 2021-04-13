@@ -1,6 +1,5 @@
 import JSONPretty from "react-json-pretty";
 import { useEffect, useState } from "react";
-import "react-json-pretty/themes/monikai.css";
 import { useParams, useLocation } from "react-router-dom";
 
 function useQuery() {
