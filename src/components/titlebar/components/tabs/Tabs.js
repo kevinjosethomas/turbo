@@ -1,6 +1,5 @@
 import { Tab } from "./components/Tab";
 import { NewTab } from "./components/NewTab";
-import { Controls } from "./components/Controls";
 
 export const Tabs = (props) => {
   const createTab = () => {
@@ -14,8 +13,6 @@ export const Tabs = (props) => {
   const closeTab = (id) => {
     window.ipcRenderer.send("close-tab", id);
   };
-
-  const onHome = () => void 0;
 
   return (
     <div className="TabBar flex flex-row items-center justify-start h-full">
