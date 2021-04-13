@@ -39,7 +39,7 @@ exports.settings = {
     },
     header: {
       default: {
-        height: 128,
+        height: 114,
       },
     },
   },
