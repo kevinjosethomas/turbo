@@ -169,7 +169,7 @@ exports.ipcEventHandler = (win, util) => {
 
     pushHistory(formattedUrl);
 
-    tablist.setActiveTabURL(id, formattedUrl);
+    tablist.setActiveTabURL(formattedUrl);
     event.reply("receive-tabs", tablist.friendlyTablist);
   });
 
