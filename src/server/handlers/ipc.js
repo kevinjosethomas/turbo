@@ -1,3 +1,4 @@
+const path = require("path");
 const axios = require("axios");
 const { BrowserView } = require("electron");
 const buildChromeContextMenu = require("electron-chrome-context-menu").default;
@@ -102,7 +103,12 @@ exports.ipcEventHandler = (win, util) => {
       url = "https://google.com/";
     }
 
-    const view = new BrowserView();
+    const view = new BrowserView({
+      webPreferences: {
+        contextIsolation: false,
+        preload: path.join(__dirname, "../../preload.js"),
+      },
+    });
     const id = view.webContents.id;
     const parsedUrl = new URL(url);
     const userAgent = parsedUrl.hostname.includes("google.com")
@@ -115,7 +121,12 @@ exports.ipcEventHandler = (win, util) => {
         ]
       : win.webContents.userAgent;
 
-    view.webContents.loadURL(url, { userAgent: userAgent });
+    view.webContents.loadURL(
+      process.env.ELECTRON_START_URL + "/#/endpoint/GET?endpoint=" + url,
+      {
+        userAgent: userAgent,
+      }
+    );
     win.addBrowserView(view);
 
     tablist.push({
