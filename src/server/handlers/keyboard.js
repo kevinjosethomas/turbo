@@ -6,6 +6,6 @@ exports.keyboardEventHandler = (win, util) => {
   electronLocalshortcut.unregisterAll(win);
 
   electronLocalshortcut.register(win, "Ctrl+O", () => {
-    tablist.reloadTab();
+    tablist.reloadActiveTab();
   });
 };

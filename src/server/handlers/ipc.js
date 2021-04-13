@@ -179,7 +179,7 @@ exports.ipcEventHandler = (win, util) => {
   });
 
   ipcMain.on("reload-tab", () => {
-    tablist.reloadTab();
+    tablist.reloadActiveTab();
   });
 
   ipcMain.on("close-tab", (event, id) => {

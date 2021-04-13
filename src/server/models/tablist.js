@@ -94,7 +94,7 @@ class Tablist {
     });
   }
 
-  reloadTab() {
+  reloadActiveTab() {
     const index = this.tablist.findIndex((el) => el.active === true);
     this.tablist[index].view.webContents.reload();
   }
