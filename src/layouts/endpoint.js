@@ -1,4 +1,6 @@
+import JSONPretty from "react-json-pretty";
 import { useEffect, useState } from "react";
+import "react-json-pretty/themes/monikai.css";
 import { useParams, useLocation } from "react-router-dom";
 
 function useQuery() {
@@ -13,7 +15,6 @@ export const Endpoint = (props) => {
   useEffect(() => {
     const responseListener = (_, res) => {
       setResponse(res.data);
-      console.log("done");
     };
     window.ipcRenderer.on("receive-request", responseListener);
 
@@ -25,7 +26,7 @@ export const Endpoint = (props) => {
 
   return (
     <div>
-      <span>{JSON.stringify(response)}</span>
+      <JSONPretty id="response" data={response} />
     </div>
   );
 };
