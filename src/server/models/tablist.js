@@ -38,6 +38,7 @@ class Tablist {
   }
 
   setTabURL(id, url) {
+    console.log(id, url);
     const index = this.tablist.findIndex((el) => el.id === id);
     this.tablist[index].url = url;
     this.friendlyTablist[index].url = url;
