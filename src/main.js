@@ -30,7 +30,7 @@ const createWindow = () => {
   });
 
   const reactURL =
-    process.env.ELECTRON_START_URL ||
+    process.env.ELECTRON_START_URL + "/#/endpoint" ||
     url.format({
       pathname: path.join(__dirname, "../build/index.html"),
       protocol: "file:",
