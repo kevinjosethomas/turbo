@@ -1,3 +1,6 @@
+import { useParams } from "react-router-dom";
+
 export const Endpoint = (props) => {
-  return <div className="flex ">Hello</div>;
+  const { method } = useParams();
+  return <div>Hello</div>;
 };

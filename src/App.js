@@ -53,7 +53,7 @@ const App = () => {
           <Route path="/settings" exact>
             <Settings />
           </Route>
-          <Route path="/endpoint" exact>
+          <Route path="/endpoint/:method" exact>
             <Endpoint />
           </Route>
         </Switch>
