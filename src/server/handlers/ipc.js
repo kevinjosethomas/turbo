@@ -1,3 +1,4 @@
+const axios = require("axios");
 const { BrowserView } = require("electron");
 const buildChromeContextMenu = require("electron-chrome-context-menu").default;
 
@@ -46,6 +47,28 @@ exports.ipcEventHandler = (win, util) => {
 
   ipcMain.on("close-modal", (_) => {
     modal.hide();
+  });
+
+  ipcMain.on("send-request", async (event, { method, endpoint }) => {
+    const fetch =
+      method === "GET"
+        ? axios.get
+        : method === "POST"
+        ? axios.post
+        : method === "PUT"
+        ? axios.put
+        : method === "PATCH"
+        ? axios.patch
+        : method === "DELETE"
+        ? axios.delete
+        : axios.get;
+
+    const response = await fetch(endpoint);
+
+    event.reply("receive-request", {
+      data: response.data,
+      headers: response.headers,
+    });
   });
 
   ipcMain.on("request-colors", (event) => {
