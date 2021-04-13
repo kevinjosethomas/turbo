@@ -178,6 +178,10 @@ exports.ipcEventHandler = (win, util) => {
     event.reply("receive-tabs", tablist.friendlyTablist);
   });
 
+  ipcMain.on("backward-tab", () => {
+    tablist.backwardActiveTab();
+  });
+
   ipcMain.on("forward-tab", () => {
     tablist.forwardActiveTab();
   });

@@ -94,6 +94,11 @@ class Tablist {
     });
   }
 
+  backwardActiveTab() {
+    const index = this.tablist.findIndex((el) => el.active === true);
+    this.tablist[index].view.webContents.goBack();
+  }
+
   forwardActiveTab() {
     const index = this.tablist.findIndex((el) => el.active === true);
     this.tablist[index].view.webContents.goForward();
