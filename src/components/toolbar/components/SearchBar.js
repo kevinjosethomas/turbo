@@ -47,7 +47,7 @@ export const SearchBar = (props) => {
   };
 
   return (
-    <div className="flex flex-row items-center justify-start w-10/12 h-1/2 px-4 space-x-3 bg-night-tab-active rounded">
+    <div className="flex flex-row items-center justify-start w-10/12 h-1/2 px-3 space-x-3 bg-night-tab-active rounded">
       <Protocol
         protocol={
           activeURL.startsWith("https")
