@@ -14,9 +14,9 @@ export const Tab = (props) => {
       onClick={() => props.setActiveTab(props.id)}
       key={props.id}
     >
-      <div className="flex flex-row items-center justify-start w-full space-x-3">
+      <div className="flex flex-row items-center justify-start w-full space-x-2">
         <img
-          className="w-5"
+          className="w-4"
           src={props.favicon ? props.favicon : loadingFavicon}
           onError={(event) => (event.target.src = missingFavicon)}
         />
