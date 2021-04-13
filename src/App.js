@@ -4,6 +4,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import "./assets/styles/tailwind.css";
 import "./assets/styles/fontawesome.css";
 import { Browser } from "./layouts/browser";
+import { Endpoint } from "./layouts/endpoint";
 import { Settings } from "./layouts/settings";
 
 const App = () => {
@@ -51,6 +52,9 @@ const App = () => {
           </Route>
           <Route path="/settings" exact>
             <Settings />
+          </Route>
+          <Route path="/endpoint" exact>
+            <Endpoint />
           </Route>
         </Switch>
       ) : (
