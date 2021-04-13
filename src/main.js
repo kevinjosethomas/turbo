@@ -1,7 +1,7 @@
-const { app, ipcMain, BrowserWindow } = require("electron");
 const url = require("url");
 const path = require("path");
 const Store = require("electron-store");
+const { app, ipcMain, BrowserWindow } = require("electron");
 
 const { settings } = require("./server/data/settings");
 const { Tablist } = require("./server/models/tablist");
