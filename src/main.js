@@ -30,8 +30,7 @@ const createWindow = () => {
   });
 
   const reactURL =
-    process.env.ELECTRON_START_URL +
-      "/#/endpoint/GET?endpoint=https://reddit.com/r/javascript.json" ||
+    process.env.ELECTRON_START_URL ||
     url.format({
       pathname: path.join(__dirname, "../build/index.html"),
       protocol: "file:",
