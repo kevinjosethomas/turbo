@@ -3,11 +3,11 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        "header-titlebar": "3.625rem",
-        "header-toolbar": "4.375rem"
+        "header-titlebar": "2.75rem",
+        "header-toolbar": "4.375rem",
       },
       maxWidth: {
-        'tab-title': "6rem"
+        "tab-title": "6rem",
       },
       colors: {
         night: {
@@ -15,16 +15,16 @@ module.exports = {
           sky: {
             dawn: "var(--color-night-sky-dawn)",
             noon: "var(--color-night-sky-noon)",
-            dusk: "var(--color-night-sky-dusk)"
+            dusk: "var(--color-night-sky-dusk)",
           },
           tab: {
             DEFAULT: "var(--color-night-tab)",
-            active: "var(--color-night-tab-active)"
-          }
+            active: "var(--color-night-tab-active)",
+          },
         },
-      }
+      },
     },
   },
   variants: {},
   plugins: [],
-}
+};
