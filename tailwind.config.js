@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     extend: {
       height: {
+        header: "7.125rem",
         "header-titlebar": "2.75rem",
         "header-toolbar": "4.375rem",
       },
