@@ -30,7 +30,7 @@ According to [@heyblake](https://twitter.com/heyblake), building in public means
 This is basically the same attitude we take towards Turbo's opensource and building in public status. Although we're pretty new to this, we want Turbo development to be as transparent and inclusive as possible!
 
 ## Contributing
-Thanks for your interest in contributing! 🎉 You can contribute by reporting bugs, suggesting features and by developing and resolving existing issues! If you're looking to contribute, read our [contributing guidelines](https://github.com/teamcodebyte/turbo/blob/main/CONTRIBUTING.md) and you should know what to do! Contact us in our support [Discord server](https://discord.turbobrowser.io) if you have anymore questions!
+Thanks for your interest in contributing! 🎉 You can contribute by reporting bugs, suggesting features and by developing and resolving existing issues! If you're looking to contribute, read our [code of conduct](https://github.com/teamcodebyte/turbo/blob/main/CODE_OF_CONDUCT.md), [contributing guidelines](https://github.com/teamcodebyte/turbo/blob/main/CONTRIBUTING.md) and you should know what to do! Contact us in our support [Discord server](https://discord.turbobrowser.io) if you have anymore questions!
 
 If you're interested in contributing with bugs or feature requests, either -
 - create a [new issue](https://github.com/teamcodebyte/turbo/issues/new)
