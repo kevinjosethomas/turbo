@@ -3,7 +3,6 @@
 [![](https://img.shields.io/twitter/follow/turbobrowserio?color=30a1f2&label=Follow&logo=twitter&style=for-the-badge)](https://twitter.turbobrowser.io)
 [![](https://img.shields.io/discord/824644286616305766?color=7289da&label=DISCORD&logo=discord&style=for-the-badge)](https://discord.turbobrowser.io)
 ![](https://api.ghprofile.me/view?username=teamcodebyte.turbo)
-[![](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg?color=007ec6&style=for-the-badge)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 ![](https://img.shields.io/tokei/lines/github.com/teamcodebyte/turbo?color=007ec6&style=for-the-badge)
 
 ## The browser for developers.
@@ -14,31 +13,31 @@ Turbo is built with Electron and React, this makes it an embedded Chrome applica
 Turbo is completely opensource and we're building it in public on [Twitter](https://twitter.turbobrowser.io/) and [Discord](https://discord.turbobrowser.io). What does this mean?
 
 According to [@heyblake](https://twitter.com/heyblake), building in public means sharing -
-> - Wins
-> - Losses
-> - Strategy
-> - Processes
-> - Behind the scenes
-> - Documentation
-> - Resources
-> - Methods
-> - Systems
-> - Updates
-> - Ideas
-> - Fears
-> - Tools
+- Wins
+- Losses
+- Strategy
+- Processes
+- Behind the scenes
+- Documentation
+- Resources
+- Methods
+- Systems
+- Updates
+- Ideas
+- Fears
+- Tools
 
 This is basically the same attitude we take towards Turbo's opensource and building in public status. Although we're pretty new to this, we want Turbo development to be as transparent and inclusive as possible!
 
 ## Contributing
-Thanks for your interest in contributing! 🎉 You can contribute by reporting bugs, suggesting features and by developing and resolving existing issues! If you're looking to contribute, read our [contributing guidelines](https://github.com/teamcodebyte/turbo/blob/main/CONTRIBUTING.md) and you should know what to do! Contact us in our support [discord server](https://discord.turbobrowser.io) if you have anymore questions!
+Thanks for your interest in contributing! 🎉 You can contribute by reporting bugs, suggesting features and by developing and resolving existing issues! If you're looking to contribute, read our [contributing guidelines](https://github.com/teamcodebyte/turbo/blob/main/CONTRIBUTING.md) and you should know what to do! Contact us in our support [Discord server](https://discord.turbobrowser.io) if you have anymore questions!
 
 If you're interested in contributing with bugs or feature requests, either -
 - create a [new issue](https://github.com/teamcodebyte/turbo/issues/new)
 - choose the respective issue template (bug report of feature request)
 - follow the template and describe the issue
 - create the issue and wait for a maintainer to review it
-or you can report it in our [discord server](https://discord.turbobrowser.io)
+or you can report it in our [Discord server](https://discord.turbobrowser.io)
 
 If you are interested in contributing with code, you need to -
 - find an issue with the [help wanted tag](https://github.com/teamcodebyte/turbo/labels/help%20wanted)
