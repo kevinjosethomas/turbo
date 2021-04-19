@@ -44,7 +44,7 @@ If you are interested in contributing with code, you need to -
 - comment on the issue and ask for a maintainer to assign you to it
 - once the issue has been assigned, create a fork of this repository's staging branch
 - make your desired changes 
-- create a PR from your fork to Turbo's staging branch (follow the PR template we provide)
+- create a [new PR](https://github.com/teamcodebyte/turbo/compare) from your fork to Turbo's staging branch (follow the PR template we provide)
 - wait for a maintainer to review your PR
 
 If you're making a Turbo fork or clone, make sure you read through our [license](https://github.com/teamcodebyte/turbo/blob/main/LICENSE.md). We do not appreciate people publishing clones of Turbo, and abusing it's opensource status.
@@ -63,4 +63,3 @@ Still working on this, need to make it cross-os compatible.
 
 ## Conclusion
 Thanks a lot for reading through! Star this repository, check out our [website](https://turbobrowser.io), join our [Discord server](https://discord.turbobrowser.io) and follow us on [Twitter](https://twitter.turbobrowser.io)! Have a nice day! ✌
-
