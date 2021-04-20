@@ -57,7 +57,7 @@
     "autoprefixer": "^9.8.6",
     "electron": "^12.0.1",
     "electron-winstaller": "^5.0.0",
-    "postcss": "^7.0.35",
+    "postcss": "^8.2.10",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4"
   }
 }
