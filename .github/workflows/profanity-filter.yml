@@ -1,0 +1,19 @@
+name: Profanity Filter
+
+on: 
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created, edited]
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: radiantly/profanity-filter-action@v1.1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
