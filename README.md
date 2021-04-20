@@ -58,8 +58,5 @@ Here's a guide on running Turbo locally. If you're on a local fork of Turbo, mak
 - wait till it opens a chrome tab at localhost:3000, close the tab and run ``npm run dev``
 - it should open a new window with Turbo!
 
-## Building
-Still working on this, need to make it cross-os compatible.
-
 ## Conclusion
 Thanks a lot for reading through! Star this repository, check out our [website](https://turbobrowser.io), join our [Discord server](https://discord.turbobrowser.io) and follow us on [Twitter](https://twitter.turbobrowser.io)! Have a nice day! ✌
