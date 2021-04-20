@@ -1,6 +1,6 @@
 ---
 name: "\U0001F4A1 Feature Request"
-about: Request a feature for Turbo
+about: Request a feature to be added to Turbo
 title: ''
 labels: enhancement
 assignees: ''
