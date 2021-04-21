@@ -1,5 +1,5 @@
-import { Toolbar } from "../components/toolbar/Toolbar";
-import { Titlebar } from "../components/titlebar/Titlebar";
+import { Toolbar } from "../components/toolbar/ToolBar";
+import { Titlebar } from "../components/titlebar/TitleBar";
 
 export const Browser = (props) => {
   return (
