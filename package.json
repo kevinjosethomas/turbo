@@ -19,7 +19,7 @@
     "@craco/craco": "^6.1.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.1.10",
+    "@testing-library/user-event": "^13.1.5",
     "axios": "^0.21.1",
     "electron-chrome-context-menu": "^1.0.1",
     "electron-localshortcut": "^3.2.1",
