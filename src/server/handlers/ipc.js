@@ -188,7 +188,6 @@ exports.ipcEventHandler = (win, util) => {
   ipcMain.on("set-active-tab-url", (event, { id, url, engine }) => {
     let formattedUrl;
 
-    checkURL(url);
     if (checkURL(url)) {
       if (!url.startsWith("http://") && !url.startsWith("https://")) {
         formattedUrl = `https://${url}`;

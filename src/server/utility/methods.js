@@ -1,16 +1,22 @@
 const tlds = require("tlds");
 const ipRegex = require("ip-regex");
 
-const localhost = ["http://", "https://", "localhost"];
+const whitelist = ["http://", "https://", "localhost"];
 
 exports.checkURL = (rawURL) => {
   let url = rawURL.toLowerCase();
 
-  protocols.map((el) => {
+  let whitelisted = false;
+  whitelist.map((el) => {
     if (url.startsWith(el) && !url.startsWith(el + " ")) {
-      return true;
+      whitelisted = true;
+      return;
     }
   });
+
+  if (whitelisted) {
+    return true;
+  }
 
   if (ipRegex({ exact: true }).test(url)) {
     return true;
