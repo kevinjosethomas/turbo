@@ -36,7 +36,6 @@ const createWindow = () => {
       protocol: "file:",
       slashes: true,
     });
-  console.log(reactURL);
   win.loadURL(reactURL);
   win.maximize();
   win.show();
