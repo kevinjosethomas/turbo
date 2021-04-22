@@ -1,10 +1,23 @@
 const tlds = require("tlds");
+const ipRegex = require("ip-regex");
+
+const localhost = ["http://", "https://", "localhost"];
 
 exports.checkURL = (rawURL) => {
   let url = rawURL.toLowerCase();
 
-  if (url.startsWith("https://") || url.startsWith("http://")) {
+  protocols.map((el) => {
+    if (url.startsWith(el) && !url.startsWith(el + " ")) {
+      return true;
+    }
+  });
+
+  if (ipRegex({ exact: true }).test(url)) {
     return true;
+  }
+
+  if (!url.includes(".")) {
+    return false;
   }
 
   const splitURL = url.split(".");
