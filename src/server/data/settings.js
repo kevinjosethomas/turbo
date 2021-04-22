@@ -27,16 +27,6 @@ exports.settings = {
         height: 600,
       },
     },
-    modal: {
-      min: {
-        width: 1000,
-        height: 600,
-      },
-      default: {
-        width: 0.7,
-        height: 0.7,
-      },
-    },
     header: {
       default: {
         height: 114,
