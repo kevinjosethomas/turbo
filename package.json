@@ -23,7 +23,6 @@
     "dev": "set ELECTRON_START_URL=http://localhost:3000&& electron .",
     "build": "craco build",
     "dist": "electron-builder --dir",
-    "compile": "electron-webpack",
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
@@ -35,7 +34,6 @@
     "electron-chrome-context-menu": "^1.0.1",
     "electron-localshortcut": "^3.2.1",
     "electron-store": "^8.0.0",
-    "electron-webpack": "^2.8.2",
     "framer-motion": "^4.1.6",
     "ip-regex": "^4.3.0",
     "react": "^17.0.2",
