@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-back-10: #141414;
+    --color-back-20: #282828;
+    --color-back-30: #1c1c1c;
+    --color-fore-10: #828282;
+    --color-fore-20: #bdbdbd;
+    --color-fore-30: #e0e0e0;
+  }
+}
