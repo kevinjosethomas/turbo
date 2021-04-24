@@ -36,51 +36,18 @@ const createWindow = () => {
       protocol: "file:",
       slashes: true,
     });
-  console.log(reactURL);
   win.loadURL(reactURL);
   win.maximize();
   win.show();
   win.webContents.openDevTools();
 
   const winSize = win.getSize();
-  const modalWidth =
-    Math.round(winSize[0] * settings.size.modal.default.width) >
-    settings.size.modal.min.width
-      ? Math.round(winSize[0] * settings.size.modal.default.width)
-      : settings.size.modal.min.width;
-  const modalHeight =
-    Math.round(winSize[1] * settings.size.modal.default.height) >
-    settings.size.modal.min.height
-      ? Math.round(winSize[1] * settings.size.modal.default.height)
-      : settings.size.modal.min.height;
-
-  const modal = new BrowserWindow({
-    parent: win,
-    modal: true,
-    show: false,
-    frame: false,
-    width: modalWidth,
-    height: modalHeight,
-    webPreferences: {
-      contextIsolation: false,
-      preload: path.join(__dirname, "preload.js"),
-    },
-  });
-  const modalURL = process.env.ELECTRON_START_URL
-    ? process.env.ELECTRON_START_URL + "/#/settings"
-    : url.format({
-        pathname: path.join(__dirname, "../build/index.html"),
-        protocol: "file:",
-        slashes: true,
-      }) + "#/settings";
-  modal.loadURL(modalURL);
 
   const tablist = new Tablist(win);
 
   ipcEventHandler(win, {
     ipcMain: ipcMain,
     tablist: tablist,
-    modal: modal,
     store: store,
   });
   windowEventHandler(win);

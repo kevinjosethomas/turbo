@@ -19,7 +19,7 @@ export const Settings = (props) => {
           </span>
           <div
             className="flex flex-row items-center justify-center w-10 h-10 bg-night-tab hover:bg-night-tab-active rounded-md transition duration-300"
-            onClick={() => window.ipcRenderer.send("close-modal")}
+            onClick={() => window.ipcRenderer.send("create-tab")}
           >
             <i className="fas fa-times text-xl text-night-sky-dawn" />
           </div>

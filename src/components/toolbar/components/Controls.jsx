@@ -2,7 +2,7 @@ import ReactTooltip from "react-tooltip";
 
 export const Controls = (props) => {
   return (
-    <div className="flex flex-row items-center justify-center h-fullspace-x-4">
+    <div className="flex flex-row items-center justify-center h-full space-x-4">
       <ControlButton
         icon="far fa-arrow-left"
         onClick={props.onBackward}

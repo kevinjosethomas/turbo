@@ -8,7 +8,7 @@ const { settings } = require("../data/settings");
 const { checkURL } = require("../utility/methods");
 
 exports.ipcEventHandler = (win, util) => {
-  const { ipcMain, tablist, modal, store } = util;
+  const { ipcMain, tablist, store } = util;
 
   const pushHistory = (url) => {
     let history = store.get("history");
@@ -40,14 +40,6 @@ exports.ipcEventHandler = (win, util) => {
       case "close":
         win.close();
     }
-  });
-
-  ipcMain.on("open-modal", (_) => {
-    modal.show();
-  });
-
-  ipcMain.on("close-modal", (_) => {
-    modal.hide();
   });
 
   ipcMain.on("send-request", async (event, { method, endpoint }) => {
@@ -188,7 +180,6 @@ exports.ipcEventHandler = (win, util) => {
   ipcMain.on("set-active-tab-url", (event, { id, url, engine }) => {
     let formattedUrl;
 
-    checkURL(url);
     if (checkURL(url)) {
       if (!url.startsWith("http://") && !url.startsWith("https://")) {
         formattedUrl = `https://${url}`;
