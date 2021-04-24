@@ -2,11 +2,10 @@ import path from "path";
 import { app, BrowserWindow } from "electron";
 
 import Window from "./models/Browser";
-import { urlObjectKeys } from "next/dist/next-server/lib/utils";
 
-let window: Window = new Window(null);
+let window: Window | null = null;
 const createWindow: () => void = () => {
-  window.setWindow(
+  window = new Window(
     new BrowserWindow({
       show: false,
       frame: false,
@@ -17,20 +16,20 @@ const createWindow: () => void = () => {
     })
   );
 
-  const url: string = process.env.FRONTEND_URL;
+  const url: string = process.env.FRONTEND_URL || "http://localhost:3000";
   window.setURL(url);
   window.maximizeWindow();
   window.showWindow();
 
-  window.on("closed", () => {
-    window.setWindow(null);
+  window.window.on("closed", () => {
+    window = null;
   });
 };
 
 app.on("ready", createWindow);
 
 app.on("activate", () => {
-  if (window.window === null) {
+  if (window && window.window === null) {
     createWindow();
   }
 });

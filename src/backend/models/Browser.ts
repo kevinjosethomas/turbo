@@ -1,19 +1,21 @@
 import { BrowserWindow } from "electron";
 
 class Browser {
-  constructor(window: BrowserWindow | null) {
-    this.window: BrowserWindow | null = window;
+  window: BrowserWindow;
+
+  constructor(window: BrowserWindow) {
+    this.window = window;
   }
 
-  on(event: string, func: () => void) {
-    this.window.on(event, func);
-  }
+  // on(event: string, func: () => void) {
+  //   this.window.on(event, func);
+  // }
 
   maximizeWindow() {
     this.window.maximize();
   }
 
-  setWindow(window: BrowserWindow | null) {
+  setWindow(window: BrowserWindow) {
     this.window = window;
   }
 

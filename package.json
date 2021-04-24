@@ -11,9 +11,8 @@
   "scripts": {
     "serve:frontend": "yarn workspace frontend serve",
     "serve:backend": "yarn workspace backend serve",
-    "build": "yarn workspace frontend build",
-    "test": "yarn workspace frontend test",
-    "eject": "yarn workspace frontend eject"
+    "build:frontend": "yarn workspace frontend build",
+    "build:backend": "yarn workspace backend build"
   },
   "repository": {
     "type": "git",
