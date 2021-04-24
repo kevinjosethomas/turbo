@@ -14,7 +14,7 @@ interface Icons {
   minimize: string;
 }
 
-const icons: Icons = {
+const icons: Record<string, string> = {
   close: Close,
   maximize: Maximize,
   minimize: Minimize,
