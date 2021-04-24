@@ -1,75 +1,34 @@
 {
   "name": "turbo",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "⚡ Turbo - the browser for developers",
+  "main": "src/main/main.ts",
   "private": true,
-  "main": "src/main.js",
-  "homepage": ".",
-  "author": "teamcodebyte",
-  "build": {
-    "appId": "com.electron.turbo",
-    "productName": "Turbo",
-    "directories": {
-      "buildResources": "resources",
-      "output": "dist"
-    },
-    "mac": {
-      "category": "public.app-category.developer-tools"
-    }
-  },
+  "workspaces": [
+    "src/frontend"
+  ],
   "scripts": {
-    "start": "craco start",
-    "electron": "electron .",
-    "dev": "set ELECTRON_START_URL=http://localhost:3000&& electron .",
-    "build": "craco build",
-    "dist": "electron-builder --dir",
-    "postinstall": "electron-builder install-app-deps"
+    "start": "yarn workspace frontend start",
+    "build": "yarn workspace frontend build",
+    "test": "yarn workspace frontend test",
+    "eject": "yarn workspace frontend eject"
   },
-  "dependencies": {
-    "@craco/craco": "^6.1.1",
-    "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^13.1.5",
-    "axios": "^0.21.1",
-    "electron-chrome-context-menu": "^1.0.1",
-    "electron-localshortcut": "^3.2.1",
-    "electron-store": "^8.0.0",
-    "framer-motion": "^4.1.6",
-    "ip-regex": "^4.3.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-json-pretty": "^2.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3",
-    "react-tooltip": "^4.2.17",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "tldjs": "^2.3.1",
-    "tlds": "^1.220.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teamcodebyte/turbo.git"
   },
-  "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.1.0",
-    "autoprefixer": "^9.8.6",
-    "electron": "^12.0.5",
-    "electron-builder": "^22.10.5",
-    "electron-winstaller": "^5.0.0",
-    "postcss": "^7.0.35"
+  "keywords": [
+    "browser",
+    "devtools",
+    "electron",
+    "react",
+    "nodejs",
+    "typescript"
+  ],
+  "author": "teamcodebyte",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/teamcodebyte/turbo/issues"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "homepage": "https://github.com/teamcodebyte/turbo#readme"
 }
