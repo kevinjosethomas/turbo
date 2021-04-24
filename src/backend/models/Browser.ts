@@ -7,10 +7,6 @@ class Browser {
     this.window = window;
   }
 
-  // on(event: string, func: () => void) {
-  //   this.window.on(event, func);
-  // }
-
   maximizeWindow() {
     this.window.maximize();
   }
