@@ -2,6 +2,8 @@ import path from "path";
 import { app, BrowserWindow } from "electron";
 
 import Window from "./models/Browser";
+import Tablist from "./models/Tablist";
+import ipcHandler from "./events/ipc/core";
 
 let window: Window | null = null;
 const createWindow: () => void = () => {
@@ -21,6 +23,8 @@ const createWindow: () => void = () => {
   window.maximizeWindow();
   window.toggleDevTools();
   window.showWindow();
+
+  ipcHandler(window);
 
   window.window.on("closed", () => {
     window = null;

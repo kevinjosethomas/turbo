@@ -10,6 +10,7 @@ class Tablist {
   constructor(window: BrowserWindow) {
     this.window = window;
     this.tablist = [];
+    this.history = [];
   }
 }
 
