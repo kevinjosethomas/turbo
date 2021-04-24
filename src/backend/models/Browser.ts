@@ -26,6 +26,10 @@ class Browser {
   setURL(url: string) {
     this.window.loadURL(url);
   }
+
+  toggleDevTools() {
+    this.window.webContents.toggleDevTools();
+  }
 }
 
 export default Browser;

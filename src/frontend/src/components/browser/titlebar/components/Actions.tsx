@@ -22,7 +22,7 @@ const icons: Icons = {
 
 const Actions: FC = () => {
   return (
-    <div className="flex flex-row items-center justify-center h-full p-3 space-x-2">
+    <div className="flex flex-row items-center justify-center h-full py-4 space-x-2">
       <Action type="minimize" />
       <Action type="maximize" />
       <Action type="close" />

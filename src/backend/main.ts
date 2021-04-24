@@ -19,6 +19,7 @@ const createWindow: () => void = () => {
   const url: string = process.env.FRONTEND_URL || "http://localhost:3000";
   window.setURL(url);
   window.maximizeWindow();
+  window.toggleDevTools();
   window.showWindow();
 
   window.window.on("closed", () => {

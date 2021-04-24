@@ -15,6 +15,9 @@ module.exports = {
           30: "var(--color-fore-30)",
         },
       },
+      spacing: {
+        18: "4.5rem",
+      },
     },
   },
   variants: {},

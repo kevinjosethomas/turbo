@@ -3,6 +3,7 @@ import { FC } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./assets/styles/tailwind.css";
+import "./assets/styles/fontawesome.css";
 import Browser from "./pages/browser";
 
 const App: FC = () => {

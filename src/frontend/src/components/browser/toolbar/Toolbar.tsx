@@ -1,8 +1,12 @@
 import { FC } from "react";
 
+import Controls from "./components/Controls";
+
 const Toolbar: FC = () => {
   return (
-    <div className="flex flex-row items-center justify-center w-full h-20 bg-back-20 border-t-2 border-back-30"></div>
+    <div className="flex flex-row items-center justify-start px-4 w-full h-18 bg-back-20 border-t-2 border-back-30">
+      <Controls />
+    </div>
   );
 };
 
