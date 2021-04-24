@@ -5,10 +5,12 @@
   "main": "src/main/main.ts",
   "private": true,
   "workspaces": [
+    "src/backend",
     "src/frontend"
   ],
   "scripts": {
-    "start": "yarn workspace frontend start",
+    "serve:frontend": "yarn workspace frontend serve",
+    "serve:backend": "yarn workspace backend serve",
     "build": "yarn workspace frontend build",
     "test": "yarn workspace frontend test",
     "eject": "yarn workspace frontend eject"
