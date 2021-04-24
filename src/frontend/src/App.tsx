@@ -1,9 +1,19 @@
 import { Fragment } from "react";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
-import "./styles/tailwind.css";
+import "./assets/styles/tailwind.css";
+import Browser from "./pages/browser";
 
 const App = () => {
-  return <Fragment></Fragment>;
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <Browser />
+        </Route>
+      </Switch>
+    </Router>
+  );
 };
 
 export default App;
