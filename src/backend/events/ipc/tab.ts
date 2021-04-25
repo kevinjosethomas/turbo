@@ -15,8 +15,7 @@ const handlers = (window: Window, props: HandlerProps) => {
   });
 
   ipcMain.on("tab-new", (event: IpcMainEvent) => {
-    const view = new BrowserView();
-    tablist.newTab(view);
+    tablist.newTab(event);
     event.reply("update-tabs", tablist.getFriendlyTabs());
   });
 };

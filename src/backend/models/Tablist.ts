@@ -1,4 +1,4 @@
-import { BrowserView } from "electron";
+import { BrowserView, IpcMainEvent } from "electron";
 
 import Tab from "./Tab";
 import Window from "./Window";
@@ -14,15 +14,38 @@ class Tablist {
     this.history = [];
   }
 
-  newTab(view: BrowserView) {
+  newTab(event: IpcMainEvent) {
+    const view = new BrowserView();
+    view.setAutoResize({
+      width: true,
+      height: true,
+      horizontal: true,
+      vertical: true,
+    });
     this.tablist.push(
-      new Tab({
-        id: view.webContents.id,
-        url: "https://google.com/",
-        friendlyUrl: "https://google.com/",
-        view: view,
-      })
+      new Tab(
+        {
+          id: view.webContents.id,
+          url: "https://turbobrowser.io/",
+          friendlyUrl: "https://turbobrowser.io/",
+          view: view,
+        },
+        this,
+        event
+      )
     );
+    this.window.window.addBrowserView(view);
+    this.setActiveTab(view.webContents.id);
+  }
+
+  setActiveTab(id: number) {
+    this.tablist.forEach((tab, index) => {
+      if (tab.id === id) {
+        this.tablist[index].setActive(this.window.getSize());
+      } else if (tab.active && tab.id !== id) {
+        this.tablist[index].setInactive();
+      }
+    });
   }
 
   getFriendlyTabs(): object[] {
@@ -30,6 +53,7 @@ class Tablist {
       id: number;
       url: string;
       friendlyUrl: string;
+      title?: string;
       favicon?: string;
       active?: boolean;
       engine?: string;
@@ -37,10 +61,12 @@ class Tablist {
 
     const friendlyTablist: FriendlyTabProps[] = new Array();
     for (const tab of this.tablist) {
+      console.log(tab);
       friendlyTablist.push({
         id: tab.id,
         url: tab.url,
         friendlyUrl: tab.friendlyUrl,
+        title: tab.title,
         favicon: tab.favicon,
         active: tab.active,
         engine: tab.engine,

@@ -12,7 +12,7 @@ interface TitlebarProps {
 const Titlebar: FC<TitlebarProps> = (props) => {
   return (
     <div className="flex flex-row items-center justify-between px-4 w-full h-12">
-      <div className="flex flex-row items-center justify-center space-x-4">
+      <div className="flex flex-row items-center justify-center space-x-4 h-full">
         <Search />
         <Tabs tablist={props.tablist} />
       </div>

@@ -1,23 +1,30 @@
 import { FC } from "react";
 
 import TabProps from "../../../../interface/Tab";
+import LoadingFavicon from "../../../../assets/icons/browser/loading-favicon.gif";
+import MissingFavicon from "../../../../assets/icons/browser/missing-favicon.svg";
 
 interface TabsProps {
   tablist: TabProps[];
 }
 
 const Tabs: FC<TabsProps> = (props) => {
-  console.log(props.tablist);
   return (
     <div className="flex flex-row items-center justify-start h-full">
       <div className="flex flex-row itemss-center justify-center h-full">
-        {props.tablist.map((tab: TabProps) => (
+        {props.tablist.map((tab: TabProps, index: number) => (
           <Tab
             key={tab.id}
             id={tab.id}
             url={tab.url}
             title={tab.title}
             friendlyUrl={tab.friendlyUrl}
+            active={tab.active}
+            suffix={
+              index + 1 !== props.tablist.length
+                ? !props.tablist[index + 1].active
+                : true
+            }
           />
         ))}
       </div>
@@ -27,9 +34,34 @@ const Tabs: FC<TabsProps> = (props) => {
 };
 
 const Tab: FC<TabProps> = (props) => {
+  console.log(props);
   return (
-    <div>
-      <span>{props.url}</span>
+    <div
+      className={`flex flex-row items-center justify-between h-full px-4 w-48 cursor-default select-none ${
+        props.active
+          ? "active-tab relative bg-back-20 rounded-t border-l-2 border-t-2 border-r-2 border-back-30"
+          : `hover:bg-back-20 transition duration-500 ${
+              props.suffix ? "relative tab-suffix" : ""
+            }`
+      } `}
+    >
+      <div className="flex flex-row items-center justify-center w-full space-x-2">
+        <img
+          src={props.favicon || LoadingFavicon}
+          className="w-4"
+          onError={(e) => ((e.target as HTMLImageElement).src = MissingFavicon)}
+        />
+        <span
+          className={`w-full relative text-xs overflow-hidden ${
+            props.active ? "text-fore-20" : "text-fore-10"
+          }`}
+        >
+          {props.title || props.url}
+        </span>
+      </div>
+      <div className="flex flex-col items-center justify-center w-5 h-5 rounded text-fore-10 hover:text-fore-20 hover:bg-back-30 transition duration-500">
+        <i className="far fa-times text-sm" />
+      </div>
     </div>
   );
 };

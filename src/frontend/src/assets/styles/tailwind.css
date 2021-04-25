@@ -12,3 +12,22 @@
     --color-fore-30: #e0e0e0;
   }
 }
+
+.active-tab:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-back-20);
+}
+
+.tab-suffix:after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  height: 35%;
+  width: 2px;
+  background-color: var(--color-back-30);
+}

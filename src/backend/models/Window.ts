@@ -33,6 +33,13 @@ class Window {
   setURL(url: string) {
     this.window.loadURL(url);
   }
+  getSize() {
+    const size = this.window.getSize();
+    return {
+      width: size[0],
+      height: size[1],
+    };
+  }
   toggleDevTools() {
     this.window.webContents.toggleDevTools();
   }
