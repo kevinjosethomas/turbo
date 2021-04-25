@@ -1,6 +1,7 @@
 import { FC } from "react";
 
-import TabProps from "../../../../interface/Tab";
+import Search from "./Search";
+import { TabProps } from "../../../../lib/types";
 import LoadingFavicon from "../../../../assets/icons/browser/loading-favicon.gif";
 import MissingFavicon from "../../../../assets/icons/browser/missing-favicon.svg";
 
@@ -10,7 +11,8 @@ interface TabsProps {
 
 const Tabs: FC<TabsProps> = (props) => {
   return (
-    <div className="flex flex-row items-center justify-start h-full">
+    <div className="flex flex-row items-center justify-start h-full space-x-4">
+      <Search />
       <div className="flex flex-row itemss-center justify-center h-full">
         {props.tablist.map((tab: TabProps, index: number) => (
           <Tab

@@ -1,4 +1,4 @@
-interface TabProps {
+export interface TabProps {
   id: number;
   url: string;
   friendlyUrl: string;
@@ -8,5 +8,3 @@ interface TabProps {
   engine?: string;
   suffix?: boolean;
 }
-
-export default TabProps;

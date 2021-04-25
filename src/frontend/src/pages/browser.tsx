@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import TabProps from "../interface/Tab";
+import { TabProps } from "../lib/types";
 import Toolbar from "../components/browser/toolbar/Toolbar";
 import Titlebar from "../components/browser/titlebar/Titlebar";
 
