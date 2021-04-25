@@ -1,13 +1,12 @@
-import { BrowserWindow } from "electron";
-
 import Tab from "./Tab";
+import Window from "./Window";
 
 class Tablist {
   tablist: Array<Tab>;
   history: Array<Tab>;
-  window: BrowserWindow;
+  window: Window;
 
-  constructor(window: BrowserWindow) {
+  constructor(window: Window) {
     this.window = window;
     this.tablist = [];
     this.history = [];

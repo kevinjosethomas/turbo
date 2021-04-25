@@ -1,6 +1,13 @@
-import { ipcMain } from "electron";
-import Window from "../../models/Browser";
+import windowEvents from "./window";
+import Window from "../../models/Window";
+import Tablist from "../../models/Tablist";
 
-const handler = (window: Window) => {};
+interface HandlerProps {
+  tablist: Tablist;
+}
+
+const handler = (window: Window, props: HandlerProps) => {
+  windowEvents(window);
+};
 
 export default handler;

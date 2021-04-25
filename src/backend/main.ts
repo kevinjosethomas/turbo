@@ -1,7 +1,7 @@
 import path from "path";
 import { app, BrowserWindow } from "electron";
 
-import Window from "./models/Browser";
+import Window from "./models/Window";
 import Tablist from "./models/Tablist";
 import ipcHandler from "./events/ipc/core";
 
@@ -23,7 +23,9 @@ const createWindow: () => void = () => {
   window.toggleDevTools();
   window.showWindow();
 
-  ipcHandler(window);
+  const tablist = new Tablist(window);
+
+  ipcHandler(window, { tablist: tablist });
 
   window.window.on("closed", () => {
     window = null;
