@@ -1,7 +1,7 @@
 import { ipcMain, IpcMainEvent } from "electron";
 
 import Window from "../../models/Window";
-import { HandlerProps } from "../../types/index";
+import { HandlerProps } from "../../lib/types";
 
 const handlers = (window: Window, props: HandlerProps) => {
   const { tablist } = props;

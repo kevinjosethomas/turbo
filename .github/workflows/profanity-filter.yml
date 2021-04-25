@@ -1,6 +1,6 @@
 name: Profanity Filter
 
-on: 
+on:
   issues:
     types: [opened, edited]
   issue_comment:
@@ -10,7 +10,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:

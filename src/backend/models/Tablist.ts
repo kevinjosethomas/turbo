@@ -3,7 +3,7 @@ import { BrowserView, IpcMainEvent, TouchBarScrubber } from "electron";
 import Tab from "./Tab";
 import Window from "./Window";
 
-import { FriendlyTabProps } from "../types/index";
+import { FriendlyTabProps } from "../lib/types";
 
 class Tablist {
   tablist: Tab[];

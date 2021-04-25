@@ -1,5 +1,5 @@
 import { BrowserView, IpcMainEvent } from "electron";
-import { TabProps } from "../types";
+import { TabProps } from "../lib/types";
 
 import Tablist from "./Tablist";
 import defaults from "../lib/defaults";

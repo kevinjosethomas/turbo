@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from "electron";
-import { HandlerPropsEvents } from "./types/index";
+import { HandlerPropsEvents } from "./lib/types";
 
 const handlers: HandlerPropsEvents[] = [];
 

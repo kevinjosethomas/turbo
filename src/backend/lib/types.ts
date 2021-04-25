@@ -1,5 +1,5 @@
-import { BrowserView, IpcRendererEvent } from "electron";
 import Tablist from "../models/Tablist";
+import { BrowserView, IpcRendererEvent } from "electron";
 
 export interface TabProps {
   id: number;
