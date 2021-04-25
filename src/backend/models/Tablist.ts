@@ -1,17 +1,17 @@
-import { BrowserView, IpcMainEvent } from "electron";
+import { BrowserView, IpcMainEvent, TouchBarScrubber } from "electron";
 
 import Tab from "./Tab";
 import Window from "./Window";
 
 class Tablist {
   tablist: Tab[];
-  history: Tab[];
+  tablog: number[];
   window: Window;
 
   constructor(window: Window) {
     this.window = window;
     this.tablist = [];
-    this.history = [];
+    this.tablog = [];
   }
 
   newTab(event: IpcMainEvent) {
@@ -39,11 +39,25 @@ class Tablist {
   }
 
   setActiveTab(id: number) {
-    this.tablist.forEach((tab, index) => {
+    this.tablist.forEach((tab: Tab, index: number) => {
       if (tab.id === id) {
+        this.tablog.push(tab.id);
         this.tablist[index].setActive(this.window.getSize());
       } else if (tab.active && tab.id !== id) {
         this.tablist[index].setInactive();
+      }
+    });
+  }
+
+  closeTab(id: number) {
+    this.tablist.forEach((tab: Tab, index: number) => {
+      if (tab.id === id) {
+        this.window.window.removeBrowserView(tab.view);
+        this.tablist.splice(index, 1);
+        this.tablog = this.tablog.filter((el) => el !== id);
+        if (this.tablist.length && this.tablog.length) {
+          this.setActiveTab(this.tablog[this.tablog.length - 1]);
+        }
       }
     });
   }
@@ -61,7 +75,6 @@ class Tablist {
 
     const friendlyTablist: FriendlyTabProps[] = new Array();
     for (const tab of this.tablist) {
-      console.log(tab);
       friendlyTablist.push({
         id: tab.id,
         url: tab.url,

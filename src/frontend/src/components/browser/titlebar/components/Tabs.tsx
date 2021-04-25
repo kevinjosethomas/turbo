@@ -44,6 +44,9 @@ const Tab: FC<TabProps> = (props) => {
               props.suffix ? "relative tab-suffix" : ""
             }`
       } `}
+      onClick={() =>
+        !props.active ? window.ipc.tab.emitters.active(props.id) : void 0
+      }
     >
       <div className="flex flex-row items-center justify-center w-full space-x-2">
         <img
@@ -59,7 +62,13 @@ const Tab: FC<TabProps> = (props) => {
           {props.title || props.url}
         </span>
       </div>
-      <div className="flex flex-col items-center justify-center w-5 h-5 rounded text-fore-10 hover:text-fore-20 hover:bg-back-30 transition duration-500">
+      <div
+        className="flex flex-col items-center justify-center w-5 h-5 rounded text-fore-10 hover:text-fore-20 hover:bg-back-30 transition duration-500"
+        onClick={(e) => {
+          e.stopPropagation();
+          window.ipc.tab.emitters.close(props.id);
+        }}
+      >
         <i className="far fa-times text-sm" />
       </div>
     </div>
