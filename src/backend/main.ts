@@ -12,8 +12,7 @@ const createWindow: () => void = () => {
       show: false,
       frame: false,
       webPreferences: {
-        contextIsolation: false,
-        preload: path.join(__dirname, "preload.ts"),
+        preload: path.join(__dirname, "preload.js"),
       },
     })
   );
