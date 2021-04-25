@@ -1,11 +1,7 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from "electron";
+import { HandlerPropsEvents } from "./types/index";
 
-interface HandlerProps {
-  event: string;
-  func: (event: IpcRendererEvent, tabs: object[]) => void;
-}
-
-const handlers: HandlerProps[] = [];
+const handlers: HandlerPropsEvents[] = [];
 
 contextBridge.exposeInMainWorld("ipc", {
   unload: () => {

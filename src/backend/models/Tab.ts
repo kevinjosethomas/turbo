@@ -1,18 +1,8 @@
 import { BrowserView, IpcMainEvent } from "electron";
+import { TabProps } from "../types";
 
 import Tablist from "./Tablist";
 import defaults from "../lib/defaults";
-
-interface TabProps {
-  id: number;
-  url: string;
-  friendlyUrl: string;
-  view: BrowserView;
-  title?: string;
-  favicon?: string;
-  active?: boolean;
-  engine?: string;
-}
 
 class Tab {
   id: number;
@@ -43,23 +33,26 @@ class Tab {
   }
 
   eventHandler(tablist: Tablist, event: IpcMainEvent) {
-    this.view.webContents.on("page-title-updated", (e, title) => {
+    this.view.webContents.on("page-title-updated", (e: any, title: string) => {
       if (title) {
         this.setTitle(title);
         event.reply("update-tabs", tablist.getFriendlyTabs());
       }
     });
-    this.view.webContents.on("page-favicon-updated", (e, favicons) => {
-      if (favicons.length) {
-        this.setFavicon(favicons[0]);
-        event.reply("update-tabs", tablist.getFriendlyTabs());
+    this.view.webContents.on(
+      "page-favicon-updated",
+      (e: any, favicons: any) => {
+        if (favicons.length) {
+          this.setFavicon(favicons[0]);
+          event.reply("update-tabs", tablist.getFriendlyTabs());
+        }
       }
-    });
-    this.view.webContents.on("did-navigate", (e, url) => {
+    );
+    this.view.webContents.on("did-navigate", (e: any, url: string) => {
       this.setURL(url);
       event.reply("update-tabs", tablist.getFriendlyTabs());
     });
-    this.view.webContents.on("did-navigate-in-page", (e, url) => {
+    this.view.webContents.on("did-navigate-in-page", (e: any, url: string) => {
       this.setURL(url);
       event.reply("update-tabs", tablist.getFriendlyTabs());
     });

@@ -1,11 +1,7 @@
-import { BrowserView, ipcMain, IpcMainEvent } from "electron";
+import { ipcMain, IpcMainEvent } from "electron";
 
 import Window from "../../models/Window";
-import Tablist from "../../models/Tablist";
-
-interface HandlerProps {
-  tablist: Tablist;
-}
+import { HandlerProps } from "../../types/index";
 
 const handlers = (window: Window, props: HandlerProps) => {
   const { tablist } = props;
