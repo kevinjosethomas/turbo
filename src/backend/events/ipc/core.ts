@@ -1,11 +1,7 @@
 import tabEvents from "./tab";
 import windowEvents from "./window";
 import Window from "../../models/Window";
-import Tablist from "../../models/Tablist";
-
-interface HandlerProps {
-  tablist: Tablist;
-}
+import { HandlerProps } from "../../types/index";
 
 const handler = (window: Window, props: HandlerProps) => {
   windowEvents(window);
