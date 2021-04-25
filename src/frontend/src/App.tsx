@@ -4,6 +4,7 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import Browser from "./pages/browser";
 import "./assets/styles/tailwind.css";
+import TabProps from "./interface/Tab";
 import "./assets/styles/fontawesome.css";
 
 declare global {
@@ -13,12 +14,12 @@ declare global {
 }
 
 const App: FC = () => {
-  const [tablist, setTablist] = useState<object[]>([]);
+  const [tablist, setTablist] = useState<TabProps[]>([]);
 
   useEffect(() => {
     window.ipc.tab.emitters.request();
     window.ipc.tab.listeners.update(
-      (event: IpcRendererEvent, tabs: object[]) => {
+      (event: IpcRendererEvent, tabs: TabProps[]) => {
         setTablist(tabs);
       }
     );

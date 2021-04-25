@@ -3,9 +3,10 @@ import { FC } from "react";
 import Tabs from "./components/Tabs";
 import Search from "./components/Search";
 import Actions from "./components/Actions";
+import TabProps from "../../../interface/Tab";
 
 interface TitlebarProps {
-  tablist: object[];
+  tablist: TabProps[];
 }
 
 const Titlebar: FC<TitlebarProps> = (props) => {
