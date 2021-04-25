@@ -1,9 +1,10 @@
-import { FC } from "react";
+import { IpcRendererEvent } from "electron";
+import { FC, useEffect, useState } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
+import Browser from "./pages/browser";
 import "./assets/styles/tailwind.css";
 import "./assets/styles/fontawesome.css";
-import Browser from "./pages/browser";
 
 declare global {
   interface Window {
@@ -12,6 +13,16 @@ declare global {
 }
 
 const App: FC = () => {
+  const [tablist, setTablist] = useState<object[]>([]);
+
+  window.ipc.tab.listeners.update((event: IpcRendererEvent, tabs: object[]) => {
+    setTablist(tabs);
+  });
+
+  useEffect(() => {
+    window.ipc.tab.emitters.request();
+  }, []);
+
   return (
     <Router>
       <Switch>

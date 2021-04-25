@@ -24,9 +24,9 @@ const icons: Record<string, string> = {
 const Actions: FC = () => {
   return (
     <div className="flex flex-row items-center justify-center h-full py-4 space-x-2">
-      <Action type="minimize" onClick={window.ipc.minimize} />
-      <Action type="restore" onClick={window.ipc.restore} />
-      <Action type="close" onClick={window.ipc.close} />
+      <Action type="minimize" onClick={window.ipc.window.emitters.minimize} />
+      <Action type="restore" onClick={window.ipc.window.emitters.restore} />
+      <Action type="close" onClick={window.ipc.window.emitters.close} />
     </div>
   );
 };

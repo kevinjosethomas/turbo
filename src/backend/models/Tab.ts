@@ -15,7 +15,7 @@ class Tab {
   url: string;
   friendlyUrl: string;
   view: BrowserView;
-  favicon: string | null;
+  favicon: string | undefined;
   active: boolean;
   engine: string;
 
@@ -24,7 +24,7 @@ class Tab {
     this.url = props.url;
     this.friendlyUrl = props.friendlyUrl;
     this.view = props.view;
-    this.favicon = props.favicon ? props.favicon : null;
+    this.favicon = props.favicon;
     this.active = props.active ? props.active : false;
     this.engine = props.engine ? props.engine : "google";
   }
