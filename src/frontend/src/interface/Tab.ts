@@ -1,8 +1,8 @@
 interface TabProps {
   id: number;
   url: string;
-  title?: string;
   friendlyUrl: string;
+  title?: string;
   favicon?: string;
   active?: boolean;
   engine?: string;

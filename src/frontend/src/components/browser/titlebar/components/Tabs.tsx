@@ -17,8 +17,9 @@ const Tabs: FC<TabsProps> = (props) => {
             key={tab.id}
             id={tab.id}
             url={tab.url}
-            title={tab.title}
             friendlyUrl={tab.friendlyUrl}
+            title={tab.title}
+            favicon={tab.favicon}
             active={tab.active}
             suffix={
               index + 1 !== props.tablist.length
@@ -34,7 +35,6 @@ const Tabs: FC<TabsProps> = (props) => {
 };
 
 const Tab: FC<TabProps> = (props) => {
-  console.log(props);
   return (
     <div
       className={`flex flex-row items-center justify-between h-full px-4 w-48 cursor-default select-none ${

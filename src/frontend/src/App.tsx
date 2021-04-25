@@ -21,7 +21,6 @@ const App: FC = () => {
     window.ipc.tab.listeners.update(
       (event: IpcRendererEvent, tabs: TabProps[]) => {
         setTablist(tabs);
-        console.log("haha");
       }
     );
 
