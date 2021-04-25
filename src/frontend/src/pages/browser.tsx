@@ -3,10 +3,14 @@ import { FC } from "react";
 import Toolbar from "../components/browser/toolbar/Toolbar";
 import Titlebar from "../components/browser/titlebar/Titlebar";
 
-const Browser: FC = () => {
+interface BrowserProps {
+  tablist: object[];
+}
+
+const Browser: FC<BrowserProps> = (props) => {
   return (
     <div className="flex flex-col w-full h-28 bg-back-10">
-      <Titlebar />
+      <Titlebar tablist={props.tablist} />
       <Toolbar />
     </div>
   );

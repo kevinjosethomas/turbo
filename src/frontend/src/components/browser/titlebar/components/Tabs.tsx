@@ -1,6 +1,11 @@
 import { FC } from "react";
 
-const Tabs: FC = () => {
+interface TabsProps {
+  tablist: object[];
+}
+
+const Tabs: FC<TabsProps> = (props) => {
+  console.log(props);
   return (
     <div className="flex flex-row items-center justify-start h-full">
       <NewTab />
