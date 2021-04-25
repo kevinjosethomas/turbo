@@ -3,6 +3,8 @@ import { BrowserView, IpcMainEvent, TouchBarScrubber } from "electron";
 import Tab from "./Tab";
 import Window from "./Window";
 
+import { FriendlyTabProps } from "../types/index";
+
 class Tablist {
   tablist: Tab[];
   tablog: number[];
@@ -63,16 +65,6 @@ class Tablist {
   }
 
   getFriendlyTabs(): object[] {
-    interface FriendlyTabProps {
-      id: number;
-      url: string;
-      friendlyUrl: string;
-      title?: string;
-      favicon?: string;
-      active?: boolean;
-      engine?: string;
-    }
-
     const friendlyTablist: FriendlyTabProps[] = new Array();
     for (const tab of this.tablist) {
       friendlyTablist.push({
