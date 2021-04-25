@@ -1,6 +1,18 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from "electron";
 
+interface HandlerProps {
+  event: string;
+  func: (event: IpcRendererEvent, tabs: object[]) => void;
+}
+
+const handlers: HandlerProps[] = [];
+
 contextBridge.exposeInMainWorld("ipc", {
+  unload: () => {
+    for (const handler of handlers) {
+      ipcRenderer.removeListener(handler.event, handler.func);
+    }
+  },
   window: {
     emitters: {
       minimize: () => ipcRenderer.send("window-minimize"),
@@ -10,8 +22,12 @@ contextBridge.exposeInMainWorld("ipc", {
   },
   tab: {
     listeners: {
-      update: (func: (event: IpcRendererEvent, tabs: object[]) => void) =>
-        ipcRenderer.on("update-tabs", func),
+      update: function (
+        func: (event: IpcRendererEvent, tabs: object[]) => void
+      ) {
+        ipcRenderer.on("update-tabs", func);
+        handlers.push({ event: "update-tabs", func: func });
+      },
     },
     emitters: {
       request: () => ipcRenderer.send("tab-request"),

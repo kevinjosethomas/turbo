@@ -15,12 +15,17 @@ declare global {
 const App: FC = () => {
   const [tablist, setTablist] = useState<object[]>([]);
 
-  window.ipc.tab.listeners.update((event: IpcRendererEvent, tabs: object[]) => {
-    setTablist(tabs);
-  });
-
   useEffect(() => {
     window.ipc.tab.emitters.request();
+    window.ipc.tab.listeners.update(
+      (event: IpcRendererEvent, tabs: object[]) => {
+        setTablist(tabs);
+      }
+    );
+
+    return () => {
+      window.ipc.unload();
+    };
   }, []);
 
   return (
