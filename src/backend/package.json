@@ -9,5 +9,9 @@
   },
   "devDependencies": {
     "electron": "^12.0.5"
+  },
+  "dependencies": {
+    "ip-regex": "^4.3.0",
+    "tlds": "^1.221.0"
   }
 }
