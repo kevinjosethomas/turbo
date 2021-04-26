@@ -13,6 +13,14 @@
   }
 }
 
+.window-drag {
+  -webkit-app-region: drag;
+}
+
+.window-drag-none {
+  -webkit-app-region: no-drag;
+}
+
 .active-tab::after {
   content: "";
   position: absolute;

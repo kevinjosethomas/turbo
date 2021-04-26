@@ -1,6 +1,5 @@
 import { FC } from "react";
 
-import Search from "./Search";
 import { TabProps } from "../../../../lib/types";
 import LoadingFavicon from "../../../../assets/icons/browser/loading-favicon.gif";
 import MissingFavicon from "../../../../assets/icons/browser/missing-favicon.svg";
@@ -13,7 +12,7 @@ const Tabs: FC<TabsProps> = (props) => {
   return (
     <div className="flex flex-row items-center justify-start h-full space-x-4">
       <Search />
-      <div className="flex flex-row itemss-center justify-center h-full">
+      <div className="flex flex-row itemss-center justify-center h-full window-drag-none">
         {props.tablist.map((tab: TabProps, index: number) => (
           <Tab
             key={tab.id}
@@ -33,6 +32,12 @@ const Tabs: FC<TabsProps> = (props) => {
       </div>
       <NewTab />
     </div>
+  );
+};
+
+const Search: FC = () => {
+  return (
+    <i className="fas fa-caret-circle-down text-fore-10 hover:text-fore-20 transition duration-500 window-drag-none" />
   );
 };
 
@@ -80,7 +85,7 @@ const Tab: FC<TabProps> = (props) => {
 const NewTab: FC = () => {
   return (
     <div
-      className="flex flex-col items-center justify-center w-8 h-8 text-fore-10 hover:text-fore-20 hover:bg-back-30 rounded transition duration-500"
+      className="flex flex-col items-center justify-center w-8 h-8 text-fore-10 hover:text-fore-20 hover:bg-back-30 rounded transition duration-500 window-drag-none"
       onClick={window.ipc.tab.emitters.new}
     >
       <i className="far fa-plus" />

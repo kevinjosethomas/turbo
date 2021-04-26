@@ -35,7 +35,7 @@ const Action: FC<ActionProps> = (props) => {
   return (
     <img
       src={icons[props.type]}
-      className="w-3 filter hover:brightness-75 transition duration-300"
+      className="w-3 filter hover:brightness-75 transition duration-300 window-drag-none select-none drag-none"
       onClick={props.onClick}
       draggable="false"
     />
