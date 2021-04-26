@@ -16,11 +16,6 @@ const handlers = (window: Window, props: HandlerProps) => {
     event.reply("update-tabs", tablist.getFriendlyTabs());
   });
 
-  ipcMain.on("tab-active", (event: IpcMainEvent, id: number) => {
-    tablist.setActiveTab(id);
-    event.reply("update-tabs", tablist.getFriendlyTabs());
-  });
-
   ipcMain.on("tab-open", (event: IpcMainEvent, url: string) => {
     const parsed = parseURL(url);
     if (typeof parsed === "string") {
@@ -31,6 +26,23 @@ const handlers = (window: Window, props: HandlerProps) => {
       );
     }
     event.reply("update-tabs", tablist.getFriendlyTabs());
+  });
+
+  ipcMain.on("tab-active", (event: IpcMainEvent, id: number) => {
+    tablist.setActiveTab(id);
+    event.reply("update-tabs", tablist.getFriendlyTabs());
+  });
+
+  ipcMain.on("tab-back", (event: IpcMainEvent) => {
+    tablist.backTab();
+  });
+
+  ipcMain.on("tab-forward", (event: IpcMainEvent) => {
+    tablist.forwardTab();
+  });
+
+  ipcMain.on("tab-reload", (event: IpcMainEvent) => {
+    tablist.reloadTab();
   });
 
   ipcMain.on("tab-close", (event: IpcMainEvent, id: number) => {

@@ -59,6 +59,30 @@ class Tablist {
     });
   }
 
+  backTab() {
+    this.tablist.forEach((tab: Tab) => {
+      if (tab.active) {
+        tab.goBack();
+      }
+    });
+  }
+
+  forwardTab() {
+    this.tablist.forEach((tab: Tab) => {
+      if (tab.active) {
+        tab.goForward();
+      }
+    });
+  }
+
+  reloadTab() {
+    this.tablist.forEach((tab: Tab) => {
+      if (tab.active) {
+        tab.reload();
+      }
+    });
+  }
+
   closeTab(id: number) {
     this.tablist.forEach((tab: Tab, index: number) => {
       if (tab.id === id) {

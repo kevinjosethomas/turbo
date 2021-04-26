@@ -91,6 +91,18 @@ class Tab {
     this.favicon = favicon;
   }
 
+  goBack() {
+    this.view.webContents.goBack();
+  }
+
+  goForward() {
+    this.view.webContents.goForward();
+  }
+
+  reload() {
+    this.view.webContents.reload();
+  }
+
   changeURL(url: string) {
     this.url = url;
     this.friendlyUrl = url;
