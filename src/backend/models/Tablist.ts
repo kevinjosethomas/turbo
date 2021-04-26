@@ -40,6 +40,10 @@ class Tablist {
     this.setActiveTab(view.webContents.id);
   }
 
+  getActiveTab(): Tab | undefined {
+    return this.tablist.find((el) => el.active);
+  }
+
   setActiveTab(id: number) {
     this.tablist.forEach((tab: Tab, index: number) => {
       if (tab.id === id) {
@@ -52,35 +56,19 @@ class Tablist {
   }
 
   setActiveTabURL(url: string) {
-    this.tablist.forEach((tab: Tab, index: number) => {
-      if (tab.active) {
-        tab.changeURL(url);
-      }
-    });
+    this.getActiveTab()?.changeURL(url);
   }
 
   backTab() {
-    this.tablist.forEach((tab: Tab) => {
-      if (tab.active) {
-        tab.goBack();
-      }
-    });
+    this.getActiveTab()?.goBack();
   }
 
   forwardTab() {
-    this.tablist.forEach((tab: Tab) => {
-      if (tab.active) {
-        tab.goForward();
-      }
-    });
+    this.getActiveTab()?.goForward();
   }
 
   reloadTab() {
-    this.tablist.forEach((tab: Tab) => {
-      if (tab.active) {
-        tab.reload();
-      }
-    });
+    this.getActiveTab()?.reload();
   }
 
   closeTab(id: number) {
