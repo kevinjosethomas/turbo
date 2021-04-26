@@ -22,10 +22,11 @@ const App: FC = () => {
   };
 
   useEffect(() => {
-    window.ipc.tab.emitters.request();
     window.ipc.tab.listeners.update((event: IpcRendererEvent, tabs: []) => {
       setTablist(tabs);
     });
+
+    window.ipc.tab.emitters.new();
 
     return () => {
       window.ipc.unload();

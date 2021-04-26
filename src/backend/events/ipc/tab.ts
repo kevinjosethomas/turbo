@@ -36,6 +36,10 @@ const handlers = (window: Window, props: HandlerProps) => {
   ipcMain.on("tab-close", (event: IpcMainEvent, id: number) => {
     tablist.closeTab(id);
     event.reply("update-tabs", tablist.getFriendlyTabs());
+
+    if (!tablist.tablist.length) {
+      window.closeWindow();
+    }
   });
 };
 
