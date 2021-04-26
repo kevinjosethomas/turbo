@@ -15,25 +15,32 @@ declare global {
 
 const App: FC = () => {
   const [tablist, setTablist] = useState<TabProps[]>([]);
+  const [activeTab, setActiveTab] = useState<TabProps | undefined>();
+
+  const resetActiveTab = () => {
+    setActiveTab(tablist.find((el) => el.active === true));
+  };
 
   useEffect(() => {
     window.ipc.tab.emitters.request();
-    window.ipc.tab.listeners.update(
-      (event: IpcRendererEvent, tabs: TabProps[]) => {
-        setTablist(tabs);
-      }
-    );
+    window.ipc.tab.listeners.update((event: IpcRendererEvent, tabs: []) => {
+      setTablist(tabs);
+    });
 
     return () => {
       window.ipc.unload();
     };
   }, []);
 
+  useEffect(() => {
+    setActiveTab(tablist.find((el) => el.active === true));
+  }, [tablist]);
+
   return (
     <Router>
       <Switch>
         <Route path="/" exact>
-          <Browser tablist={tablist} />
+          <Browser tablist={tablist} activeTab={activeTab} />
         </Route>
       </Switch>
     </Router>

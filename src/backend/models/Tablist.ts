@@ -51,6 +51,14 @@ class Tablist {
     });
   }
 
+  setActiveTabURL(url: string) {
+    this.tablist.forEach((tab: Tab, index: number) => {
+      if (tab.active) {
+        tab.changeURL(url);
+      }
+    });
+  }
+
   closeTab(id: number) {
     this.tablist.forEach((tab: Tab, index: number) => {
       if (tab.id === id) {

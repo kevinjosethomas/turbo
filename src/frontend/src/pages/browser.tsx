@@ -6,13 +6,14 @@ import Titlebar from "../components/browser/titlebar/Titlebar";
 
 interface BrowserProps {
   tablist: TabProps[];
+  activeTab: TabProps | undefined;
 }
 
 const Browser: FC<BrowserProps> = (props) => {
   return (
     <div className="flex flex-col w-full h-28 bg-back-10">
       <Titlebar tablist={props.tablist} />
-      <Toolbar />
+      <Toolbar activeTab={props.activeTab} />
     </div>
   );
 };

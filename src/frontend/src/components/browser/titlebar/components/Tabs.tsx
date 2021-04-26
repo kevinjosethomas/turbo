@@ -42,9 +42,7 @@ const Tab: FC<TabProps> = (props) => {
       className={`flex flex-row items-center justify-between h-full px-4 w-48 cursor-default select-none ${
         props.active
           ? "active-tab relative bg-back-20 rounded-t border-l-2 border-t-2 border-r-2 border-back-30"
-          : `hover:bg-back-20 transition duration-500 ${
-              props.suffix ? "relative tab-suffix" : ""
-            }`
+          : `tab hover:bg-back-20 ${props.suffix ? "relative tab-suffix" : ""}`
       } `}
       onClick={() =>
         !props.active ? window.ipc.tab.emitters.active(props.id) : void 0
@@ -57,8 +55,10 @@ const Tab: FC<TabProps> = (props) => {
           onError={(e) => ((e.target as HTMLImageElement).src = MissingFavicon)}
         />
         <span
-          className={`w-full relative text-xs overflow-hidden ${
-            props.active ? "text-fore-20" : "text-fore-10"
+          className={`w-full relative text-xs overflow-hidden whitespace-nowrap ${
+            props.active
+              ? "active-tab-title text-fore-20"
+              : "tab-title text-fore-10"
           }`}
         >
           {props.title || props.url}
