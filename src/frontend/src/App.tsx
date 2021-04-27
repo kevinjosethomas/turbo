@@ -17,16 +17,11 @@ const App: FC = () => {
   const [tablist, setTablist] = useState<TabProps[]>([]);
   const [activeTab, setActiveTab] = useState<TabProps | undefined>();
 
-  const resetActiveTab = () => {
-    setActiveTab(tablist.find((el) => el.active === true));
-  };
-
   useEffect(() => {
+    window.ipc.tab.emitters.new();
     window.ipc.tab.listeners.update((event: IpcRendererEvent, tabs: []) => {
       setTablist(tabs);
     });
-
-    window.ipc.tab.emitters.new();
 
     return () => {
       window.ipc.unload();

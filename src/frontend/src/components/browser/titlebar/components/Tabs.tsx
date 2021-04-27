@@ -53,7 +53,7 @@ const Tab: FC<TabProps> = (props) => {
         !props.active ? window.ipc.tab.emitters.active(props.id) : void 0
       }
     >
-      <div className="flex flex-row items-center justify-center w-full space-x-2">
+      <div className="flex flex-row items-center justify-center space-x-2 w-full max-w-xxs">
         <img
           src={props.favicon || LoadingFavicon}
           className="w-4"
@@ -70,7 +70,7 @@ const Tab: FC<TabProps> = (props) => {
         </span>
       </div>
       <div
-        className="flex flex-col items-center justify-center w-5 h-5 rounded text-fore-10 hover:text-fore-20 hover:bg-back-30 transition duration-500"
+        className="flex flex-col items-center justify-center w-5 h-5 min-w-max rounded text-fore-10 hover:text-fore-20 hover:bg-back-30 transition duration-500"
         onClick={(e) => {
           e.stopPropagation();
           window.ipc.tab.emitters.close(props.id);
