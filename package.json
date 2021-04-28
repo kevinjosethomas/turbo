@@ -9,8 +9,9 @@
     "src/frontend"
   ],
   "scripts": {
-    "serve:frontend": "yarn workspace frontend serve",
-    "serve:backend": "yarn workspace backend serve",
+    "dev": "concurrently \"yarn run dev:frontend\" \"yarn run dev:backend\" ",
+    "dev:frontend": "yarn workspace frontend dev",
+    "dev:backend": "yarn workspace backend dev",
     "build:frontend": "yarn workspace frontend build",
     "build:backend": "yarn workspace backend build"
   },
