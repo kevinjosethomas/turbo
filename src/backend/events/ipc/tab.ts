@@ -16,6 +16,12 @@ const handlers = (window: Window, props: HandlerProps) => {
     event.reply("update-tabs", tablist.getFriendlyTabs());
   });
 
+  ipcMain.on("tab-order", (event: IpcMainEvent, { from, to }) => {
+    console.log("order");
+    tablist.reorderTabs(from, to);
+    event.reply("update-tabs", tablist.getFriendlyTabs());
+  });
+
   ipcMain.on("tab-open", (event: IpcMainEvent, url: string) => {
     const parsed = parseURL(url);
     if (typeof parsed === "string") {

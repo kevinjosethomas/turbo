@@ -36,7 +36,11 @@ const App: FC = () => {
     <Router>
       <Switch>
         <Route path="/" exact>
-          <Browser tablist={tablist} activeTab={activeTab} />
+          <Browser
+            tablist={tablist}
+            setTablist={setTablist}
+            activeTab={activeTab}
+          />
         </Route>
       </Switch>
     </Router>
