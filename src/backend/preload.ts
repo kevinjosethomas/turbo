@@ -28,6 +28,8 @@ contextBridge.exposeInMainWorld("ipc", {
     emitters: {
       request: () => ipcRenderer.send("tab-request"),
       new: () => ipcRenderer.send("tab-new"),
+      order: (from: number, to: number) =>
+        ipcRenderer.send("tab-order", { from, to }),
       open: (url: string) => ipcRenderer.send("tab-open", url),
       active: (id: number) => ipcRenderer.send("tab-active", id),
       back: (id: number) => ipcRenderer.send("tab-back"),

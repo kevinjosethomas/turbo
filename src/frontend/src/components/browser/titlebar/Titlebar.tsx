@@ -6,12 +6,13 @@ import { TabProps } from "../../../lib/types";
 
 interface TitlebarProps {
   tablist: TabProps[];
+  setTablist: any;
 }
 
 const Titlebar: FC<TitlebarProps> = (props) => {
   return (
     <div className="flex flex-row items-center justify-between px-4 w-full h-12 window-drag">
-      <Tabs tablist={props.tablist} />
+      <Tabs tablist={props.tablist} setTablist={props.setTablist} />
       <Actions />
     </div>
   );

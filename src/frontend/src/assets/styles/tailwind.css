@@ -21,6 +21,10 @@
   -webkit-app-region: no-drag;
 }
 
+.unitab {
+  cursor: default !important;
+}
+
 .active-tab::after {
   content: "";
   position: absolute;

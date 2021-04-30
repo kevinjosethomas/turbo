@@ -6,5 +6,4 @@ export interface TabProps {
   favicon?: string;
   active?: boolean;
   engine?: string;
-  suffix?: boolean;
 }

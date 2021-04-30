@@ -1,4 +1,5 @@
-import { BrowserView, IpcMainEvent, TouchBarScrubber } from "electron";
+import arrayMove from "array-move";
+import { BrowserView, IpcMainEvent } from "electron";
 
 import Tab from "./Tab";
 import Window from "./Window";
@@ -38,6 +39,10 @@ class Tablist {
     );
     this.window.window.addBrowserView(view);
     this.setActiveTab(view.webContents.id);
+  }
+
+  reorderTabs(from: number, to: number) {
+    this.tablist = arrayMove(this.tablist, from, to);
   }
 
   getActiveTab(): Tab | undefined {

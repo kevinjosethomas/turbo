@@ -32,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/teamcodebyte/turbo/issues"
   },
-  "homepage": "https://github.com/teamcodebyte/turbo#readme"
+  "homepage": "https://github.com/teamcodebyte/turbo#readme",
+  "dependencies": {
+    "concurrently": "^6.0.2"
+  }
 }
