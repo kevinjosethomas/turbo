@@ -106,6 +106,8 @@ class Tab {
   changeURL(url: string) {
     this.url = url;
     this.friendlyUrl = url;
+    this.favicon = undefined;
+    this.title = undefined;
     this.view.webContents.loadURL(url);
   }
 }

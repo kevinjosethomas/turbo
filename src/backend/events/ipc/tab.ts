@@ -17,7 +17,6 @@ const handlers = (window: Window, props: HandlerProps) => {
   });
 
   ipcMain.on("tab-order", (event: IpcMainEvent, { from, to }) => {
-    console.log("order");
     tablist.reorderTabs(from, to);
     event.reply("update-tabs", tablist.getFriendlyTabs());
   });

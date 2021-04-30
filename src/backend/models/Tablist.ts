@@ -42,10 +42,7 @@ class Tablist {
   }
 
   reorderTabs(from: number, to: number) {
-    console.log(from, to);
     this.tablist = arrayMove(this.tablist, from, to);
-    // console.log(this.tablist);
-    // console.log("\n\n\n");
   }
 
   getActiveTab(): Tab | undefined {
