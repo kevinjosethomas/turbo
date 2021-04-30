@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-back-10: rgb(20, 20, 20);
+    --color-back-20: rgb(28, 28, 28);
+    --color-back-30: rgb(40, 40, 40);
+    --color-fore-10: rgb(130, 130, 130);
+    --color-fore-20: rgb(189, 189, 189);
+    --color-fore-30: rgb(224, 224, 224);
+  }
+}
+
+.window-drag {
+  -webkit-app-region: drag;
+}
+
+.window-drag-none {
+  -webkit-app-region: no-drag;
+}
+
+.active-tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-back-20);
+}
+
+.tab-suffix::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  height: 35%;
+  width: 2px;
+  background-color: var(--color-back-30);
+}
+
+.tab-title::after {
+  content: "";
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    var(--color-back-10) 50%
+  );
+
+  transition: all 10s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab:hover .tab-title::after {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    var(--color-back-20) 50%
+  );
+}
+
+.active-tab-title::after {
+  content: "";
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    var(--color-back-20) 50%
+  );
+}
