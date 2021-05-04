@@ -60,7 +60,7 @@ If you're making a Turbo fork or clone, make sure you read through our [license]
 
 Here's a guide on running Turbo locally. If you're on a local fork of Turbo, make sure you are on the staging branch.
 
-### Running developmnt server
+### Running development server
 
 - run `npm install` to install all our dependencies
 - run `npm run start` to start our frontend
