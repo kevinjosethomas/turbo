@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import Browser from "./pages/browser";
+import Tablist from "./pages/tablist";
 import "./assets/styles/tailwind.css";
 import { TabProps } from "./lib/types";
 import "./assets/styles/fontawesome.css";
@@ -37,6 +38,13 @@ const App: FC = () => {
       <Switch>
         <Route path="/" exact>
           <Browser
+            tablist={tablist}
+            setTablist={setTablist}
+            activeTab={activeTab}
+          />
+        </Route>
+        <Route path="/tablist" exact>
+          <Tablist
             tablist={tablist}
             setTablist={setTablist}
             activeTab={activeTab}

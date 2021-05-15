@@ -5,7 +5,7 @@ import parseURL from "../../lib/parseURL";
 import { HandlerProps } from "../../lib/types";
 
 const handlers = (window: Window, props: HandlerProps) => {
-  const { tablist } = props;
+  const { tablist, tablistWindow } = props;
 
   ipcMain.on("tab-request", (event: IpcMainEvent) => {
     event.reply("update-tabs", tablist.getFriendlyTabs());
@@ -56,6 +56,15 @@ const handlers = (window: Window, props: HandlerProps) => {
 
     if (!tablist.tablist.length) {
       window.closeWindow();
+    }
+  });
+
+  ipcMain.on("tab-window-show", (event: IpcMainEvent) => {
+    if (tablistWindow.window.isVisible()) {
+      tablistWindow.hideWindow();
+    } else {
+      tablistWindow.showWindow();
+      tablistWindow.toggleDevTools();
     }
   });
 };

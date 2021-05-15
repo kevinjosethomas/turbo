@@ -36,6 +36,7 @@ contextBridge.exposeInMainWorld("ipc", {
       forward: (id: number) => ipcRenderer.send("tab-forward"),
       reload: (id: number) => ipcRenderer.send("tab-reload"),
       close: (id: number) => ipcRenderer.send("tab-close", id),
+      showWindow: () => ipcRenderer.send("tab-window-show"),
     },
   },
 });

@@ -1,3 +1,4 @@
+import Window from "../models/Window";
 import Tablist from "../models/Tablist";
 import { BrowserView, IpcRendererEvent } from "electron";
 
@@ -24,6 +25,7 @@ export interface FriendlyTabProps {
 
 export interface HandlerProps {
   tablist: Tablist;
+  tablistWindow: Window;
 }
 
 export interface HandlerPropsEvents {

@@ -11,6 +11,10 @@ interface TabsProps {
   innerRef?: any;
 }
 
+interface SearchProps {
+  tablist: TabProps[];
+}
+
 interface TabComponentProps {
   id: number;
   url: string;
@@ -38,7 +42,7 @@ const Container: FC<TabsProps> = (props) => {
 
   return (
     <div className="flex flex-row items-center justify-start h-full space-x-4">
-      <Search />
+      <Search tablist={props.tablist} />
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId={"tabs"} direction="horizontal">
           {(provided: any) => (
@@ -57,9 +61,14 @@ const Container: FC<TabsProps> = (props) => {
   );
 };
 
-const Search: FC = () => {
+const Search: FC<SearchProps> = (props) => {
   return (
-    <i className="fas fa-caret-circle-down text-fore-10 hover:text-fore-20 transition duration-500 window-drag-none" />
+    <i
+      className="fas fa-caret-circle-down text-fore-10 hover:text-fore-20 transition duration-500 window-drag-none"
+      onClick={() =>
+        window.ipc.tab.emitters.showWindow() && console.log("hallo")
+      }
+    />
   );
 };
 

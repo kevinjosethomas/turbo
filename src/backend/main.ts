@@ -17,7 +17,7 @@ const createWindow: () => void = () => {
     })
   );
 
-  const url: string = process.env.FRONTEND_URL || "http://localhost:3000";
+  const url: string = "http://localhost:3000";
   window.setURL(url);
   window.maximizeWindow();
   window.toggleDevTools();
@@ -25,7 +25,26 @@ const createWindow: () => void = () => {
 
   const tablist = new Tablist(window);
 
-  ipcHandler(window, { tablist: tablist });
+  const tablistWindow = new Window(
+    new BrowserWindow({
+      parent: window.window,
+      show: false,
+      frame: false,
+      transparent: true,
+      x: 20,
+      y: 40,
+      width: 400,
+      height: 400,
+      webPreferences: {
+        preload: path.join(__dirname, "preload.js"),
+      },
+    })
+  );
+
+  const tablistWindowURL: string = "http://localhost:3000/#/tablist";
+  tablistWindow.setURL(tablistWindowURL);
+
+  ipcHandler(window, { tablist: tablist, tablistWindow: tablistWindow });
 
   window.window.on("closed", () => {
     window = null;

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "set ELECTRON_START_URL=http://localhost:3000&& yarn run build && electron ./dist/main.js",
+    "dev": "yarn run build && electron ./dist/main.js",
     "build": "tsc",
     "start": "electron ./dist/main.js"
   },
